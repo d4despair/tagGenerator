@@ -1,0 +1,72 @@
+:mode=ask
+:IOAccess,Application,Topic,AdviseActive,DDEProtocol,SecApplication,SecTopic,SecAdviseActive,SecDDEProtocol,FailoverExpression,FailoverDeadband,DFOFlag,FBDFlag,FailbackDeadband
+:AlarmGroup,Group,Comment,EventLogged,EventLoggingPriority,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,DSCAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,DSCAlarmInhibitor
+:IODisc,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,InitialDisc,OffMsg,OnMsg,AlarmState,AlarmPri,DConversion,AccessName,ItemUseTagname,ItemName,ReadOnly,AlarmComment,AlarmAckModel,DSCAlarmDisable,DSCAlarmInhibitor,SymbolicName
+CH02_PT002_FltACK,CH02,过滤器出口压力,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.0",Yes,"DB30,X10.0 过滤器出口压力",0,0
+CH02_PT002_SetZero,CH02,过滤器出口压力 标零按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.1",Yes,"DB30,X10.1 过滤器出口压力 标零按钮",0,0
+CH02_PT002_SetAdj,CH02,过滤器出口压力 校准按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.2",Yes,"DB30,X10.2 过滤器出口压力 校准按钮",0,0
+CH02_PT002_HiProEN,CH02,过滤器出口压力 上限保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.3",Yes,"DB30,X10.3 过滤器出口压力 上限保护使能",0,0
+CH02_PT002_LoProEN,CH02,过滤器出口压力 下限保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.4",Yes,"DB30,X10.4 过滤器出口压力 下限保护使能",0,0
+CH02_PT002_HiALM,CH02,过滤器出口压力 上限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.5",Yes,"DB30,X10.5 过滤器出口压力 上限报警",0,0
+CH02_PT002_LoALM,CH02,过滤器出口压力 下限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.6",Yes,"DB30,X10.6 过滤器出口压力 下限报警",0,0
+CH02_PT002_HiHiALM,CH02,过滤器出口压力 上上限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.7",Yes,"DB30,X10.7 过滤器出口压力 上上限报警",0,0
+CH02_PT002_LoLoALM,CH02,过滤器出口压力 下下限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.0",Yes,"DB30,X11.0 过滤器出口压力 下下限报警",0,0
+CH02_PT002_LimALM,CH02,过滤器出口压力 极限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.1",Yes,"DB30,X11.1 过滤器出口压力 极限报警",0,0
+CH02_PT002_LostALM,CH02,过滤器出口压力 传感器断线报警,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.2",Yes,"DB30,X11.2 过滤器出口压力 传感器断线报警",0,0
+CH02_PT002_Spare1_3,CH02,过滤器出口压力,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.3",Yes,"DB30,X11.3 过滤器出口压力",0,0
+CH02_PT002_Spare1_4,CH02,过滤器出口压力,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.4",Yes,"DB30,X11.4 过滤器出口压力",0,0
+CH02_PT002_Spare1_5,CH02,过滤器出口压力,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.5",Yes,"DB30,X11.5 过滤器出口压力",0,0
+CH02_PT002_Spare1_6,CH02,过滤器出口压力,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.6",Yes,"DB30,X11.6 过滤器出口压力",0,0
+CH03_PT002_FltACK,CH03,过滤器进口压力,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.0",Yes,"DB32,X44.0 过滤器进口压力",0,0
+CH03_PT002_SetZero,CH03,过滤器进口压力 标零按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.1",Yes,"DB32,X44.1 过滤器进口压力 标零按钮",0,0
+CH03_PT002_SetAdj,CH03,过滤器进口压力 校准按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.2",Yes,"DB32,X44.2 过滤器进口压力 校准按钮",0,0
+CH03_PT002_HiProEN,CH03,过滤器进口压力 上限保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.3",Yes,"DB32,X44.3 过滤器进口压力 上限保护使能",0,0
+CH03_PT002_LoProEN,CH03,过滤器进口压力 下限保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.4",Yes,"DB32,X44.4 过滤器进口压力 下限保护使能",0,0
+CH03_PT002_HiALM,CH03,过滤器进口压力 上限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.5",Yes,"DB32,X44.5 过滤器进口压力 上限报警",0,0
+CH03_PT002_LoALM,CH03,过滤器进口压力 下限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.6",Yes,"DB32,X44.6 过滤器进口压力 下限报警",0,0
+CH03_PT002_HiHiALM,CH03,过滤器进口压力 上上限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.7",Yes,"DB32,X44.7 过滤器进口压力 上上限报警",0,0
+CH03_PT002_LoLoALM,CH03,过滤器进口压力 下下限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.0",Yes,"DB32,X45.0 过滤器进口压力 下下限报警",0,0
+CH03_PT002_LimALM,CH03,过滤器进口压力 极限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.1",Yes,"DB32,X45.1 过滤器进口压力 极限报警",0,0
+CH03_PT002_LostALM,CH03,过滤器进口压力 传感器断线报警,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.2",Yes,"DB32,X45.2 过滤器进口压力 传感器断线报警",0,0
+CH03_PT002_Spare1_3,CH03,过滤器进口压力,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.3",Yes,"DB32,X45.3 过滤器进口压力",0,0
+CH03_PT002_Spare1_4,CH03,过滤器进口压力,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.4",Yes,"DB32,X45.4 过滤器进口压力",0,0
+CH03_PT002_Spare1_5,CH03,过滤器进口压力,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.5",Yes,"DB32,X45.5 过滤器进口压力",0,0
+CH03_PT002_Spare1_6,CH03,过滤器进口压力,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.6",Yes,"DB32,X45.6 过滤器进口压力",0,0
+:MemoryInt,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,RetentiveAlarmParameters,AlarmValueDeadband,AlarmDevDeadband,EngUnits,InitialValue,MinValue,MaxValue,Deadband,LogDeadband,LoLoAlarmState,LoLoAlarmValue,LoLoAlarmPri,LoAlarmState,LoAlarmValue,LoAlarmPri,HiAlarmState,HiAlarmValue,HiAlarmPri,HiHiAlarmState,HiHiAlarmValue,HiHiAlarmPri,MinorDevAlarmState,MinorDevAlarmValue,MinorDevAlarmPri,MajorDevAlarmState,MajorDevAlarmValue,MajorDevAlarmPri,DevTarget,ROCAlarmState,ROCAlarmValue,ROCAlarmPri,ROCTimeBase,AlarmComment,AlarmAckModel,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,SymbolicName
+:IOInt,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,RetentiveAlarmParameters,AlarmValueDeadband,AlarmDevDeadband,EngUnits,InitialValue,MinEU,MaxEU,Deadband,LogDeadband,LoLoAlarmState,LoLoAlarmValue,LoLoAlarmPri,LoAlarmState,LoAlarmValue,LoAlarmPri,HiAlarmState,HiAlarmValue,HiAlarmPri,HiHiAlarmState,HiHiAlarmValue,HiHiAlarmPri,MinorDevAlarmState,MinorDevAlarmValue,MinorDevAlarmPri,MajorDevAlarmState,MajorDevAlarmValue,MajorDevAlarmPri,DevTarget,ROCAlarmState,ROCAlarmValue,ROCAlarmPri,ROCTimeBase,MinRaw,MaxRaw,Conversion,AccessName,ItemUseTagname,ItemName,ReadOnly,AlarmComment,AlarmAckModel,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,SymbolicName
+CH02_PT002_Code,CH02,过滤器出口压力 实际内码,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,INT12",Yes,,0,0,0,0,0,0,0,0
+CH02_PT002_Spare4,CH02,过滤器出口压力,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,INT14",Yes,,0,0,0,0,0,0,0,0
+CH03_PT002_Code,CH03,过滤器进口压力 实际内码,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,INT46",Yes,,0,0,0,0,0,0,0,0
+CH03_PT002_Spare4,CH03,过滤器进口压力,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,INT48",Yes,,0,0,0,0,0,0,0,0
+:MemoryReal,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,RetentiveAlarmParameters,AlarmValueDeadband,AlarmDevDeadband,EngUnits,InitialValue,MinValue,MaxValue,Deadband,LogDeadband,LoLoAlarmState,LoLoAlarmValue,LoLoAlarmPri,LoAlarmState,LoAlarmValue,LoAlarmPri,HiAlarmState,HiAlarmValue,HiAlarmPri,HiHiAlarmState,HiHiAlarmValue,HiHiAlarmPri,MinorDevAlarmState,MinorDevAlarmValue,MinorDevAlarmPri,MajorDevAlarmState,MajorDevAlarmValue,MajorDevAlarmPri,DevTarget,ROCAlarmState,ROCAlarmValue,ROCAlarmPri,ROCTimeBase,AlarmComment,AlarmAckModel,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,SymbolicName
+:IOReal,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,RetentiveAlarmParameters,AlarmValueDeadband,AlarmDevDeadband,EngUnits,InitialValue,MinEU,MaxEU,Deadband,LogDeadband,LoLoAlarmState,LoLoAlarmValue,LoLoAlarmPri,LoAlarmState,LoAlarmValue,LoAlarmPri,HiAlarmState,HiAlarmValue,HiAlarmPri,HiHiAlarmState,HiHiAlarmValue,HiHiAlarmPri,MinorDevAlarmState,MinorDevAlarmValue,MinorDevAlarmPri,MajorDevAlarmState,MajorDevAlarmValue,MajorDevAlarmPri,DevTarget,ROCAlarmState,ROCAlarmValue,ROCAlarmPri,ROCTimeBase,MinRaw,MaxRaw,Conversion,AccessName,ItemUseTagname,ItemName,ReadOnly,AlarmComment,AlarmAckModel,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,SymbolicName
+CH02_PT002_Value,CH02,过滤器出口压力 实际值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL16",No,,0,0,0,0,0,0,0,0
+CH02_PT002_Range,CH02,过滤器出口压力 量程,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL20",No,,0,0,0,0,0,0,0,0
+CH02_PT002_Hi,CH02,过滤器出口压力 上限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL24",No,,0,0,0,0,0,0,0,0
+CH02_PT002_Lo,CH02,过滤器出口压力 下限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL28",No,,0,0,0,0,0,0,0,0
+CH02_PT002_HiHi,CH02,过滤器出口压力 上上限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL32",No,,0,0,0,0,0,0,0,0
+CH02_PT002_LoLo,CH02,过滤器出口压力 下下限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL36",No,,0,0,0,0,0,0,0,0
+CH02_PT002_AdjValue,CH02,过滤器出口压力 标定值_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL40",No,,0,0,0,0,0,0,0,0
+CH02_PT002_Code_Zero,CH02,过滤器出口压力 零点内码_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL44",No,,0,0,0,0,0,0,0,0
+CH02_PT002_Code_Adj,CH02,过滤器出口压力 标定内码_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL48",No,,0,0,0,0,0,0,0,0
+CH02_PT002_ZeroValue,CH02,过滤器出口压力,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL52",No,,0,0,0,0,0,0,0,0
+CH02_PT002_Spare46,CH02,过滤器出口压力,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL56",No,,0,0,0,0,0,0,0,0
+CH03_PT002_Value,CH03,过滤器进口压力 实际值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL50",No,,0,0,0,0,0,0,0,0
+CH03_PT002_Range,CH03,过滤器进口压力 量程,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL54",No,,0,0,0,0,0,0,0,0
+CH03_PT002_Hi,CH03,过滤器进口压力 上限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL58",No,,0,0,0,0,0,0,0,0
+CH03_PT002_Lo,CH03,过滤器进口压力 下限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL62",No,,0,0,0,0,0,0,0,0
+CH03_PT002_HiHi,CH03,过滤器进口压力 上上限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL66",No,,0,0,0,0,0,0,0,0
+CH03_PT002_LoLo,CH03,过滤器进口压力 下下限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL70",No,,0,0,0,0,0,0,0,0
+CH03_PT002_AdjValue,CH03,过滤器进口压力 标定值_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL74",No,,0,0,0,0,0,0,0,0
+CH03_PT002_Code_Zero,CH03,过滤器进口压力 零点内码_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL78",No,,0,0,0,0,0,0,0,0
+CH03_PT002_Code_Adj,CH03,过滤器进口压力 标定内码_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL82",No,,0,0,0,0,0,0,0,0
+CH03_PT002_ZeroValue,CH03,过滤器进口压力,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL86",No,,0,0,0,0,0,0,0,0
+CH03_PT002_Spare46,CH03,过滤器进口压力,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL90",No,,0,0,0,0,0,0,0,0
+:MemoryMsg,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,MaxLength,InitialMessage,AlarmComment,SymbolicName
+:IOMsg,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,MaxLength,InitialMessage,AccessName,ItemUseTagname,ItemName,ReadOnly,AlarmComment,SymbolicName
+:GroupVar,Group,Comment,SymbolicName
+:HistoryTrend,Group,Comment,SymbolicName
+:TagID,Group,Comment
+:IndirectDisc,Group,Comment,EventLogged,EventLoggingPriority,RetentiveValue,SymbolicName
+:IndirectAnalog,Group,Comment,EventLogged,EventLoggingPriority,RetentiveValue,SymbolicName
+:IndirectMsg,Group,Comment,EventLogged,EventLoggingPriority,RetentiveValue,SymbolicName

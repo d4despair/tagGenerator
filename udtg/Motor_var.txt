@@ -1,0 +1,69 @@
+TYPE "Motor_var"
+AUTHOR : hkb
+NAME : 通用电机
+VERSION : 1.0
+   STRUCT
+      Enable : Bool;   // 使能
+      Auto : Bool;
+      Auto_HMI : Bool;   // 远程手自动按钮
+      Auto_Status : Bool;   // 手自动状态
+      Loc_Rem : Bool;   // 本地/远程(检修/待机）
+      ON : Bool;   // 开启(正转)
+      ON_HMI : Bool;   // 开启_上位机(正转)
+      OFF : Bool;   // 停止(反转)
+      OFF_HMI : Bool;   // 停止_上位机(反转)
+      Fan : Bool;   // 通风扇
+      Motor : Bool;   // 电机(正转）
+      OL : Bool;   // 电机过载
+      Fan_OL : Bool;   // 风扇过载
+      RunSig : Bool;   // 电机运行指示
+      Break_ALM : Bool;   // 断链报警
+      Break_CHK : Bool;   // 断链检测
+      INV_Res_HMI : Bool;   // 复位
+      Break_EN : Bool;   // 断链保护使能
+      Break_Stop : Bool;   // 断链导致停机
+      Motor_Back : Bool;   // 电机(反转）
+      Loc : Bool;   // 本地
+      Rem : Bool;   // 远程
+      Blocking_ALM : Bool;   // 堵料报警
+      Blocking_CHK : Bool;   // 堵料检测
+      Blocking_EN : Bool;   // 堵料保护使能
+      Blocking_Stop : Bool;   // 堵料导致停机
+      BreakTime : Int;   // 断链超时时间 秒
+      BlockingTime : Int;   // 堵料检测时间 秒
+      PullSwitch_CHK : Bool;   // 拉线开关
+      LMD_ALM : Bool;   // 左跑偏报警
+      LMD_CHK_1 : Bool;   // 左跑偏1检测
+      LMD_EN : Bool;   // 左跑偏保护使能
+      LMD_Stop : Bool;   // 左跑偏导致停机
+      LMD_Time : Int;   // 左跑偏检测时间
+      RMD_ALM : Bool;   // 右 跑偏报警
+      RMD_CHK_1 : Bool;   // 右跑偏1检测
+      RMD_EN : Bool;   // 右跑偏保护使能
+      RMD_Stop : Bool;   // 右跑偏导致停机
+      RMD_Time : Int;   // 右跑偏检测时间
+      Motor_Delta : Bool;   // 三角型
+      Motor_Wye : Bool;   // 星型
+      MSD : Bool;   // 维修开关
+      LMD_CHK_2 : Bool;   // 左跑偏2检测
+      RMD_CHK_2 : Bool;   // 右跑偏2检测
+      Interlock_ON : Bool;   // 联锁启动
+      spare0_1 : Bool;
+      spare0_2 : Bool;
+      spare0_3 : Bool;
+      spare0_4 : Bool;
+      InterStarTime : Int;   // 联动启动延时
+      Alt_TMR : Int;   // 起动转换时间 秒
+      spare_In4 : Int;
+      spare_In5 : Int;
+      spare_In6 : Int;
+      spare_In7 : Int;
+      spare_R : Real;
+      spare_R_1 : Real;
+      spare_R_2 : Real;
+      spare_R_3 : Real;
+      spare_R_4 : Real;
+   END_STRUCT;
+
+END_TYPE
+

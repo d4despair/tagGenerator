@@ -1,0 +1,80 @@
+DATA_BLOCK "2415_M"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+   STRUCT 
+      M1 : Struct   // =2415+P8-M1 1#环式刨片机
+         M : "Motor_var";   // 电机控制
+         SetFRQ : "Value_var";   // 给定频率
+         ActFRQ : "Value_var";   // 反馈频率
+         Comm : "G120";   // 变频器通讯
+         ActRPM : "Value_var";   // 反馈转速
+         Current : "Value_var";   // 反馈电流
+      END_STRUCT;
+      M2 : Struct   // =2412+P5-M1 刨片机料仓1#出料螺旋A+=2412+P5-M14螺旋风扇
+         M : "Motor_var";   // 电机控制
+         SetFRQ : "Value_var";   // 给定频率
+         ActFRQ : "Value_var";   // 反馈频率
+         Comm : "G120";   // 变频器通讯
+         ActRPM : "Value_var";   // 反馈转速
+         Current : "Value_var";   // 反馈电流
+      END_STRUCT;
+      M3 : Struct   // =2412+P5-M2 刨片机料仓1#出料螺旋B+=2412+P5-M15螺旋风扇
+         M : "Motor_var";   // 电机控制
+         SetFRQ : "Value_var";   // 给定频率
+         ActFRQ : "Value_var";   // 反馈频率
+         Comm : "G120";   // 变频器通讯
+         ActRPM : "Value_var";   // 反馈转速
+         Current : "Value_var";   // 反馈电流
+      END_STRUCT;
+      M4 : Struct   // =2415+P6-M5 1#刨片机分料电机
+         M : "Motor_var";   // 电机控制
+         SetFRQ : "Value_var";   // 给定频率
+         ActFRQ : "Value_var";   // 反馈频率
+         Comm : "G120";   // 变频器通讯
+         ActRPM : "Value_var";   // 反馈转速
+         Current : "Value_var";   // 反馈电流
+      END_STRUCT;
+      M5 : Struct   // Spare 备用
+         M : "Motor_var";   // 电机控制
+         SetFRQ : "Value_var";   // 给定频率
+         ActFRQ : "Value_var";   // 反馈频率
+         Comm : "G120";   // 变频器通讯
+         ActRPM : "Value_var";   // 反馈转速
+         Current : "Value_var";   // 反馈电流
+      END_STRUCT;
+      M6 : Struct   // =2415+P6-M10 1#刨片机振动器
+         M : "Motor_var";   // 电机控制
+      END_STRUCT;
+      M7 : Struct   // =2415+P6-M11 1#刨片机油泵电机
+         M : "Motor_var";   // 电机控制
+      END_STRUCT;
+      M8 : Struct   // =2415+P6-M12 1#刨片机润滑系统电机
+         M : "Motor_var";   // 电机控制
+      END_STRUCT;
+      M9 : Struct   // =2415+P6-M13 1#刨片机重物分离电机
+         M : "Motor_var";   // 电机控制
+      END_STRUCT;
+      M10 : Struct   // =2415+P6-M14 1#刨片机磁选电机
+         M : "Motor_var";   // 电机控制
+      END_STRUCT;
+      M11 : Struct   // Spare 备用
+         M : "Motor_var";   // 电机控制
+      END_STRUCT;
+      M12 : Struct   // =2415+P6-M15 1#刨片机润滑油冷却风扇
+         M : "Motor_var";   // 电机控制
+      END_STRUCT;
+      M13 : Struct   // =2415+P6-FH1 1#刨片机润滑油加热器
+         M : "Motor_var";   // 电机控制
+      END_STRUCT;
+      M14 : Struct   // =2147+P5-M11 1#刨片进料仓进料皮带分料器
+         M : "Motor_var";   // 电机控制
+      END_STRUCT;
+      M15 : Struct   // Spare 备用
+         M : "Motor_var";   // 电机控制
+      END_STRUCT;
+   END_STRUCT;
+
+
+BEGIN
+
+END_DATA_BLOCK

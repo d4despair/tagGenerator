@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/db_temp.CSV" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/hmitest.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/test.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/空的.csv" charset="GBK" />
+  </component>
+</project>

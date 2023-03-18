@@ -1,0 +1,39 @@
+TYPE "Value_var"
+AUTHOR : hkb
+NAME : 通用转换
+VERSION : 1.0
+   STRUCT
+      FltACK : Bool;
+      SetZero : Bool;   // 标零按钮
+      SetAdj : Bool;   // 校准按钮
+      HiProEN : Bool;   // 上限保护使能
+      LoProEN : Bool;   // 下限保护使能
+      HiALM : Bool;   // 上限报警
+      LoALM : Bool;   // 下限报警
+      HiHiALM : Bool;   // 上上限报警
+      LoLoALM : Bool;   // 下下限报警
+      LimALM : Bool;   // 极限报警
+      LostALM : Bool;   // 传感器断线报警
+      Spare1_3 : Bool;
+      Spare1_4 : Bool;
+      Spare1_5 : Bool;
+      Spare1_6 : Bool;
+      Code : Int;   // 实际内码
+      Spare4 : Int;
+      Value : Real;   // 实际值
+      Range : Real;   // 量程
+      Hi : Real;   // 上限值
+      Lo : Real;   // 下限值
+      HiHi : Real;   // 上上限值
+      LoLo : Real;   // 下下限值
+      AdjValue : Real;   // 标定值_读写
+      Code_Zero : Real;   // 零点内码_读写
+      Code_Adj : Real;   // 标定内码_读写
+      ZeroValue : Real;
+      Spare46 : Real;
+   END_STRUCT;
+
+END_TYPE
+
+
+
