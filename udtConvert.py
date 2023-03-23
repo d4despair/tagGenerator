@@ -3,16 +3,16 @@
 import math
 import os.path
 from openpyxl import Workbook
-import udtg
+import udt_src
 
-rootdir = os.path.dirname(__file__) + '/udtg'
+rootdir = os.path.dirname(__file__) + '/udt_src'
 filenames = []
 # 遍历所有文件
 for parent, dirnames, filenames in os.walk(rootdir):
     pass
 
 udtList = {}
-tagDict = udtg.udt_tag_dict()
+tagDict = udt_src.udt_tag_dict()
 
 typeBool = 'Bool'
 typeInt = 'Int'
@@ -22,12 +22,12 @@ typeReal = 'Real'
 # print(dict.keys(tagDict))
 
 def read_udt():
-    print("... reading udtg")
+    print("... reading udt_src")
 
 
 for file in filenames:
     # udt格式
-    udtDict = dict(udtg.UDT().__dict__)
+    udtDict = dict(udt_src.UDT().__dict__)
 
     if 'txt' in file:
         print('read: ' + file)
@@ -36,7 +36,7 @@ for file in filenames:
         print(lines)
 
         dbFile = 0
-        # udtg 类型
+        # udt_src 类型
         while True:
             temp_line = lines.pop(0)
             if 'DATA_BLOCK' in temp_line:
@@ -52,7 +52,7 @@ for file in filenames:
         udtDict['udt_type'] = temp_line[temp_line.find('"') + 1:temp_line.rfind('"')].strip()
         # print(udtDict['udt_type'])
 
-        # udtg 作者 名字 版本 非关键
+        # udt_src 作者 名字 版本 非关键
         listFromDict = list(dict.keys(udtDict))
         for i in range(1, 4):
             temp_line = lines.pop(0)
@@ -78,7 +78,7 @@ for file in filenames:
             elif ':' not in temp_line:
                 continue
             # 变量格式
-            tagDict = udtg.UDTTag().__dict__
+            tagDict = udt_src.UDTTag().__dict__
             start_name_index = 0
             end_name_index = temp_line.find(':')
             start_type_index = end_name_index + 1

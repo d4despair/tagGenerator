@@ -3,11 +3,9 @@
 import openpyxl
 import os
 
-import hmi
-import udt
-
-from definition import Defn
-from udt import TagList
+from taggen import udt, intouch, kepserver
+from taggen.tag import HMITag, TagList
+from definition import Definition
 
 project_path = os.path.dirname(__file__)
 
@@ -17,18 +15,22 @@ worksheet = workbook['Sheet1']
 ws = workbook.active
 list_defn = []
 
+
+# 从excel获取定义列表
 for row_cells in worksheet[2: worksheet.max_row]:
     l = []
     for cell in row_cells:
         l.append(cell.value)
-    d = Defn().create_from_list(l)
+    d = Definition().create_from_list(l)
     list_defn.append(d)
     # print(d.to_list())
 
 # print(list_defn)
 
 # 生成udt合集的字典
-ud = udt.get_udt_from_path(project_path + '\\udtg')
+# ud = udt.get_udt_from_path(project_path + '\\udt_src')
+udt_excel_filename = project_path + '/udt_src/088变量生成器 20200728 - 副本.xlsx'
+ud = udt.get_udt_from_excel(udt_excel_filename)
 # for u in ud:
 #     print('udt类型 {}, {}'.format(ud[u].udt_type, ud[u].name))
 #     for t in ud[u].struct:
@@ -54,7 +56,7 @@ for dn in list_defn:
     struct = ud[udt_type].struct
     tag_count = 0
     for udt_tag in ud[udt_type].struct:
-        hmi_tag = udt.HMITag()
+        hmi_tag = HMITag()
         hmi_tag.name = '{}_{}_{}'.format(dn.prefix, dn.middle, udt_tag.name)
         hmi_tag.type = udt_tag.type.lower()
         hmi_tag.comment = '{} {}'.format(dn.comment, udt_tag.comment).strip()
@@ -75,12 +77,15 @@ for dn in list_defn:
         else:
             hmi_real.append(hmi_tag)
         # print(hmi_tag.__dict__)
-    print('{}: {}_{} {} 类型: {} 生成 {} 个变量'.format(dn_count, dn.prefix, dn.middle, dn.comment, dn.udt_type ,tag_count))
+    print('{}: {}_{} {} 类型: {} 生成 {} 个变量'.format(dn_count, dn.prefix, dn.middle, dn.comment, dn.udt_type, tag_count))
     # print(dn.udt_type)
 
-tag_list = udt.TagList(hmi_disc, hmi_int, hmi_real)
+tag_list = TagList(hmi_disc, hmi_int, hmi_real)
 
 path = os.path.dirname(__file__) + '\\test.csv'
-hmi.intouch.output_csv(tag_list=tag_list, output_path=path, access_name='kep1500')
 
-print(path)
+intouch.output_csv(tag_list=tag_list, output_path=path, access_name='kep1500', item_use_tag_name=True)
+
+path = os.path.dirname(__file__) + '\\kep_test.csv'
+kepserver.output_csv(tag_list=tag_list, output_path=path)
+

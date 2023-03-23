@@ -7,11 +7,8 @@ print('打开: ' + path)
 
 
 def string_to_list(s: str):
-
     if ',' in s:
         return '[\'{}]'.format(s.replace(',', '\',\''))
-
-
 
 
 with open(path, 'r', newline='') as f:

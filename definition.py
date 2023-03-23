@@ -1,7 +1,7 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/15 16:25
 
-class Defn:
+class Definition:
     prefix = ''
     middle = ''
     udt_type = ''
@@ -26,10 +26,8 @@ class Defn:
         self.offset = l[5]
         return self
 
-
     def to_list(self):
         l = list()
         for fd in self.__dict__:
             l.append(self.__dict__[fd])
         return l
-

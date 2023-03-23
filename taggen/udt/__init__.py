@@ -1,8 +1,8 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/16 14:34
-from udt.tag import *
-from udt.udt import *
-from udt.tagtype import TagType
+from taggen.udt.udt import *
+from taggen.tag.tagtype import TagType
+from taggen.tag import Tag
 
 type_bool = TagType('bool', 0.1)
 type_int = TagType('int', 2)

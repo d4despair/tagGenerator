@@ -4,25 +4,28 @@
 
 class Tag:
 
-    def __init__(self, name='', tag_type='', comment=''):
+    __slots__ = (
+        'name',
+        'type',
+        'comment',
+    )
+
+    def __init__(self, name: str, tag_type: str, comment=None):
         self.name = name
         self.type = tag_type
         self.comment = comment
 
     def __getitem__(self, item):
-        return self.__dict__[item]
+        return self.__getattribute__(item)
 
     def __setitem__(self, key, value):
-        if key in self.__dict__:
+        if hasattr(key):
             self.__setattr__(key, value)
         else:
             print('No such field: "{}" in {}'.format(key, self.__class__))
 
     def to_list(self):
-        l = []
-        for fd in self.__dict__:
-            l.append(self.__dict__[fd])
-        return l
+        return list([self.__getattribute__(fd) for fd in self.__slots__])
 
 
 class UDTTag(Tag):
@@ -33,8 +36,23 @@ class UDTTag(Tag):
         self.read_only = read_only
         self.alarm_state = alarm_state
 
+    def __str__(self):
+        return '后缀: {0}, 类型: {1}, 偏移量: {2}, ' \
+               '描述: {3}, 只读: {4}, 报警: {5}'.format(self.name, self.type, self.offset, self.comment,
+                                                  self.read_only, self.alarm_state)
+
 
 class HMITag(Tag):
+
+    __slots__ = (
+        'name',
+        'tag_type',
+        'comment',
+        'item_name',
+        'read_only',
+        'alarm_state',
+        'group',
+    )
 
     def __init__(self, name='', tag_type='', comment='', item_name='', read_only=0, alarm_state=0, group=''):
         Tag.__init__(self, name, tag_type, comment)

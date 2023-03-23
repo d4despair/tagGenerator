@@ -1,11 +1,11 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/17 15:44
 import csv
-import udt
-from udt import TagList, HMITag
+from taggen.utils import tagtype
+from taggen.tag import TagList, HMITag
 
 # mode_text = ':mode=REPLACE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,\r\n'
-form = [[':IOAccess', 'Application', 'Topic', 'AdviseActive', 'DDEProtocol', 'SecApplication', 'SecTopic',
+FORM = [[':IOAccess', 'Application', 'Topic', 'AdviseActive', 'DDEProtocol', 'SecApplication', 'SecTopic',
          'SecAdviseActive', 'SecDDEProtocol', 'FailoverExpression', 'FailoverDeadband', 'DFOFlag', 'FBDFlag',
          'FailbackDeadband',
          ],
@@ -90,17 +90,17 @@ form = [[':IOAccess', 'Application', 'Topic', 'AdviseActive', 'DDEProtocol', 'Se
          ]
         ]
 
-form_dict = {line[0].replace(':', ''): line for line in form}
+FORM_DICT = {line[0].replace(':', ''): line for line in FORM}
 
-IODisc_text = ['SS_Level1_HiALM', 'SS', '表干刨花料仓 干刨花料仓料位 上限报警', 'No', 'No', '0', 'No', 'Off', '', '', 'None', '1',
+IODisc_TEXT = ['SS_Level1_HiALM', 'SS', '表干刨花料仓 干刨花料仓料位 上限报警', 'No', 'No', '0', 'No', 'Off', '', '', 'None', '1',
                'Direct', 'kep1500', 'No', 'SS_Level1_HiALM', 'Yes', '"表干刨花料仓 干刨花料仓料位 上限报警"', '0', '0',
                ]
-IOInt_text = ['SS_Level1_Code', 'SS', '表干刨花料仓 干刨花料仓料位 实际内码', 'No', 'No', '0', 'No', 'No', '0', '0', '', '0', '-32768',
+IOInt_TEXT = ['SS_Level1_Code', 'SS', '表干刨花料仓 干刨花料仓料位 实际内码', 'No', 'No', '0', 'No', 'No', '0', '0', '', '0', '-32768',
               '32767', '0', '0', 'Off', '0', '1', 'Off', '0', '1', 'Off', '0', '1', 'Off', '0', '1', 'Off', '0', '1',
               'Off', '0', '1', '0', 'Off', '0', '1', 'Min', '-32768', '32767', 'Linear', 'kep1500', 'No',
               'SS_Level1_Code', 'Yes', '', '0', '0', '0', '0', '0', '0', '0', '0',
               ]
-IOReal_text = ['SS_Level1_Value', 'SS', '表干刨花料仓 干刨花料仓料位 实际值', 'No', 'No', '0', 'No', 'No', '0', '0', '', '0', '-32768',
+IOReal_TEXT = ['SS_Level1_Value', 'SS', '表干刨花料仓 干刨花料仓料位 实际值', 'No', 'No', '0', 'No', 'No', '0', '0', '', '0', '-32768',
                '32767', '0', '0', 'Off', '0', '1', 'Off', '0', '1', 'Off', '0', '1', 'Off', '0', '1', 'Off', '0', '1',
                'Off', '0', '1', '0', 'Off', '0', '1', 'Min', '-32768', '32767', 'Linear', 'kep1500', 'No',
                'SS_Level1_Value', 'No', '', '0', '0', '0', '0', '0', '0', '0', '0',
@@ -108,7 +108,7 @@ IOReal_text = ['SS_Level1_Value', 'SS', '表干刨花料仓 干刨花料仓料�
 # IOAccess_text = 'kep1500,server_runtime,kep1500,Yes,No,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,\r\n'
 
 
-IODisc_index = {
+IODisc_INDEX = {
     'name': 0,
     'group': 1,
     'comment': 2,
@@ -116,57 +116,63 @@ IODisc_index = {
     'access_name': 13,
     'item_use_tag_name': 14,
     'item_name': 15,
-    'real_only': 16,
+    'read_only': 16,
     'alarm_comment': 17
 }
 
-IOInt_index = {
+IOInt_INDEX = {
     'name': 0,
     'group': 1,
     'comment': 2,
     'access_name': 42,
     'item_use_tag_name': 43,
     'item_name': 44,
-    'real_only': 45,
+    'read_only': 45,
     'alarm_comment': 46,
 }
 
-IOReal_index = IOInt_index
+IOReal_INDEX = IOInt_INDEX
 
-alarm_map = ['None', 'On', 'Off']
+ALARM_MAP = ['None', 'On', 'Off']
 # print(form_dict)
-print(form_dict.keys())
+# print(FORM_DICT.keys())
 
 
-def csv_write_tag(hmi_tag: HMITag, text: [], index: {}):
+def _csv_write_tag(hmi_tag: HMITag, text: [], index: {}):
     for fd in index:
-        if fd in hmi_tag.__dict__:
+        if fd in hmi_tag.__slots__:
             try:
                 text[index[fd]] = hmi_tag[fd]
             finally:
                 pass
-    if udt.is_bool(hmi_tag.type):
-        text[index['alarm_state']] = alarm_map[hmi_tag.alarm_state]
+        # else:
+        #     print('{}字段不存在'.format(fd))
+    if tagtype.is_bool(hmi_tag.type):
+        if isinstance(hmi_tag.alarm_state, str):
+            text[index['alarm_state']] = hmi_tag.alarm_state
+        else:
+            text[index['alarm_state']] = ALARM_MAP[hmi_tag.alarm_state]
         text[index['alarm_comment']] = '{} {}'.format(hmi_tag.item_name, hmi_tag.comment)
 
 
-def output_csv(tag_list: TagList, output_path, mode='ask', item_use_tag_name=False, new_group=False, access_name='kep1200'):
-
+def output_csv(tag_list: TagList, output_path, mode='ask', item_use_tag_name=False, new_group=False,
+               access_name='kep1200'):
     mode_text = [':mode=' + mode]
     if item_use_tag_name:
-        IODisc_text[IODisc_index['item_use_tag_name']] = 'Yes'
-        IOInt_text[IOInt_index['item_use_tag_name']] = 'Yes'
-        IOInt_text[IOInt_index['item_use_tag_name']] = 'Yes'
+        IODisc_TEXT[IODisc_INDEX['item_use_tag_name']] = 'Yes'
+        IOInt_TEXT[IOInt_INDEX['item_use_tag_name']] = 'Yes'
+        IOInt_TEXT[IOInt_INDEX['item_use_tag_name']] = 'Yes'
     else:
-        IODisc_text[IODisc_index['item_use_tag_name']] = 'No'
-        IOInt_text[IOInt_index['item_use_tag_name']] = 'No'
-        IOInt_text[IOInt_index['item_use_tag_name']] = 'No'
+        IODisc_TEXT[IODisc_INDEX['item_use_tag_name']] = 'No'
+        IOInt_TEXT[IOInt_INDEX['item_use_tag_name']] = 'No'
+        IOInt_TEXT[IOInt_INDEX['item_use_tag_name']] = 'No'
 
-    with open(output_path, 'w', newline='') as f:
+    with open(output_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
+        # 模式
         writer.writerow(mode_text)
-        for key in form_dict.keys():
-            writer.writerow(form_dict[key])
+        for key in FORM_DICT.keys():
+            writer.writerow(FORM_DICT[key])
 
             # 自动生成组
             if new_group:
@@ -174,22 +180,23 @@ def output_csv(tag_list: TagList, output_path, mode='ask', item_use_tag_name=Fal
 
             # IO离散型变量
             if key == 'IODisc':
-                IODisc_text[IODisc_index['access_name']] = access_name
+                IODisc_TEXT[IODisc_INDEX['access_name']] = access_name
                 for hmi_tag in tag_list.disc_list:
-                    csv_write_tag(hmi_tag, IODisc_text, IODisc_index)
-                    writer.writerow(IODisc_text)
+                    _csv_write_tag(hmi_tag, IODisc_TEXT, IODisc_INDEX)
+                    writer.writerow(IODisc_TEXT)
 
             # IO整型变量
             if key == 'IOInt':
-                IOInt_text[IOInt_index['access_name']] = access_name
+                IOInt_TEXT[IOInt_INDEX['access_name']] = access_name
                 for hmi_tag in tag_list.int_list:
-                    csv_write_tag(hmi_tag, IOInt_text, IOInt_index)
-                    writer.writerow(IOInt_text)
+                    _csv_write_tag(hmi_tag, IOInt_TEXT, IOInt_INDEX)
+                    writer.writerow(IOInt_TEXT)
 
             # IO实型变量
             if key == 'IOReal':
-                IOReal_text[IOReal_index['access_name']] = access_name
+                IOReal_TEXT[IOReal_INDEX['access_name']] = access_name
                 for hmi_tag in tag_list.real_list:
-                    csv_write_tag(hmi_tag, IOReal_text, IOReal_index)
-                    writer.writerow(IOReal_text)
+                    _csv_write_tag(hmi_tag, IOReal_TEXT, IOReal_INDEX)
+                    writer.writerow(IOReal_TEXT)
 
+    print('生成Intouch导入csv文件: ' + output_path)

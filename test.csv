@@ -2,66 +2,74 @@
 :IOAccess,Application,Topic,AdviseActive,DDEProtocol,SecApplication,SecTopic,SecAdviseActive,SecDDEProtocol,FailoverExpression,FailoverDeadband,DFOFlag,FBDFlag,FailbackDeadband
 :AlarmGroup,Group,Comment,EventLogged,EventLoggingPriority,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,DSCAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,DSCAlarmInhibitor
 :IODisc,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,InitialDisc,OffMsg,OnMsg,AlarmState,AlarmPri,DConversion,AccessName,ItemUseTagname,ItemName,ReadOnly,AlarmComment,AlarmAckModel,DSCAlarmDisable,DSCAlarmInhibitor,SymbolicName
-CH02_PT002_FltACK,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.0",Yes,"DB30,X10.0 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦",0,0
-CH02_PT002_SetZero,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ±êÁã°´Å¥,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.1",Yes,"DB30,X10.1 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ±êÁã°´Å¥",0,0
-CH02_PT002_SetAdj,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ Ğ£×¼°´Å¥,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.2",Yes,"DB30,X10.2 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ Ğ£×¼°´Å¥",0,0
-CH02_PT002_HiProEN,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÉÏÏŞ±£»¤Ê¹ÄÜ,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.3",Yes,"DB30,X10.3 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÉÏÏŞ±£»¤Ê¹ÄÜ",0,0
-CH02_PT002_LoProEN,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÏÂÏŞ±£»¤Ê¹ÄÜ,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.4",Yes,"DB30,X10.4 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÏÂÏŞ±£»¤Ê¹ÄÜ",0,0
-CH02_PT002_HiALM,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÉÏÏŞ±¨¾¯,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.5",Yes,"DB30,X10.5 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÉÏÏŞ±¨¾¯",0,0
-CH02_PT002_LoALM,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÏÂÏŞ±¨¾¯,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.6",Yes,"DB30,X10.6 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÏÂÏŞ±¨¾¯",0,0
-CH02_PT002_HiHiALM,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÉÏÉÏÏŞ±¨¾¯,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X10.7",Yes,"DB30,X10.7 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÉÏÉÏÏŞ±¨¾¯",0,0
-CH02_PT002_LoLoALM,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÏÂÏÂÏŞ±¨¾¯,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.0",Yes,"DB30,X11.0 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÏÂÏÂÏŞ±¨¾¯",0,0
-CH02_PT002_LimALM,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ¼«ÏŞ±¨¾¯,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.1",Yes,"DB30,X11.1 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ¼«ÏŞ±¨¾¯",0,0
-CH02_PT002_LostALM,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ´«¸ĞÆ÷¶ÏÏß±¨¾¯,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.2",Yes,"DB30,X11.2 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ´«¸ĞÆ÷¶ÏÏß±¨¾¯",0,0
-CH02_PT002_Spare1_3,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.3",Yes,"DB30,X11.3 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦",0,0
-CH02_PT002_Spare1_4,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.4",Yes,"DB30,X11.4 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦",0,0
-CH02_PT002_Spare1_5,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.5",Yes,"DB30,X11.5 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦",0,0
-CH02_PT002_Spare1_6,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB30,X11.6",Yes,"DB30,X11.6 ¹ıÂËÆ÷³ö¿ÚÑ¹Á¦",0,0
-CH03_PT002_FltACK,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.0",Yes,"DB32,X44.0 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦",0,0
-CH03_PT002_SetZero,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ±êÁã°´Å¥,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.1",Yes,"DB32,X44.1 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ±êÁã°´Å¥",0,0
-CH03_PT002_SetAdj,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ Ğ£×¼°´Å¥,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.2",Yes,"DB32,X44.2 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ Ğ£×¼°´Å¥",0,0
-CH03_PT002_HiProEN,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÉÏÏŞ±£»¤Ê¹ÄÜ,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.3",Yes,"DB32,X44.3 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÉÏÏŞ±£»¤Ê¹ÄÜ",0,0
-CH03_PT002_LoProEN,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÏÂÏŞ±£»¤Ê¹ÄÜ,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.4",Yes,"DB32,X44.4 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÏÂÏŞ±£»¤Ê¹ÄÜ",0,0
-CH03_PT002_HiALM,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÉÏÏŞ±¨¾¯,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.5",Yes,"DB32,X44.5 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÉÏÏŞ±¨¾¯",0,0
-CH03_PT002_LoALM,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÏÂÏŞ±¨¾¯,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.6",Yes,"DB32,X44.6 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÏÂÏŞ±¨¾¯",0,0
-CH03_PT002_HiHiALM,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÉÏÉÏÏŞ±¨¾¯,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X44.7",Yes,"DB32,X44.7 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÉÏÉÏÏŞ±¨¾¯",0,0
-CH03_PT002_LoLoALM,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÏÂÏÂÏŞ±¨¾¯,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.0",Yes,"DB32,X45.0 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÏÂÏÂÏŞ±¨¾¯",0,0
-CH03_PT002_LimALM,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ¼«ÏŞ±¨¾¯,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.1",Yes,"DB32,X45.1 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ¼«ÏŞ±¨¾¯",0,0
-CH03_PT002_LostALM,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ´«¸ĞÆ÷¶ÏÏß±¨¾¯,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.2",Yes,"DB32,X45.2 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ´«¸ĞÆ÷¶ÏÏß±¨¾¯",0,0
-CH03_PT002_Spare1_3,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.3",Yes,"DB32,X45.3 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦",0,0
-CH03_PT002_Spare1_4,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.4",Yes,"DB32,X45.4 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦",0,0
-CH03_PT002_Spare1_5,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.5",Yes,"DB32,X45.5 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦",0,0
-CH03_PT002_Spare1_6,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦,No,No,0,No,Off,,,None,1,Direct,kep1500,No,"DB32,X45.6",Yes,"DB32,X45.6 ¹ıÂËÆ÷½ø¿ÚÑ¹Á¦",0,0
+CH02_PT002_SetZero,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› æ ‡é›¶æŒ‰é’®,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.1",No,"DB30,X10.1 è¿‡æ»¤å™¨å‡ºå£å‹åŠ› æ ‡é›¶æŒ‰é’®",0,0
+CH02_PT002_SetAdj,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› æ ¡å‡†æŒ‰é’®,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.2",No,"DB30,X10.2 è¿‡æ»¤å™¨å‡ºå£å‹åŠ› æ ¡å‡†æŒ‰é’®",0,0
+CH02_PT002_HiALM,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¸Šé™æŠ¥è­¦,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.5",Yes,"DB30,X10.5 è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¸Šé™æŠ¥è­¦",0,0
+CH02_PT002_LoALM,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¸‹é™æŠ¥è­¦,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.6",Yes,"DB30,X10.6 è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¸‹é™æŠ¥è­¦",0,0
+CH02_PT002_HiHiALM,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¸Šä¸Šé™æŠ¥è­¦,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB30,X10.7",Yes,"DB30,X10.7 è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¸Šä¸Šé™æŠ¥è­¦",0,0
+CH02_PT002_LoLoALM,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¸‹ä¸‹é™æŠ¥è­¦,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB30,X11.0",Yes,"DB30,X11.0 è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¸‹ä¸‹é™æŠ¥è­¦",0,0
+CH02_PT002_LimALM,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› æé™æŠ¥è­¦,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB30,X11.1",Yes,"DB30,X11.1 è¿‡æ»¤å™¨å‡ºå£å‹åŠ› æé™æŠ¥è­¦",0,0
+CH02_PT002_LostALM,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¼ æ„Ÿå™¨æ–­çº¿æŠ¥è­¦,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB30,X11.2",Yes,"DB30,X11.2 è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¼ æ„Ÿå™¨æ–­çº¿æŠ¥è­¦",0,0
+CH03_PT002_SetZero,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› æ ‡é›¶æŒ‰é’®,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.1",No,"DB32,X44.1 è¿‡æ»¤å™¨è¿›å£å‹åŠ› æ ‡é›¶æŒ‰é’®",0,0
+CH03_PT002_SetAdj,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› æ ¡å‡†æŒ‰é’®,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.2",No,"DB32,X44.2 è¿‡æ»¤å™¨è¿›å£å‹åŠ› æ ¡å‡†æŒ‰é’®",0,0
+CH03_PT002_HiALM,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¸Šé™æŠ¥è­¦,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.5",Yes,"DB32,X44.5 è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¸Šé™æŠ¥è­¦",0,0
+CH03_PT002_LoALM,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¸‹é™æŠ¥è­¦,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.6",Yes,"DB32,X44.6 è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¸‹é™æŠ¥è­¦",0,0
+CH03_PT002_HiHiALM,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¸Šä¸Šé™æŠ¥è­¦,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB32,X44.7",Yes,"DB32,X44.7 è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¸Šä¸Šé™æŠ¥è­¦",0,0
+CH03_PT002_LoLoALM,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¸‹ä¸‹é™æŠ¥è­¦,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB32,X45.0",Yes,"DB32,X45.0 è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¸‹ä¸‹é™æŠ¥è­¦",0,0
+CH03_PT002_LimALM,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› æé™æŠ¥è­¦,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB32,X45.1",Yes,"DB32,X45.1 è¿‡æ»¤å™¨è¿›å£å‹åŠ› æé™æŠ¥è­¦",0,0
+CH03_PT002_LostALM,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¼ æ„Ÿå™¨æ–­çº¿æŠ¥è­¦,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB32,X45.2",Yes,"DB32,X45.2 è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¼ æ„Ÿå™¨æ–­çº¿æŠ¥è­¦",0,0
+CHPF_M13_M_Enable,CHPF,æµ‹è¯•ç”¨ç”µæœº ä½¿èƒ½,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.0",No,"DB213,X10.0 æµ‹è¯•ç”¨ç”µæœº ä½¿èƒ½",0,0
+CHPF_M13_M_Auto,CHPF,æµ‹è¯•ç”¨ç”µæœº None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.1",No,"DB213,X10.1 æµ‹è¯•ç”¨ç”µæœº None",0,0
+CHPF_M13_M_Auto_HMI,CHPF,æµ‹è¯•ç”¨ç”µæœº è¿œç¨‹æ‰‹è‡ªåŠ¨æŒ‰é’®,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.2",No,"DB213,X10.2 æµ‹è¯•ç”¨ç”µæœº è¿œç¨‹æ‰‹è‡ªåŠ¨æŒ‰é’®",0,0
+CHPF_M13_M_Auto_Status,CHPF,æµ‹è¯•ç”¨ç”µæœº æ‰‹è‡ªåŠ¨çŠ¶æ€,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.3",No,"DB213,X10.3 æµ‹è¯•ç”¨ç”µæœº æ‰‹è‡ªåŠ¨çŠ¶æ€",0,0
+CHPF_M13_M_Loc_Rem,CHPF,æµ‹è¯•ç”¨ç”µæœº æœ¬åœ°/è¿œç¨‹(æ£€ä¿®/å¾…æœºï¼‰,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.4",No,"DB213,X10.4 æµ‹è¯•ç”¨ç”µæœº æœ¬åœ°/è¿œç¨‹(æ£€ä¿®/å¾…æœºï¼‰",0,0
+CHPF_M13_M_ON,CHPF,æµ‹è¯•ç”¨ç”µæœº å¼€å¯(æ­£è½¬),No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.5",No,"DB213,X10.5 æµ‹è¯•ç”¨ç”µæœº å¼€å¯(æ­£è½¬)",0,0
+CHPF_M13_M_ON_HMI,CHPF,æµ‹è¯•ç”¨ç”µæœº å¼€å¯_ä¸Šä½æœº(æ­£è½¬),No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.6",No,"DB213,X10.6 æµ‹è¯•ç”¨ç”µæœº å¼€å¯_ä¸Šä½æœº(æ­£è½¬)",0,0
+CHPF_M13_M_OFF,CHPF,æµ‹è¯•ç”¨ç”µæœº åœæ­¢(åè½¬),No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.7",No,"DB213,X10.7 æµ‹è¯•ç”¨ç”µæœº åœæ­¢(åè½¬)",0,0
+CHPF_M13_M_OFF_HMI,CHPF,æµ‹è¯•ç”¨ç”µæœº åœæ­¢_ä¸Šä½æœº(åè½¬),No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.0",No,"DB213,X11.0 æµ‹è¯•ç”¨ç”µæœº åœæ­¢_ä¸Šä½æœº(åè½¬)",0,0
+CHPF_M13_M_Fan,CHPF,æµ‹è¯•ç”¨ç”µæœº é€šé£æ‰‡,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.1",Yes,"DB213,X11.1 æµ‹è¯•ç”¨ç”µæœº é€šé£æ‰‡",0,0
+CHPF_M13_M_Motor,CHPF,æµ‹è¯•ç”¨ç”µæœº ç”µæœº(æ­£è½¬ï¼‰,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.2",Yes,"DB213,X11.2 æµ‹è¯•ç”¨ç”µæœº ç”µæœº(æ­£è½¬ï¼‰",0,0
+CHPF_M13_M_OL,CHPF,æµ‹è¯•ç”¨ç”µæœº ç”µæœºè¿‡è½½,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB213,X11.3",Yes,"DB213,X11.3 æµ‹è¯•ç”¨ç”µæœº ç”µæœºè¿‡è½½",0,0
+CHPF_M13_M_Motor_Back,CHPF,æµ‹è¯•ç”¨ç”µæœº ç”µæœº(åè½¬ï¼‰,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.4",Yes,"DB213,X11.4 æµ‹è¯•ç”¨ç”µæœº ç”µæœº(åè½¬ï¼‰",0,0
+CHPF_M13_M_RunSig,CHPF,æµ‹è¯•ç”¨ç”µæœº ç”µæœºè¿è¡ŒæŒ‡ç¤º,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.5",Yes,"DB213,X11.5 æµ‹è¯•ç”¨ç”µæœº ç”µæœºè¿è¡ŒæŒ‡ç¤º",0,0
+CHPF_M13_M_Break_ALM,CHPF,æµ‹è¯•ç”¨ç”µæœº æ–­é“¾æŠ¥è­¦,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB213,X11.6",Yes,"DB213,X11.6 æµ‹è¯•ç”¨ç”µæœº æ–­é“¾æŠ¥è­¦",0,0
+CHPF_M13_M_Break_CHK,CHPF,æµ‹è¯•ç”¨ç”µæœº æ–­é“¾æ£€æµ‹,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.7",Yes,"DB213,X11.7 æµ‹è¯•ç”¨ç”µæœº æ–­é“¾æ£€æµ‹",0,0
+CHPF_M13_M_INV_Res_HMI,CHPF,æµ‹è¯•ç”¨ç”µæœº å¤ä½,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X12.0",No,"DB213,X12.0 æµ‹è¯•ç”¨ç”µæœº å¤ä½",0,0
+CHPF_M13_M_Break_EN,CHPF,æµ‹è¯•ç”¨ç”µæœº æ–­é“¾ä¿æŠ¤ä½¿èƒ½,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X12.1",No,"DB213,X12.1 æµ‹è¯•ç”¨ç”µæœº æ–­é“¾ä¿æŠ¤ä½¿èƒ½",0,0
+CHPF_M13_M_Break_Stop,CHPF,æµ‹è¯•ç”¨ç”µæœº æ–­é“¾å¯¼è‡´åœæœº,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB213,X12.2",Yes,"DB213,X12.2 æµ‹è¯•ç”¨ç”µæœº æ–­é“¾å¯¼è‡´åœæœº",0,0
+CHPF_M13_M_Spare1_0,CHPF,æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨0,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.0",Yes,"DB213,X118.0 æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨0",0,0
+CHPF_M13_M_Spare1_1,CHPF,æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨1,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.1",Yes,"DB213,X118.1 æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨1",0,0
+CHPF_M13_M_Spare1_2,CHPF,æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨2,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.2",Yes,"DB213,X118.2 æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨2",0,0
+CHPF_M13_M_Spare1_3,CHPF,æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨3,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.3",Yes,"DB213,X118.3 æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨3",0,0
+CHPF_M13_M_Spare1_4,CHPF,æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨4,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.4",Yes,"DB213,X118.4 æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨4",0,0
+CHPF_M13_M_Spare1_5,CHPF,æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨5,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.5",Yes,"DB213,X118.5 æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨5",0,0
+CHPF_M13_M_Spare1_6,CHPF,æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨6,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.6",Yes,"DB213,X118.6 æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨6",0,0
+CHPF_M13_M_Spare1_7,CHPF,æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨7,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.7",Yes,"DB213,X118.7 æµ‹è¯•ç”¨ç”µæœº å¤‡ç”¨7",0,0
 :MemoryInt,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,RetentiveAlarmParameters,AlarmValueDeadband,AlarmDevDeadband,EngUnits,InitialValue,MinValue,MaxValue,Deadband,LogDeadband,LoLoAlarmState,LoLoAlarmValue,LoLoAlarmPri,LoAlarmState,LoAlarmValue,LoAlarmPri,HiAlarmState,HiAlarmValue,HiAlarmPri,HiHiAlarmState,HiHiAlarmValue,HiHiAlarmPri,MinorDevAlarmState,MinorDevAlarmValue,MinorDevAlarmPri,MajorDevAlarmState,MajorDevAlarmValue,MajorDevAlarmPri,DevTarget,ROCAlarmState,ROCAlarmValue,ROCAlarmPri,ROCTimeBase,AlarmComment,AlarmAckModel,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,SymbolicName
 :IOInt,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,RetentiveAlarmParameters,AlarmValueDeadband,AlarmDevDeadband,EngUnits,InitialValue,MinEU,MaxEU,Deadband,LogDeadband,LoLoAlarmState,LoLoAlarmValue,LoLoAlarmPri,LoAlarmState,LoAlarmValue,LoAlarmPri,HiAlarmState,HiAlarmValue,HiAlarmPri,HiHiAlarmState,HiHiAlarmValue,HiHiAlarmPri,MinorDevAlarmState,MinorDevAlarmValue,MinorDevAlarmPri,MajorDevAlarmState,MajorDevAlarmValue,MajorDevAlarmPri,DevTarget,ROCAlarmState,ROCAlarmValue,ROCAlarmPri,ROCTimeBase,MinRaw,MaxRaw,Conversion,AccessName,ItemUseTagname,ItemName,ReadOnly,AlarmComment,AlarmAckModel,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,SymbolicName
-CH02_PT002_Code,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ Êµ¼ÊÄÚÂë,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,INT12",Yes,,0,0,0,0,0,0,0,0
-CH02_PT002_Spare4,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,INT14",Yes,,0,0,0,0,0,0,0,0
-CH03_PT002_Code,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ Êµ¼ÊÄÚÂë,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,INT46",Yes,,0,0,0,0,0,0,0,0
-CH03_PT002_Spare4,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,INT48",Yes,,0,0,0,0,0,0,0,0
+CH02_PT002_Code,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› å®é™…å†…ç ,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB30,INT12",Yes,,0,0,0,0,0,0,0,0
+CH03_PT002_Code,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› å®é™…å†…ç ,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB32,INT46",Yes,,0,0,0,0,0,0,0,0
+CHPF_M13_M_BreakTime,CHPF,æµ‹è¯•ç”¨ç”µæœº æ–­é“¾è¶…æ—¶æ—¶é—´ ç§’,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB213,INT14",No,,0,0,0,0,0,0,0,0
 :MemoryReal,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,RetentiveAlarmParameters,AlarmValueDeadband,AlarmDevDeadband,EngUnits,InitialValue,MinValue,MaxValue,Deadband,LogDeadband,LoLoAlarmState,LoLoAlarmValue,LoLoAlarmPri,LoAlarmState,LoAlarmValue,LoAlarmPri,HiAlarmState,HiAlarmValue,HiAlarmPri,HiHiAlarmState,HiHiAlarmValue,HiHiAlarmPri,MinorDevAlarmState,MinorDevAlarmValue,MinorDevAlarmPri,MajorDevAlarmState,MajorDevAlarmValue,MajorDevAlarmPri,DevTarget,ROCAlarmState,ROCAlarmValue,ROCAlarmPri,ROCTimeBase,AlarmComment,AlarmAckModel,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,SymbolicName
 :IOReal,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,RetentiveAlarmParameters,AlarmValueDeadband,AlarmDevDeadband,EngUnits,InitialValue,MinEU,MaxEU,Deadband,LogDeadband,LoLoAlarmState,LoLoAlarmValue,LoLoAlarmPri,LoAlarmState,LoAlarmValue,LoAlarmPri,HiAlarmState,HiAlarmValue,HiAlarmPri,HiHiAlarmState,HiHiAlarmValue,HiHiAlarmPri,MinorDevAlarmState,MinorDevAlarmValue,MinorDevAlarmPri,MajorDevAlarmState,MajorDevAlarmValue,MajorDevAlarmPri,DevTarget,ROCAlarmState,ROCAlarmValue,ROCAlarmPri,ROCTimeBase,MinRaw,MaxRaw,Conversion,AccessName,ItemUseTagname,ItemName,ReadOnly,AlarmComment,AlarmAckModel,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,SymbolicName
-CH02_PT002_Value,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ Êµ¼ÊÖµ,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL16",No,,0,0,0,0,0,0,0,0
-CH02_PT002_Range,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ Á¿³Ì,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL20",No,,0,0,0,0,0,0,0,0
-CH02_PT002_Hi,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÉÏÏŞÖµ,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL24",No,,0,0,0,0,0,0,0,0
-CH02_PT002_Lo,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÏÂÏŞÖµ,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL28",No,,0,0,0,0,0,0,0,0
-CH02_PT002_HiHi,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÉÏÉÏÏŞÖµ,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL32",No,,0,0,0,0,0,0,0,0
-CH02_PT002_LoLo,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÏÂÏÂÏŞÖµ,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL36",No,,0,0,0,0,0,0,0,0
-CH02_PT002_AdjValue,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ±ê¶¨Öµ_¶ÁĞ´,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL40",No,,0,0,0,0,0,0,0,0
-CH02_PT002_Code_Zero,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ÁãµãÄÚÂë_¶ÁĞ´,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL44",No,,0,0,0,0,0,0,0,0
-CH02_PT002_Code_Adj,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦ ±ê¶¨ÄÚÂë_¶ÁĞ´,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL48",No,,0,0,0,0,0,0,0,0
-CH02_PT002_ZeroValue,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL52",No,,0,0,0,0,0,0,0,0
-CH02_PT002_Spare46,CH02,¹ıÂËÆ÷³ö¿ÚÑ¹Á¦,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL56",No,,0,0,0,0,0,0,0,0
-CH03_PT002_Value,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ Êµ¼ÊÖµ,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL50",No,,0,0,0,0,0,0,0,0
-CH03_PT002_Range,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ Á¿³Ì,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL54",No,,0,0,0,0,0,0,0,0
-CH03_PT002_Hi,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÉÏÏŞÖµ,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL58",No,,0,0,0,0,0,0,0,0
-CH03_PT002_Lo,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÏÂÏŞÖµ,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL62",No,,0,0,0,0,0,0,0,0
-CH03_PT002_HiHi,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÉÏÉÏÏŞÖµ,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL66",No,,0,0,0,0,0,0,0,0
-CH03_PT002_LoLo,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÏÂÏÂÏŞÖµ,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL70",No,,0,0,0,0,0,0,0,0
-CH03_PT002_AdjValue,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ±ê¶¨Öµ_¶ÁĞ´,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL74",No,,0,0,0,0,0,0,0,0
-CH03_PT002_Code_Zero,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ÁãµãÄÚÂë_¶ÁĞ´,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL78",No,,0,0,0,0,0,0,0,0
-CH03_PT002_Code_Adj,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦ ±ê¶¨ÄÚÂë_¶ÁĞ´,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL82",No,,0,0,0,0,0,0,0,0
-CH03_PT002_ZeroValue,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL86",No,,0,0,0,0,0,0,0,0
-CH03_PT002_Spare46,CH03,¹ıÂËÆ÷½ø¿ÚÑ¹Á¦,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL90",No,,0,0,0,0,0,0,0,0
+CH02_PT002_Value,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› å®é™…å€¼,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL16",Yes,,0,0,0,0,0,0,0,0
+CH02_PT002_Range,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› é‡ç¨‹,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL20",No,,0,0,0,0,0,0,0,0
+CH02_PT002_Hi,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¸Šé™å€¼,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL24",No,,0,0,0,0,0,0,0,0
+CH02_PT002_Lo,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¸‹é™å€¼,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL28",No,,0,0,0,0,0,0,0,0
+CH02_PT002_HiHi,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¸Šä¸Šé™å€¼,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL32",No,,0,0,0,0,0,0,0,0
+CH02_PT002_LoLo,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› ä¸‹ä¸‹é™å€¼,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL36",No,,0,0,0,0,0,0,0,0
+CH02_PT002_AdjValue,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› æ ‡å®šå€¼_è¯»å†™,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL40",No,,0,0,0,0,0,0,0,0
+CH02_PT002_ZeroCode,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› é›¶ç‚¹å†…ç _è¯»å†™,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL44",No,,0,0,0,0,0,0,0,0
+CH02_PT002_AdjCode,CH02,è¿‡æ»¤å™¨å‡ºå£å‹åŠ› æ ‡å®šå†…ç _è¯»å†™,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL48",No,,0,0,0,0,0,0,0,0
+CH03_PT002_Value,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› å®é™…å€¼,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL50",Yes,,0,0,0,0,0,0,0,0
+CH03_PT002_Range,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› é‡ç¨‹,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL54",No,,0,0,0,0,0,0,0,0
+CH03_PT002_Hi,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¸Šé™å€¼,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL58",No,,0,0,0,0,0,0,0,0
+CH03_PT002_Lo,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¸‹é™å€¼,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL62",No,,0,0,0,0,0,0,0,0
+CH03_PT002_HiHi,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¸Šä¸Šé™å€¼,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL66",No,,0,0,0,0,0,0,0,0
+CH03_PT002_LoLo,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› ä¸‹ä¸‹é™å€¼,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL70",No,,0,0,0,0,0,0,0,0
+CH03_PT002_AdjValue,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› æ ‡å®šå€¼_è¯»å†™,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL74",No,,0,0,0,0,0,0,0,0
+CH03_PT002_ZeroCode,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› é›¶ç‚¹å†…ç _è¯»å†™,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL78",No,,0,0,0,0,0,0,0,0
+CH03_PT002_AdjCode,CH03,è¿‡æ»¤å™¨è¿›å£å‹åŠ› æ ‡å®šå†…ç _è¯»å†™,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL82",No,,0,0,0,0,0,0,0,0
 :MemoryMsg,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,MaxLength,InitialMessage,AlarmComment,SymbolicName
 :IOMsg,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,MaxLength,InitialMessage,AccessName,ItemUseTagname,ItemName,ReadOnly,AlarmComment,SymbolicName
 :GroupVar,Group,Comment,SymbolicName
