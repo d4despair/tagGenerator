@@ -21,30 +21,32 @@ for row_cells in worksheet[2: worksheet.max_row]:
     l = []
     for cell in row_cells:
         l.append(cell.value)
-    d = Definition().create_from_list(l)
+    d = Definition(*l)
     list_defn.append(d)
-    # print(d.to_list())
 
-# print(list_defn)
 
 # 生成udt合集的字典
 # ud = udt.get_udt_from_path(project_path + '\\udt_src')
 udt_excel_filename = project_path + '/udt_src/088变量生成器 20200728 - 副本.xlsx'
-ud = udt.get_udt_from_excel(udt_excel_filename)
-# for u in ud:
-#     print('udt类型 {}, {}'.format(ud[u].udt_type, ud[u].name))
-#     for t in ud[u].struct:
-#         print(t.__dict__)
+ud = udt.get_udt_from(project_path + '\\udt_src')
+
 
 hmi_disc = []
 hmi_int = []
 hmi_real = []
 
 hmi_addr_prefix = {
-    udt.type_bool.name: 'X',
-    udt.type_int.name: 'INT',
-    udt.type_real.name: 'REAL',
-    udt.type_dint.name: 'DINT',
+    'bool': 'X',
+    'int': 'INT',
+    'real': 'REAL',
+    'dint': 'DINT',
+}
+
+data_length = {
+    'bool': 0.1,
+    'int': 2,
+    'real': 4,
+    'dint': 4,
 }
 
 dn_count = 0

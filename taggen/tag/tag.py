@@ -15,6 +15,14 @@ class Tag:
         self.type = tag_type
         self.comment = comment
 
+    @property
+    def title(self):
+        return self.name
+
+    @property
+    def data_type(self):
+        return self.type
+
     def __getitem__(self, item):
         return self.__getattribute__(item)
 

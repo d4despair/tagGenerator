@@ -35,7 +35,7 @@ def is_bool(s):
     if type(s) == str:
         return s.lower() == type_bool.name
     elif type(s) == TagType:
-        return s.name == type_bool.name
+        return s.title == type_bool.name
     else:
         return False
 
@@ -44,7 +44,7 @@ def is_int(s):
     if type(s) == str:
         return s.lower() == type_int.name
     elif type(s) == TagType:
-        return s.name == type_int.name
+        return s.title == type_int.name
     else:
         return False
 
@@ -53,7 +53,7 @@ def is_real(s):
     if type(s) == str:
         return s.lower() == type_real.name
     elif type(s) == TagType:
-        return s.name == type_real.name
+        return s.title == type_real.name
     else:
         return False
 
@@ -62,7 +62,7 @@ def is_dint(s):
     if type(s) == str:
         return s.lower() == type_dint.name
     elif type(s) == TagType:
-        return s.name == type_dint.name
+        return s.title == type_dint.name
     else:
         return False
 

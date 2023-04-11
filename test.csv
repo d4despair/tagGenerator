@@ -2,74 +2,126 @@
 :IOAccess,Application,Topic,AdviseActive,DDEProtocol,SecApplication,SecTopic,SecAdviseActive,SecDDEProtocol,FailoverExpression,FailoverDeadband,DFOFlag,FBDFlag,FailbackDeadband
 :AlarmGroup,Group,Comment,EventLogged,EventLoggingPriority,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,DSCAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,DSCAlarmInhibitor
 :IODisc,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,InitialDisc,OffMsg,OnMsg,AlarmState,AlarmPri,DConversion,AccessName,ItemUseTagname,ItemName,ReadOnly,AlarmComment,AlarmAckModel,DSCAlarmDisable,DSCAlarmInhibitor,SymbolicName
-CH02_PT002_SetZero,CH02,过滤器出口压力 标零按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.1",No,"DB30,X10.1 过滤器出口压力 标零按钮",0,0
-CH02_PT002_SetAdj,CH02,过滤器出口压力 校准按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.2",No,"DB30,X10.2 过滤器出口压力 校准按钮",0,0
-CH02_PT002_HiALM,CH02,过滤器出口压力 上限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.5",Yes,"DB30,X10.5 过滤器出口压力 上限报警",0,0
-CH02_PT002_LoALM,CH02,过滤器出口压力 下限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.6",Yes,"DB30,X10.6 过滤器出口压力 下限报警",0,0
-CH02_PT002_HiHiALM,CH02,过滤器出口压力 上上限报警,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB30,X10.7",Yes,"DB30,X10.7 过滤器出口压力 上上限报警",0,0
-CH02_PT002_LoLoALM,CH02,过滤器出口压力 下下限报警,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB30,X11.0",Yes,"DB30,X11.0 过滤器出口压力 下下限报警",0,0
-CH02_PT002_LimALM,CH02,过滤器出口压力 极限报警,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB30,X11.1",Yes,"DB30,X11.1 过滤器出口压力 极限报警",0,0
-CH02_PT002_LostALM,CH02,过滤器出口压力 传感器断线报警,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB30,X11.2",Yes,"DB30,X11.2 过滤器出口压力 传感器断线报警",0,0
-CH03_PT002_SetZero,CH03,过滤器进口压力 标零按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.1",No,"DB32,X44.1 过滤器进口压力 标零按钮",0,0
-CH03_PT002_SetAdj,CH03,过滤器进口压力 校准按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.2",No,"DB32,X44.2 过滤器进口压力 校准按钮",0,0
-CH03_PT002_HiALM,CH03,过滤器进口压力 上限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.5",Yes,"DB32,X44.5 过滤器进口压力 上限报警",0,0
-CH03_PT002_LoALM,CH03,过滤器进口压力 下限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.6",Yes,"DB32,X44.6 过滤器进口压力 下限报警",0,0
-CH03_PT002_HiHiALM,CH03,过滤器进口压力 上上限报警,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB32,X44.7",Yes,"DB32,X44.7 过滤器进口压力 上上限报警",0,0
-CH03_PT002_LoLoALM,CH03,过滤器进口压力 下下限报警,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB32,X45.0",Yes,"DB32,X45.0 过滤器进口压力 下下限报警",0,0
-CH03_PT002_LimALM,CH03,过滤器进口压力 极限报警,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB32,X45.1",Yes,"DB32,X45.1 过滤器进口压力 极限报警",0,0
-CH03_PT002_LostALM,CH03,过滤器进口压力 传感器断线报警,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB32,X45.2",Yes,"DB32,X45.2 过滤器进口压力 传感器断线报警",0,0
-CHPF_M13_M_Enable,CHPF,测试用电机 使能,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.0",No,"DB213,X10.0 测试用电机 使能",0,0
-CHPF_M13_M_Auto,CHPF,测试用电机 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.1",No,"DB213,X10.1 测试用电机 None",0,0
-CHPF_M13_M_Auto_HMI,CHPF,测试用电机 远程手自动按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.2",No,"DB213,X10.2 测试用电机 远程手自动按钮",0,0
-CHPF_M13_M_Auto_Status,CHPF,测试用电机 手自动状态,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.3",No,"DB213,X10.3 测试用电机 手自动状态",0,0
-CHPF_M13_M_Loc_Rem,CHPF,测试用电机 本地/远程(检修/待机）,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.4",No,"DB213,X10.4 测试用电机 本地/远程(检修/待机）",0,0
-CHPF_M13_M_ON,CHPF,测试用电机 开启(正转),No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.5",No,"DB213,X10.5 测试用电机 开启(正转)",0,0
-CHPF_M13_M_ON_HMI,CHPF,测试用电机 开启_上位机(正转),No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.6",No,"DB213,X10.6 测试用电机 开启_上位机(正转)",0,0
-CHPF_M13_M_OFF,CHPF,测试用电机 停止(反转),No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.7",No,"DB213,X10.7 测试用电机 停止(反转)",0,0
-CHPF_M13_M_OFF_HMI,CHPF,测试用电机 停止_上位机(反转),No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.0",No,"DB213,X11.0 测试用电机 停止_上位机(反转)",0,0
-CHPF_M13_M_Fan,CHPF,测试用电机 通风扇,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.1",Yes,"DB213,X11.1 测试用电机 通风扇",0,0
-CHPF_M13_M_Motor,CHPF,测试用电机 电机(正转）,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.2",Yes,"DB213,X11.2 测试用电机 电机(正转）",0,0
-CHPF_M13_M_OL,CHPF,测试用电机 电机过载,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB213,X11.3",Yes,"DB213,X11.3 测试用电机 电机过载",0,0
-CHPF_M13_M_Motor_Back,CHPF,测试用电机 电机(反转）,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.4",Yes,"DB213,X11.4 测试用电机 电机(反转）",0,0
-CHPF_M13_M_RunSig,CHPF,测试用电机 电机运行指示,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.5",Yes,"DB213,X11.5 测试用电机 电机运行指示",0,0
-CHPF_M13_M_Break_ALM,CHPF,测试用电机 断链报警,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB213,X11.6",Yes,"DB213,X11.6 测试用电机 断链报警",0,0
-CHPF_M13_M_Break_CHK,CHPF,测试用电机 断链检测,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.7",Yes,"DB213,X11.7 测试用电机 断链检测",0,0
-CHPF_M13_M_INV_Res_HMI,CHPF,测试用电机 复位,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X12.0",No,"DB213,X12.0 测试用电机 复位",0,0
-CHPF_M13_M_Break_EN,CHPF,测试用电机 断链保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X12.1",No,"DB213,X12.1 测试用电机 断链保护使能",0,0
-CHPF_M13_M_Break_Stop,CHPF,测试用电机 断链导致停机,No,No,0,No,Off,,,On,1,Direct,kep1500,Yes,"DB213,X12.2",Yes,"DB213,X12.2 测试用电机 断链导致停机",0,0
-CHPF_M13_M_Spare1_0,CHPF,测试用电机 备用0,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.0",Yes,"DB213,X118.0 测试用电机 备用0",0,0
-CHPF_M13_M_Spare1_1,CHPF,测试用电机 备用1,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.1",Yes,"DB213,X118.1 测试用电机 备用1",0,0
-CHPF_M13_M_Spare1_2,CHPF,测试用电机 备用2,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.2",Yes,"DB213,X118.2 测试用电机 备用2",0,0
-CHPF_M13_M_Spare1_3,CHPF,测试用电机 备用3,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.3",Yes,"DB213,X118.3 测试用电机 备用3",0,0
-CHPF_M13_M_Spare1_4,CHPF,测试用电机 备用4,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.4",Yes,"DB213,X118.4 测试用电机 备用4",0,0
-CHPF_M13_M_Spare1_5,CHPF,测试用电机 备用5,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.5",Yes,"DB213,X118.5 测试用电机 备用5",0,0
-CHPF_M13_M_Spare1_6,CHPF,测试用电机 备用6,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.6",Yes,"DB213,X118.6 测试用电机 备用6",0,0
-CHPF_M13_M_Spare1_7,CHPF,测试用电机 备用7,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X118.7",Yes,"DB213,X118.7 测试用电机 备用7",0,0
+CH02_PT002_FltACK,CH02,过滤器出口压力 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.0",0,"DB30,X10.0 过滤器出口压力 None",0,0
+CH02_PT002_SetZero,CH02,过滤器出口压力 标零按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.1",0,"DB30,X10.1 过滤器出口压力 标零按钮",0,0
+CH02_PT002_SetAdj,CH02,过滤器出口压力 校准按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.2",0,"DB30,X10.2 过滤器出口压力 校准按钮",0,0
+CH02_PT002_HiProEN,CH02,过滤器出口压力 上限保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.3",0,"DB30,X10.3 过滤器出口压力 上限保护使能",0,0
+CH02_PT002_LoProEN,CH02,过滤器出口压力 下限保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.4",0,"DB30,X10.4 过滤器出口压力 下限保护使能",0,0
+CH02_PT002_HiALM,CH02,过滤器出口压力 上限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.5",0,"DB30,X10.5 过滤器出口压力 上限报警",0,0
+CH02_PT002_LoALM,CH02,过滤器出口压力 下限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.6",0,"DB30,X10.6 过滤器出口压力 下限报警",0,0
+CH02_PT002_HiHiALM,CH02,过滤器出口压力 上上限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X10.7",0,"DB30,X10.7 过滤器出口压力 上上限报警",0,0
+CH02_PT002_LoLoALM,CH02,过滤器出口压力 下下限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X11.0",0,"DB30,X11.0 过滤器出口压力 下下限报警",0,0
+CH02_PT002_LimALM,CH02,过滤器出口压力 极限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X11.1",0,"DB30,X11.1 过滤器出口压力 极限报警",0,0
+CH02_PT002_LostALM,CH02,过滤器出口压力 传感器断线报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X11.2",0,"DB30,X11.2 过滤器出口压力 传感器断线报警",0,0
+CH02_PT002_Spare1_3,CH02,过滤器出口压力 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X11.3",0,"DB30,X11.3 过滤器出口压力 None",0,0
+CH02_PT002_Spare1_4,CH02,过滤器出口压力 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X11.4",0,"DB30,X11.4 过滤器出口压力 None",0,0
+CH02_PT002_Spare1_5,CH02,过滤器出口压力 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X11.5",0,"DB30,X11.5 过滤器出口压力 None",0,0
+CH02_PT002_Spare1_6,CH02,过滤器出口压力 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB30,X11.6",0,"DB30,X11.6 过滤器出口压力 None",0,0
+CH03_PT002_FltACK,CH03,过滤器进口压力 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.0",0,"DB32,X44.0 过滤器进口压力 None",0,0
+CH03_PT002_SetZero,CH03,过滤器进口压力 标零按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.1",0,"DB32,X44.1 过滤器进口压力 标零按钮",0,0
+CH03_PT002_SetAdj,CH03,过滤器进口压力 校准按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.2",0,"DB32,X44.2 过滤器进口压力 校准按钮",0,0
+CH03_PT002_HiProEN,CH03,过滤器进口压力 上限保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.3",0,"DB32,X44.3 过滤器进口压力 上限保护使能",0,0
+CH03_PT002_LoProEN,CH03,过滤器进口压力 下限保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.4",0,"DB32,X44.4 过滤器进口压力 下限保护使能",0,0
+CH03_PT002_HiALM,CH03,过滤器进口压力 上限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.5",0,"DB32,X44.5 过滤器进口压力 上限报警",0,0
+CH03_PT002_LoALM,CH03,过滤器进口压力 下限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.6",0,"DB32,X44.6 过滤器进口压力 下限报警",0,0
+CH03_PT002_HiHiALM,CH03,过滤器进口压力 上上限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X44.7",0,"DB32,X44.7 过滤器进口压力 上上限报警",0,0
+CH03_PT002_LoLoALM,CH03,过滤器进口压力 下下限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X45.0",0,"DB32,X45.0 过滤器进口压力 下下限报警",0,0
+CH03_PT002_LimALM,CH03,过滤器进口压力 极限报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X45.1",0,"DB32,X45.1 过滤器进口压力 极限报警",0,0
+CH03_PT002_LostALM,CH03,过滤器进口压力 传感器断线报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X45.2",0,"DB32,X45.2 过滤器进口压力 传感器断线报警",0,0
+CH03_PT002_Spare1_3,CH03,过滤器进口压力 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X45.3",0,"DB32,X45.3 过滤器进口压力 None",0,0
+CH03_PT002_Spare1_4,CH03,过滤器进口压力 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X45.4",0,"DB32,X45.4 过滤器进口压力 None",0,0
+CH03_PT002_Spare1_5,CH03,过滤器进口压力 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X45.5",0,"DB32,X45.5 过滤器进口压力 None",0,0
+CH03_PT002_Spare1_6,CH03,过滤器进口压力 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB32,X45.6",0,"DB32,X45.6 过滤器进口压力 None",0,0
+CHPF_M13_M_Enable,CHPF,测试用电机 使能,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.0",0,"DB213,X10.0 测试用电机 使能",0,0
+CHPF_M13_M_Auto,CHPF,测试用电机 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.1",0,"DB213,X10.1 测试用电机 None",0,0
+CHPF_M13_M_Auto_HMI,CHPF,测试用电机 远程手自动按钮,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.2",0,"DB213,X10.2 测试用电机 远程手自动按钮",0,0
+CHPF_M13_M_Auto_Status,CHPF,测试用电机 手自动状态,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.3",0,"DB213,X10.3 测试用电机 手自动状态",0,0
+CHPF_M13_M_Loc_Rem,CHPF,测试用电机 本地/远程(检修/待机）,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.4",0,"DB213,X10.4 测试用电机 本地/远程(检修/待机）",0,0
+CHPF_M13_M_ON,CHPF,测试用电机 开启(正转),No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.5",0,"DB213,X10.5 测试用电机 开启(正转)",0,0
+CHPF_M13_M_ON_HMI,CHPF,测试用电机 开启_上位机(正转),No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.6",0,"DB213,X10.6 测试用电机 开启_上位机(正转)",0,0
+CHPF_M13_M_OFF,CHPF,测试用电机 停止(反转),No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X10.7",0,"DB213,X10.7 测试用电机 停止(反转)",0,0
+CHPF_M13_M_OFF_HMI,CHPF,测试用电机 停止_上位机(反转),No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.0",0,"DB213,X11.0 测试用电机 停止_上位机(反转)",0,0
+CHPF_M13_M_Fan,CHPF,测试用电机 通风扇,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.1",0,"DB213,X11.1 测试用电机 通风扇",0,0
+CHPF_M13_M_Motor,CHPF,测试用电机 电机(正转）,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.2",0,"DB213,X11.2 测试用电机 电机(正转）",0,0
+CHPF_M13_M_OL,CHPF,测试用电机 电机过载,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.3",0,"DB213,X11.3 测试用电机 电机过载",0,0
+CHPF_M13_M_Fan_OL,CHPF,测试用电机 风扇过载,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.4",0,"DB213,X11.4 测试用电机 风扇过载",0,0
+CHPF_M13_M_RunSig,CHPF,测试用电机 电机运行指示,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.5",0,"DB213,X11.5 测试用电机 电机运行指示",0,0
+CHPF_M13_M_Break_ALM,CHPF,测试用电机 断链报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X11.6",0,"DB213,X11.6 测试用电机 断链报警",0,0
+CHPF_M13_M_Break_CHK,CHPF,测试用电机 断链检测,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X12.0",0,"DB213,X12.0 测试用电机 断链检测",0,0
+CHPF_M13_M_INV_Res_HMI,CHPF,测试用电机 复位,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X12.1",0,"DB213,X12.1 测试用电机 复位",0,0
+CHPF_M13_M_Break_EN,CHPF,测试用电机 断链保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X12.2",0,"DB213,X12.2 测试用电机 断链保护使能",0,0
+CHPF_M13_M_Break_Stop,CHPF,测试用电机 断链导致停机,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X12.3",0,"DB213,X12.3 测试用电机 断链导致停机",0,0
+CHPF_M13_M_Motor_Back,CHPF,测试用电机 电机(反转）,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X12.4",0,"DB213,X12.4 测试用电机 电机(反转）",0,0
+CHPF_M13_M_Loc,CHPF,测试用电机 本地,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X12.5",0,"DB213,X12.5 测试用电机 本地",0,0
+CHPF_M13_M_Rem,CHPF,测试用电机 远程,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X12.6",0,"DB213,X12.6 测试用电机 远程",0,0
+CHPF_M13_M_Blocking_ALM,CHPF,测试用电机 堵料报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X13.0",0,"DB213,X13.0 测试用电机 堵料报警",0,0
+CHPF_M13_M_Blocking_CHK,CHPF,测试用电机 堵料检测,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X13.1",0,"DB213,X13.1 测试用电机 堵料检测",0,0
+CHPF_M13_M_Blocking_EN,CHPF,测试用电机 堵料保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X13.2",0,"DB213,X13.2 测试用电机 堵料保护使能",0,0
+CHPF_M13_M_Blocking_Stop,CHPF,测试用电机 堵料导致停机,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X13.3",0,"DB213,X13.3 测试用电机 堵料导致停机",0,0
+CHPF_M13_M_PullSwitch_CHK,CHPF,测试用电机 拉线开关,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X18.0",0,"DB213,X18.0 测试用电机 拉线开关",0,0
+CHPF_M13_M_LMD_ALM,CHPF,测试用电机 左跑偏报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X18.1",0,"DB213,X18.1 测试用电机 左跑偏报警",0,0
+CHPF_M13_M_LMD_CHK_1,CHPF,测试用电机 左跑偏1检测,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X18.2",0,"DB213,X18.2 测试用电机 左跑偏1检测",0,0
+CHPF_M13_M_LMD_EN,CHPF,测试用电机 左跑偏保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X18.3",0,"DB213,X18.3 测试用电机 左跑偏保护使能",0,0
+CHPF_M13_M_LMD_Stop,CHPF,测试用电机 左跑偏导致停机,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X18.4",0,"DB213,X18.4 测试用电机 左跑偏导致停机",0,0
+CHPF_M13_M_RMD_ALM,CHPF,测试用电机 右 跑偏报警,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X22.0",0,"DB213,X22.0 测试用电机 右 跑偏报警",0,0
+CHPF_M13_M_RMD_CHK_1,CHPF,测试用电机 右跑偏1检测,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X22.1",0,"DB213,X22.1 测试用电机 右跑偏1检测",0,0
+CHPF_M13_M_RMD_EN,CHPF,测试用电机 右跑偏保护使能,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X22.2",0,"DB213,X22.2 测试用电机 右跑偏保护使能",0,0
+CHPF_M13_M_RMD_Stop,CHPF,测试用电机 右跑偏导致停机,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X22.3",0,"DB213,X22.3 测试用电机 右跑偏导致停机",0,0
+CHPF_M13_M_Motor_Delta,CHPF,测试用电机 三角型,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X26.0",0,"DB213,X26.0 测试用电机 三角型",0,0
+CHPF_M13_M_Motor_Wye,CHPF,测试用电机 星型,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X26.1",0,"DB213,X26.1 测试用电机 星型",0,0
+CHPF_M13_M_MSD,CHPF,测试用电机 维修开关,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X26.2",0,"DB213,X26.2 测试用电机 维修开关",0,0
+CHPF_M13_M_LMD_CHK_2,CHPF,测试用电机 左跑偏2检测,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X26.3",0,"DB213,X26.3 测试用电机 左跑偏2检测",0,0
+CHPF_M13_M_RMD_CHK_2,CHPF,测试用电机 右跑偏2检测,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X26.4",0,"DB213,X26.4 测试用电机 右跑偏2检测",0,0
+CHPF_M13_M_Interlock_ON,CHPF,测试用电机 联锁启动,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X26.5",0,"DB213,X26.5 测试用电机 联锁启动",0,0
+CHPF_M13_M_spare0_1,CHPF,测试用电机 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X26.6",0,"DB213,X26.6 测试用电机 None",0,0
+CHPF_M13_M_spare0_2,CHPF,测试用电机 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X27.0",0,"DB213,X27.0 测试用电机 None",0,0
+CHPF_M13_M_spare0_3,CHPF,测试用电机 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X27.1",0,"DB213,X27.1 测试用电机 None",0,0
+CHPF_M13_M_spare0_4,CHPF,测试用电机 None,No,No,0,No,Off,,,None,1,Direct,kep1500,Yes,"DB213,X27.2",0,"DB213,X27.2 测试用电机 None",0,0
 :MemoryInt,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,RetentiveAlarmParameters,AlarmValueDeadband,AlarmDevDeadband,EngUnits,InitialValue,MinValue,MaxValue,Deadband,LogDeadband,LoLoAlarmState,LoLoAlarmValue,LoLoAlarmPri,LoAlarmState,LoAlarmValue,LoAlarmPri,HiAlarmState,HiAlarmValue,HiAlarmPri,HiHiAlarmState,HiHiAlarmValue,HiHiAlarmPri,MinorDevAlarmState,MinorDevAlarmValue,MinorDevAlarmPri,MajorDevAlarmState,MajorDevAlarmValue,MajorDevAlarmPri,DevTarget,ROCAlarmState,ROCAlarmValue,ROCAlarmPri,ROCTimeBase,AlarmComment,AlarmAckModel,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,SymbolicName
 :IOInt,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,RetentiveAlarmParameters,AlarmValueDeadband,AlarmDevDeadband,EngUnits,InitialValue,MinEU,MaxEU,Deadband,LogDeadband,LoLoAlarmState,LoLoAlarmValue,LoLoAlarmPri,LoAlarmState,LoAlarmValue,LoAlarmPri,HiAlarmState,HiAlarmValue,HiAlarmPri,HiHiAlarmState,HiHiAlarmValue,HiHiAlarmPri,MinorDevAlarmState,MinorDevAlarmValue,MinorDevAlarmPri,MajorDevAlarmState,MajorDevAlarmValue,MajorDevAlarmPri,DevTarget,ROCAlarmState,ROCAlarmValue,ROCAlarmPri,ROCTimeBase,MinRaw,MaxRaw,Conversion,AccessName,ItemUseTagname,ItemName,ReadOnly,AlarmComment,AlarmAckModel,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,SymbolicName
-CH02_PT002_Code,CH02,过滤器出口压力 实际内码,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB30,INT12",Yes,,0,0,0,0,0,0,0,0
-CH03_PT002_Code,CH03,过滤器进口压力 实际内码,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB32,INT46",Yes,,0,0,0,0,0,0,0,0
-CHPF_M13_M_BreakTime,CHPF,测试用电机 断链超时时间 秒,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB213,INT14",No,,0,0,0,0,0,0,0,0
+CH02_PT002_Code,CH02,过滤器出口压力 实际内码,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB30,INT12",0,,0,0,0,0,0,0,0,0
+CH02_PT002_Spare4,CH02,过滤器出口压力 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB30,INT14",0,,0,0,0,0,0,0,0,0
+CH03_PT002_Code,CH03,过滤器进口压力 实际内码,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB32,INT46",0,,0,0,0,0,0,0,0,0
+CH03_PT002_Spare4,CH03,过滤器进口压力 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB32,INT48",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_BreakTime,CHPF,测试用电机 断链超时时间 秒,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB213,INT14",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_BlockingTime,CHPF,测试用电机 堵料检测时间 秒,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB213,INT16",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_LMD_Time,CHPF,测试用电机 左跑偏检测时间,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB213,INT20",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_RMD_Time,CHPF,测试用电机 右跑偏检测时间,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB213,INT24",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_InterStarTime,CHPF,测试用电机 联动启动延时,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB213,INT28",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_Alt_TMR,CHPF,测试用电机 起动转换时间 秒,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB213,INT30",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_spare_In4,CHPF,测试用电机 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB213,INT32",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_spare_In5,CHPF,测试用电机 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB213,INT34",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_spare_In6,CHPF,测试用电机 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB213,INT36",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_spare_In7,CHPF,测试用电机 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,Yes,"DB213,INT38",0,,0,0,0,0,0,0,0,0
 :MemoryReal,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,RetentiveAlarmParameters,AlarmValueDeadband,AlarmDevDeadband,EngUnits,InitialValue,MinValue,MaxValue,Deadband,LogDeadband,LoLoAlarmState,LoLoAlarmValue,LoLoAlarmPri,LoAlarmState,LoAlarmValue,LoAlarmPri,HiAlarmState,HiAlarmValue,HiAlarmPri,HiHiAlarmState,HiHiAlarmValue,HiHiAlarmPri,MinorDevAlarmState,MinorDevAlarmValue,MinorDevAlarmPri,MajorDevAlarmState,MajorDevAlarmValue,MajorDevAlarmPri,DevTarget,ROCAlarmState,ROCAlarmValue,ROCAlarmPri,ROCTimeBase,AlarmComment,AlarmAckModel,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,SymbolicName
 :IOReal,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,RetentiveAlarmParameters,AlarmValueDeadband,AlarmDevDeadband,EngUnits,InitialValue,MinEU,MaxEU,Deadband,LogDeadband,LoLoAlarmState,LoLoAlarmValue,LoLoAlarmPri,LoAlarmState,LoAlarmValue,LoAlarmPri,HiAlarmState,HiAlarmValue,HiAlarmPri,HiHiAlarmState,HiHiAlarmValue,HiHiAlarmPri,MinorDevAlarmState,MinorDevAlarmValue,MinorDevAlarmPri,MajorDevAlarmState,MajorDevAlarmValue,MajorDevAlarmPri,DevTarget,ROCAlarmState,ROCAlarmValue,ROCAlarmPri,ROCTimeBase,MinRaw,MaxRaw,Conversion,AccessName,ItemUseTagname,ItemName,ReadOnly,AlarmComment,AlarmAckModel,LoLoAlarmDisable,LoAlarmDisable,HiAlarmDisable,HiHiAlarmDisable,MinDevAlarmDisable,MajDevAlarmDisable,RocAlarmDisable,LoLoAlarmInhibitor,LoAlarmInhibitor,HiAlarmInhibitor,HiHiAlarmInhibitor,MinDevAlarmInhibitor,MajDevAlarmInhibitor,RocAlarmInhibitor,SymbolicName
-CH02_PT002_Value,CH02,过滤器出口压力 实际值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL16",Yes,,0,0,0,0,0,0,0,0
-CH02_PT002_Range,CH02,过滤器出口压力 量程,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL20",No,,0,0,0,0,0,0,0,0
-CH02_PT002_Hi,CH02,过滤器出口压力 上限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL24",No,,0,0,0,0,0,0,0,0
-CH02_PT002_Lo,CH02,过滤器出口压力 下限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL28",No,,0,0,0,0,0,0,0,0
-CH02_PT002_HiHi,CH02,过滤器出口压力 上上限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL32",No,,0,0,0,0,0,0,0,0
-CH02_PT002_LoLo,CH02,过滤器出口压力 下下限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL36",No,,0,0,0,0,0,0,0,0
-CH02_PT002_AdjValue,CH02,过滤器出口压力 标定值_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL40",No,,0,0,0,0,0,0,0,0
-CH02_PT002_ZeroCode,CH02,过滤器出口压力 零点内码_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL44",No,,0,0,0,0,0,0,0,0
-CH02_PT002_AdjCode,CH02,过滤器出口压力 标定内码_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL48",No,,0,0,0,0,0,0,0,0
-CH03_PT002_Value,CH03,过滤器进口压力 实际值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL50",Yes,,0,0,0,0,0,0,0,0
-CH03_PT002_Range,CH03,过滤器进口压力 量程,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL54",No,,0,0,0,0,0,0,0,0
-CH03_PT002_Hi,CH03,过滤器进口压力 上限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL58",No,,0,0,0,0,0,0,0,0
-CH03_PT002_Lo,CH03,过滤器进口压力 下限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL62",No,,0,0,0,0,0,0,0,0
-CH03_PT002_HiHi,CH03,过滤器进口压力 上上限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL66",No,,0,0,0,0,0,0,0,0
-CH03_PT002_LoLo,CH03,过滤器进口压力 下下限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL70",No,,0,0,0,0,0,0,0,0
-CH03_PT002_AdjValue,CH03,过滤器进口压力 标定值_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL74",No,,0,0,0,0,0,0,0,0
-CH03_PT002_ZeroCode,CH03,过滤器进口压力 零点内码_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL78",No,,0,0,0,0,0,0,0,0
-CH03_PT002_AdjCode,CH03,过滤器进口压力 标定内码_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL82",No,,0,0,0,0,0,0,0,0
+CH02_PT002_Value,CH02,过滤器出口压力 实际值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL16",0,,0,0,0,0,0,0,0,0
+CH02_PT002_Range,CH02,过滤器出口压力 量程,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL20",0,,0,0,0,0,0,0,0,0
+CH02_PT002_Hi,CH02,过滤器出口压力 上限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL24",0,,0,0,0,0,0,0,0,0
+CH02_PT002_Lo,CH02,过滤器出口压力 下限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL28",0,,0,0,0,0,0,0,0,0
+CH02_PT002_HiHi,CH02,过滤器出口压力 上上限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL32",0,,0,0,0,0,0,0,0,0
+CH02_PT002_LoLo,CH02,过滤器出口压力 下下限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL36",0,,0,0,0,0,0,0,0,0
+CH02_PT002_AdjValue,CH02,过滤器出口压力 标定值_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL40",0,,0,0,0,0,0,0,0,0
+CH02_PT002_Code_Zero,CH02,过滤器出口压力 零点内码_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL44",0,,0,0,0,0,0,0,0,0
+CH02_PT002_Code_Adj,CH02,过滤器出口压力 标定内码_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL48",0,,0,0,0,0,0,0,0,0
+CH02_PT002_ZeroValue,CH02,过滤器出口压力 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL52",0,,0,0,0,0,0,0,0,0
+CH02_PT002_Spare46,CH02,过滤器出口压力 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB30,REAL56",0,,0,0,0,0,0,0,0,0
+CH03_PT002_Value,CH03,过滤器进口压力 实际值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL50",0,,0,0,0,0,0,0,0,0
+CH03_PT002_Range,CH03,过滤器进口压力 量程,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL54",0,,0,0,0,0,0,0,0,0
+CH03_PT002_Hi,CH03,过滤器进口压力 上限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL58",0,,0,0,0,0,0,0,0,0
+CH03_PT002_Lo,CH03,过滤器进口压力 下限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL62",0,,0,0,0,0,0,0,0,0
+CH03_PT002_HiHi,CH03,过滤器进口压力 上上限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL66",0,,0,0,0,0,0,0,0,0
+CH03_PT002_LoLo,CH03,过滤器进口压力 下下限值,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL70",0,,0,0,0,0,0,0,0,0
+CH03_PT002_AdjValue,CH03,过滤器进口压力 标定值_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL74",0,,0,0,0,0,0,0,0,0
+CH03_PT002_Code_Zero,CH03,过滤器进口压力 零点内码_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL78",0,,0,0,0,0,0,0,0,0
+CH03_PT002_Code_Adj,CH03,过滤器进口压力 标定内码_读写,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL82",0,,0,0,0,0,0,0,0,0
+CH03_PT002_ZeroValue,CH03,过滤器进口压力 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL86",0,,0,0,0,0,0,0,0,0
+CH03_PT002_Spare46,CH03,过滤器进口压力 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB32,REAL90",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_spare_R,CHPF,测试用电机 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB213,REAL40",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_spare_R_1,CHPF,测试用电机 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB213,REAL44",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_spare_R_2,CHPF,测试用电机 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB213,REAL48",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_spare_R_3,CHPF,测试用电机 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB213,REAL52",0,,0,0,0,0,0,0,0,0
+CHPF_M13_M_spare_R_4,CHPF,测试用电机 None,No,No,0,No,No,0,0,,0,-32768,32767,0,0,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,Off,0,1,0,Off,0,1,Min,-32768,32767,Linear,kep1500,No,"DB213,REAL56",0,,0,0,0,0,0,0,0,0
 :MemoryMsg,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,MaxLength,InitialMessage,AlarmComment,SymbolicName
 :IOMsg,Group,Comment,Logged,EventLogged,EventLoggingPriority,RetentiveValue,MaxLength,InitialMessage,AccessName,ItemUseTagname,ItemName,ReadOnly,AlarmComment,SymbolicName
 :GroupVar,Group,Comment,SymbolicName

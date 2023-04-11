@@ -14,6 +14,7 @@ KEP_TAG_TYPE = {
 }
 
 KEP_CLIENT_ACCESS = ('R/W', 'RO')
+
 _KEP_CLIENT_ACCESS = {
     'Yes': KEP_CLIENT_ACCESS[1],
     'No': KEP_CLIENT_ACCESS[0],
@@ -30,6 +31,7 @@ def output_csv(tag_list: TagList, output_path, group_enable=False):
                 # if isinstance(tg, HMITag):
                 kep_tag = _get_kep_tag(tg, group_enable)
                 writer.writerow(kep_tag.to_list())
+    print('生成KepServer导入csv文件: ' + output_path)
 
 
 def _get_kep_tag(tag: HMITag, group_enable=False):
@@ -39,7 +41,10 @@ def _get_kep_tag(tag: HMITag, group_enable=False):
         tag_name = tag.name
     address = tag.item_name
     data_type = KEP_TAG_TYPE[tag.type]
-    client_access = _KEP_CLIENT_ACCESS[tag.read_only]
+    try:
+        client_access = _KEP_CLIENT_ACCESS[tag.read_only]
+    except KeyError:
+        client_access = _KEP_CLIENT_ACCESS['No']
     description = tag.comment
     return KepServerTag(
         tag_name=tag_name,

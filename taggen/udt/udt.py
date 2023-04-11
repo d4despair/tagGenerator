@@ -59,6 +59,17 @@ class UDTList:
     pass
 
 
+def get_udt_from(filename: str):
+    if filename.endswith('.txt'):
+        return get_udt_from_txt(filename)
+    elif filename.endswith('udt_src'):
+        return get_udt_from_path(filename)
+    elif filename.endswith('.xlsx'):
+        return get_udt_from_excel(filename)
+    else:
+        raise ValueError(f"{filename}不是有效的地址")
+
+
 def get_udt_from_txt(filename: str) -> UDT | None:
     if filename.endswith('.txt'):
         print('正在处理: {}'.format(filename))
@@ -89,7 +100,7 @@ def get_udt_from_txt(filename: str) -> UDT | None:
 
         # 读变量
         offset = 0
-        pre_type = ''
+        prev_type = ''
         while len(lines) > 0:
             temp_line = lines.pop(0)
             if 'END_TYPE' in temp_line:
@@ -99,7 +110,7 @@ def get_udt_from_txt(filename: str) -> UDT | None:
 
             new_tag = _txt_read_tag(temp_line)
 
-            if tagtype.is_bool(pre_type):
+            if tagtype.is_bool(prev_type):
                 if tagtype.is_bool(new_tag.type):
                     if offset * 10 % 10 > 7:
                         offset = math.floor(offset) + 1
@@ -115,12 +126,12 @@ def get_udt_from_txt(filename: str) -> UDT | None:
                 new_tag.offset = '%d' % offset
 
             offset += tagtype.type_length(new_tag.type)
-            pre_type = new_tag.type
+            prev_type = new_tag.type
             struct.append(new_tag)
             new_udt.struct = struct
 
         # udt 长度
-        if tagtype.is_bool(pre_type):
+        if tagtype.is_bool(prev_type):
             offset = math.floor(offset)
             if offset % 2 == 1:
                 offset += 1
@@ -178,8 +189,8 @@ def get_udt_from_excel(filename: str) -> dict[UDT]:
             offset = int(row[udt_index['偏移量']].value)
 
         new_tag = UDTTag(name=row[udt_index['后缀']].value,
-                         offset= offset,
-                         tag_type= tag_type,
+                         offset=offset,
+                         tag_type=tag_type,
                          alarm_state=row[udt_index['报警']].value,
                          read_only=row[udt_index['只读']].value,
                          comment=row[udt_index['描述']].value)

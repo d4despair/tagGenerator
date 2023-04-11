@@ -19,15 +19,25 @@ class MODE:
 
     @mode.setter
     def mode(self, value):
+        # 错误提示
         if value in self._modes:
             self._mode = value
         else:
-            raise ValueError('"{}" 不是 Intouch DB 文件的模式，可选模式如下{}'.format(value, self._modes))
+            raise ValueError("'{}' 不是 Intouch DB 文件的模式，可选模式如下{}".format(value, self._modes))
 
+    @property
     def csv_format(self) -> list[str]:
         return [':mode={}'.format(self.mode)]
 
 
 if __name__ == '__main__':
+    print()
+    print('======== taggen/intouch/mode.py 测试 ========')
+    print('正常情况')
     md = MODE('update')
-    print(md.csv_format())
+    print(md.csv_format)
+    print()
+    print('报错情况')
+    md = MODE('updated')
+    print(md.csv_format)
+    print('======== taggen/intouch/mode.py 测试 ========')
