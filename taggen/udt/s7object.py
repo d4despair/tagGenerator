@@ -101,32 +101,32 @@ def is_bool(s):
     if isinstance(s, str):
         return s.lower() == DATA_BOOL.lower()
     if isinstance(s, S7Object):
-        return s.data_type.lower() == DATA_BOOL.lower()
+        return s.data_type.python() == DATA_BOOL.lower()
 
 
 def is_int(s):
     if isinstance(s, str):
         return s.lower() == DATA_INT.lower()
     if isinstance(s, S7Object):
-        return s.data_type.lower() == DATA_INT.lower()
+        return s.data_type.python() == DATA_INT.lower()
 
 
 def is_dint(s):
     if isinstance(s, str):
         return s.lower() == DATA_DINT.lower()
     if isinstance(s, S7Object):
-        return s.data_type.lower() == DATA_DINT.lower()
+        return s.data_type.python() == DATA_DINT.lower()
 
 
 def is_real(s):
     if isinstance(s, str):
         return s.lower() == DATA_REAL.lower()
     if isinstance(s, S7Object):
-        return s.data_type.lower() == DATA_REAL.lower()
+        return s.data_type.python() == DATA_REAL.lower()
 
 
 def is_struct(s):
     if isinstance(s, str):
         return s == DATA_Struct
     if isinstance(s, S7Object):
-        return s.data_type.lower() == DATA_Struct.lower()
+        return s.data_type.python() == DATA_Struct.lower()

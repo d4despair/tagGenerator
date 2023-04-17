@@ -183,6 +183,7 @@ def get_udt_from_excel(filename: str) -> dict[UDT]:
         # print(udt_dict[udt_type])
 
         tag_type = tagtype.type_name(row[udt_index['类型']].value)
+        # print(tag_type)
         if tagtype.is_bool(tag_type):
             offset = round(row[udt_index['偏移量']].value, 1)
         else:
@@ -226,3 +227,10 @@ def _txt_read_tag(temp_line: str) -> UDTTag:
 def read_struct(temp_line: str):
     print(temp_line)
     pass
+
+
+if __name__ == '__main__':
+    new_udt = get_udt_from_txt('d:/check_var.txt')
+    for  udt_tag in new_udt.struct:
+        print(new_udt.struct)
+

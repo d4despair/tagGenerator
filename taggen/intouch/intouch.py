@@ -167,7 +167,7 @@ def output_csv(tag_list: TagList, output_path, mode='ask', item_use_tag_name=Fal
         IOInt_TEXT[IOInt_INDEX['item_use_tag_name']] = 'No'
         IOInt_TEXT[IOInt_INDEX['item_use_tag_name']] = 'No'
 
-    with open(output_path, 'w', newline='', encoding='utf-8') as f:
+    with open(output_path, 'w', newline='', encoding='ANSI') as f:
         writer = csv.writer(f)
         # 模式
         writer.writerow(mode_text)

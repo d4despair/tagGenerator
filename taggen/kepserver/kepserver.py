@@ -22,19 +22,20 @@ _KEP_CLIENT_ACCESS = {
 
 
 def output_csv(tag_list: TagList, output_path, group_enable=False):
-    tl = [tag_list.disc_list, tag_list.int_list, tag_list.real_list]
+    temp_list = [tag_list.disc_list, tag_list.int_list, tag_list.real_list]
     with open(output_path, 'w', newline='', encoding='ANSI') as f:
         writer = csv.writer(f)
         writer.writerow(KEP_HEADER)
-        for tl_temp in tl:
-            for tg in tl_temp:
+        for hmi_tag_list in temp_list:
+            for hmi_tag in hmi_tag_list:
                 # if isinstance(tg, HMITag):
-                kep_tag = _get_kep_tag(tg, group_enable)
+                kep_tag = KepServerTagFromHMITag(hmi_tag, group_enable)
                 writer.writerow(kep_tag.to_list())
+        f.close()
     print('生成KepServer导入csv文件: ' + output_path)
 
 
-def _get_kep_tag(tag: HMITag, group_enable=False):
+def KepServerTagFromHMITag(tag: HMITag, group_enable=False):
     if group_enable:
         tag_name = '{}.{}'.format(tag.group, tag.name)
     else:
