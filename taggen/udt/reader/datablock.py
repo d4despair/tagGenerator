@@ -9,6 +9,7 @@ def read_db_from_txt(filename: str):
     f = open(filename, 'r', encoding='utf-8')
     lines = f.readlines()
     db_list = []
+    st_list = []
 
     # 遍历文件内容
     while True:
@@ -25,20 +26,54 @@ def read_db_from_txt(filename: str):
             # print(f'正在处理: {title} ...')
 
         # 查找变量
-        if res := re.search(r'(.*) : "(.*)";\s+// (.*)', temp_line):
-            for i in res.groups():
-                if res := re.search(r'"(.*)"', i):
-                    db_line.append(res.groups()[0])
-                else:
-                    db_line.append(i.strip())
-            # [db_line.append(i.strip()) for i in res.groups()]
+        if res := re.search(r'(.*) : "(.*)";(.*)', temp_line):
+            # 变量名
+            data_name = res.group(1)
+            if res_name := re.search(r'(.*){(.*)}', data_name):
+                db_line.append(res_name.group(1).strip())
+            else:
+                db_line.append(data_name.strip())
+            # 变量类型
+            data_type = res.group(2).strip()
+            db_line.append(data_type)
+            # 变量注释
+            data_remark = res.group(3)
+            if res_remark := re.search(r'//(.*)', data_remark):
+                db_line.append(res_remark.group(1).strip())
+            else:
+                db_line.append('')
+            # print(db_line)
             db.append(db_line)
             db_line = [title]
-            # print(res)
+
+        # 查找结构
+        if res := re.search(r'(.*): (Struct.*)', temp_line):
+            st_name = res.group(1)
+            if res_name := re.search(r'(.*){(.*)}', st_name):
+                db_line.append(res_name.group(1).strip())
+            else:
+                db_line.append(st_name.strip())
+
+            st_type = f'{title}_{db_line[-1]}_Struct'.upper()
+            db_line.append(st_type)
+
+            st_remark = res.group(2)
+            if res_remark := re.search(r'//(.*)', st_remark):
+                db_line.append(res_remark.group(1).strip())
+            else:
+                db_line.append('')
+
+            db.append(db_line)
+            db_line = [title]
+            print(res.group(0))
 
         # 结束DB块
         if re.search(r'END_DATA_BLOCK', temp_line):
-            db_list.append(db)
+            if len(db) > 0:
+                db_list.append(db)
+            else:
+                print(f"无法添加，DB名称：{title} 数据个数：0")
+                # raise Exception(f"DB名称：{title} 数据个数：0")
             db = []
     # print(db_list)
 
@@ -50,7 +85,7 @@ def read_db_from_txt(filename: str):
 
 def test():
     filepath = 'D:\\工作资料\\10-宝尔康资料\\tia_db\\'
-    filename = 'valve'
+    filename = 'sg'
     db_list = read_db_from_txt(f'{filepath}{filename}.db')
     from taggen.udt.writer.datablock import write_db_to_excel
     write_db_to_excel(f'{filepath}{filename}.xlsx', db_list)
