@@ -59,6 +59,7 @@ class UDTList:
     pass
 
 
+# 获取UDT的工厂方法
 def get_udt_from(filename: str):
     if filename.endswith('.txt'):
         return get_udt_from_txt(filename)
@@ -84,19 +85,19 @@ def get_udt_from_txt(filename: str) -> UDT | None:
             if 'TYPE' in temp_line:
                 break
 
-        new_udt = UDT()
+        udt_obj = UDT()
         struct = []
         # udt 类型
-        new_udt.udt_type = temp_line[temp_line.find('"') + 1:temp_line.rfind('"')].strip()
+        udt_obj.udt_type = temp_line[temp_line.find('"') + 1:temp_line.rfind('"')].strip()
 
-        udt_fd = list(new_udt.__dict__)
+        udt_fd = list(udt_obj.__dict__)
         # print(udt_fd)
 
         # udt 作者 描述 版本号
         for i in range(1, 4):
             temp_line = lines.pop(0)
             # print('udt_fd[{}]: , new_udt[{}]'.format(i, udt_fd[i])
-            new_udt[udt_fd[i]] = temp_line[temp_line.find(':') + 1:temp_line.rfind('\n')].strip().lower()
+            udt_obj[udt_fd[i]] = temp_line[temp_line.find(':') + 1:temp_line.rfind('\n')].strip().lower()
 
         # 读变量
         offset = 0
@@ -128,7 +129,7 @@ def get_udt_from_txt(filename: str) -> UDT | None:
             offset += tagtype.type_length(new_tag.type)
             prev_type = new_tag.type
             struct.append(new_tag)
-            new_udt.struct = struct
+            udt_obj.struct = struct
 
         # udt 长度
         if tagtype.is_bool(prev_type):
@@ -137,11 +138,11 @@ def get_udt_from_txt(filename: str) -> UDT | None:
                 offset += 1
             else:
                 offset += 2
-        new_udt.length = offset
+        udt_obj.length = offset
 
         f.close()
         print('处理完毕')
-        return new_udt
+        return udt_obj
     else:
         print('无法处理: {}'.format(filename))
 
@@ -177,8 +178,8 @@ def get_udt_from_excel(filename: str) -> dict[UDT]:
         udt_type = row[udt_index['UDT']].value
         if udt_type not in udt_dict:
             # print(udt_type)
-            new_udt = UDT(name=udt_type)
-            udt_dict[udt_type] = new_udt
+            udt_obj = UDT(name=udt_type)
+            udt_dict[udt_type] = udt_obj
 
         # print(udt_dict[udt_type])
 
@@ -195,15 +196,8 @@ def get_udt_from_excel(filename: str) -> dict[UDT]:
                          alarm_state=row[udt_index['报警']].value,
                          read_only=row[udt_index['只读']].value,
                          comment=row[udt_index['描述']].value)
-        # print(new_tag)
-        new_udt.struct.append(new_tag)
 
-        # print(row[1].value)
-
-    # for row in ws.rows:
-    #     for cell in row:
-    #         if cell.value in UDT_FIELD_CHINESE:
-    #             print(cell.column)
+        udt_obj.struct.append(new_tag)
 
     return udt_dict
 
@@ -231,6 +225,5 @@ def read_struct(temp_line: str):
 
 if __name__ == '__main__':
     new_udt = get_udt_from_txt('d:/check_var.txt')
-    for  udt_tag in new_udt.struct:
-        print(new_udt.struct)
-
+    for udt_tag in new_udt.struct:
+        print(udt_tag)
