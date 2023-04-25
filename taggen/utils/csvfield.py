@@ -1,30 +1,47 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/23 13:52
 
-def str_to_list(s: str, blank=None, lower_string=False) -> list:
-    s = s.strip()
+import re
+
+
+def str_to_list(string: str, pattern=',', blank=None, lower=False) -> list:
+    """
+    将字符串转成列表
+
+    raw_string = 'Tag Name,Address,Data Type,Respect Data Type,Client Access'
+
+    t = str_to_tuple(raw_string, blank='_', lower=True)
+
+    返回内容 ['tag_name', 'address', 'data_type', 'respect_data_type', 'client_access']
+
+    :param pattern: 分隔符
+    :param string: 带有一定格式的字符串
+    :param blank: 字符，用于替换空白格
+    :param lower: 是否转换成小写字母
+    :return: 字符串列表
+    """
+    string = string.strip()
     if blank is not None:
-        s = s.replace(' ', blank)
-    if lower_string:
-        s = s.lower()
-    l = list()
-    start = 0
-    for i in range(s.count(',') + 1):
-        end = s.find(',', start, len(s))
-        if end == -1:
-            l.append(s[start:len(s)].strip())
-        else:
-            l.append(s[start:end].strip())
-        start = end + 1
-    return l
+        string = string.replace(' ', blank)
+    if lower:
+        string = string.lower()
+    return re.split(pattern, string)
 
 
-def str_to_tuple(s: str, blank=None, lower_string=False) -> tuple:
-    return tuple(str_to_list(s, blank, lower_string))
+def str_to_tuple(string: str, pattern=',', blank=None, lower=False) -> tuple:
+    """
+    将有一定格式的字符串转成元组
+
+    :param pattern: 分隔符
+    :param string: 带有一定格式的字符串
+    :param blank: 字符，用于替换空白格
+    :param lower: 是否转换成小写字母
+    :return: 字符串元组
+    """
+    return tuple(str_to_list(string, pattern, blank, lower))
 
 
 def print_class_init(t: tuple):
-
     print('复制一下文字')
     print('__slots__ = (')
     for i in t:
@@ -43,10 +60,8 @@ def print_class_init(t: tuple):
 
 # test
 if __name__ == '__main__':
-    s = 'Tag Name,Address,Data Type,Respect Data Type,Client Access,Scan Rate,Scaling,Raw Low,Raw High,' \
-        'Scaled Low,' \
-        'Scaled High,Scaled Data Type,Clamp Low,Clamp High,Eng Units,Description,Negate Value '
-
-    t = str_to_tuple(s, blank='_', lower_string=True)
-    print(str_to_list(s, blank='_'))
-    print_class_init(t)
+    print('========= csvfield.py 测试内容 =========')
+    raw_string = 'Tag Name,Address,Data Type,Respect Data Type,Client Access'
+    print(str_to_list(raw_string, blank='_', lower=True))
+    print(str_to_tuple(raw_string, blank='_', lower=True))
+    print('========= csvfield.py 测试内容 =========')
