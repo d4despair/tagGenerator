@@ -86,7 +86,7 @@ def test():
     print(python_style_field)
     print_class_string('AlarmGroup', python_style_field)
     dry = AlarmGroup('DRY')
-    l = dry.csv_format_list
+    l = dry.csv_format
     [print(i, end=',') for i in l]
     print()
 

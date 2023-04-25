@@ -1,9 +1,10 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/4/11 14:39
 from taggen.intouch.header import IO_ACCESS_HEADER
+from util import StringListObject
 
 
-class IOAccess:
+class IOAccess(StringListObject):
     __slots__ = (
         'io_access',
         'application',
@@ -39,9 +40,6 @@ class IOAccess:
         self.dfo_flag = dfo_flag
         self.fbd_flag = fbd_flag
         self.failback_deadband = failback_deadband
-
-    def __str__(self):
-        return [self.__getattribute__(slot) for slot in self.__slots__].__str__()
 
 
 IO_ACCESS_GALAXY = IOAccess(io_access='Galaxy', application=r'\\NA\\NA', topic='NA', dde_protocol='MX')

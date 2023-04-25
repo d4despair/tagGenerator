@@ -1,6 +1,7 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/23 17:13
 
+
 DATA_BOOL = 'Bool'
 DATA_INT = 'Int'
 DATA_DINT = 'Dint'
@@ -20,16 +21,30 @@ class S7Object:
     _length = 0
     _parent = None
     _previous = None
-    _data_type = None
+    _data_type: str
+    _data_block = None
 
     _external_accessible = True
     _external_visible = True
     _external_writable = True
     _s7_set_point = False
 
-    def __init__(self, parent, external_accessible=True, external_visible=True, external_writable=True,
+    def __init__(self,
+                 parent,
+                 title,
+                 data_type='',
+                 comment='',
+                 external_accessible=True,
+                 external_visible=True,
+                 external_writable=True,
                  s7_set_point=False):
+        self._title = title
         self._parent = parent
+        self._data_type = data_type
+        self.comment = comment
+        if parent:
+            self._db_number = parent.db_number
+            self._data_block = parent.data_block
         if not external_accessible:
             self._external_accessible = False
             self._external_visible = False
@@ -39,6 +54,10 @@ class S7Object:
             self._external_visible = external_visible
             self._external_writable = external_writable
         self._s7_set_point = s7_set_point
+
+    @property
+    def title(self):
+        return self._title
 
     @property
     def external_accessible(self):
@@ -96,37 +115,50 @@ class S7Object:
     def data_type(self, value):
         self._data_type = value
 
+    @property
+    def data_block(self):
+        return self._data_block
+
+    @property
+    def db_number(self):
+        if self._data_block:
+            return self._data_block.db_number
+
+    def csv_format(self):
+        if self.parent:
+            return [self.parent.title, self.title, self.data_type, self.comment, self.db_number, self.offset]
+
 
 def is_bool(s):
     if isinstance(s, str):
         return s.lower() == DATA_BOOL.lower()
     if isinstance(s, S7Object):
-        return s.data_type.python() == DATA_BOOL.lower()
+        return s.data_type.lower() == DATA_BOOL.lower()
 
 
 def is_int(s):
     if isinstance(s, str):
         return s.lower() == DATA_INT.lower()
     if isinstance(s, S7Object):
-        return s.data_type.python() == DATA_INT.lower()
+        return s.data_type.lower() == DATA_INT.lower()
 
 
 def is_dint(s):
     if isinstance(s, str):
         return s.lower() == DATA_DINT.lower()
     if isinstance(s, S7Object):
-        return s.data_type.python() == DATA_DINT.lower()
+        return s.data_type.lower() == DATA_DINT.lower()
 
 
 def is_real(s):
     if isinstance(s, str):
         return s.lower() == DATA_REAL.lower()
     if isinstance(s, S7Object):
-        return s.data_type.python() == DATA_REAL.lower()
+        return s.data_type.lower() == DATA_REAL.lower()
 
 
 def is_struct(s):
     if isinstance(s, str):
         return s == DATA_Struct
     if isinstance(s, S7Object):
-        return s.data_type.python() == DATA_Struct.lower()
+        return s.data_type.lower() == DATA_Struct.lower()

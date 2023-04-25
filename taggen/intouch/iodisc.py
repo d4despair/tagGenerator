@@ -1,9 +1,10 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/4/12 22:49
 
-# ========================== IODisc 开始 ==========================
+from util import StringListObject
 
-class IODisc:
+
+class IODisc(StringListObject):
     __slots__ = (
         'io_disc',
         'group',
@@ -59,6 +60,10 @@ class IODisc:
     @property
     def tagname(self):
         return self.io_disc
+
+    @tagname.setter
+    def tagname(self, value):
+        self.io_disc = value
 
 
 # ========================== IODisc 结束 ==========================

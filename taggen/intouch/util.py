@@ -78,7 +78,7 @@ class StringListObject:
         return [self.__getattribute__(slot) for slot in self.__slots__].__str__()
 
     @property
-    def csv_format_list(self):
+    def csv_format(self):
         return [self.__getattribute__(slot) for slot in self.__slots__]
 
 

@@ -1,10 +1,10 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/4/12 23:15
 
-# ========================== IOInt 开始 ==========================
+from util import StringListObject
 
 
-class IOInt:
+class IOInt(StringListObject):
     __slots__ = (
         'io_int',
         'group',
@@ -153,6 +153,10 @@ class IOInt:
     @property
     def tagname(self):
         return self.io_int
+
+    @tagname.setter
+    def tagname(self, value):
+        self.io_int = value
 
 
 # ========================== IOInt 结束 ==========================
