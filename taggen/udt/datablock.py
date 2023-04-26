@@ -1,6 +1,10 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/23 15:32
 
+import re
+from s7data import S7Data
+from s7struct import S7Struct
+
 
 class DataBlock:
     _db_number = 0
@@ -38,6 +42,10 @@ class DataBlock:
     def __getitem__(self, item):
         return self._data[item]
 
+    @property
+    def size(self):
+        return len(self._data)
+
     # def init_offset(self):
     #     offset = 0
     #     with self._struct.struct as root_struct:
@@ -47,10 +55,132 @@ class DataBlock:
     #                 offset += s7obj.length
 
 
+class DBList(list):
+    __line = None
+    __lines = None
+    _struct_dict = {}
+
+    def __init__(self, filename: str):
+        super().__init__()
+        self.filename = filename
+        self._setup()
+        self._release()
+
+    def _setup(self):
+        __db = None
+        if self.filename.endswith(('.txt', '.db')):
+            print('正在处理：{}'.format(self.filename))
+        else:
+            print('无法处理：{}'.format(self.filename))
+            return
+        f = open(self.filename, 'r', encoding='utf-8')
+        self.__lines = f.readlines()
+
+        # 遍历文件内容
+        while True:
+            try:
+                self.__line = self.__lines.pop(0)
+            except IndexError:
+                break
+
+            if res := re.search(r'DATA_BLOCK "(.*)"', self.__line):
+                __db = DataBlock(title=res[1])
+            elif __s7data := self.parse_data(__db):
+                __db.append(__s7data)
+            elif __s7struct := self.parse_struct(__db):
+                __db.append(__s7struct)
+            elif re.search(r'END_DATA_BLOCK', self.__line):
+                if __db.size > 0:
+                    self.append(__db)
+                    print(f'DB名称：\'{__db.title}\' 数据个数：{__db.size}')
+                else:
+                    print(f"无法添加，DB名称：{__db.title} 数据个数：0")
+        print(f'处理完成，共 {len(self)} 个DB')
+
+    @property
+    def struct_dict(self):
+        return self._struct_dict
+
+    def parse_data(self, parent):
+        if res := re.search(r'(.*) : (.*);(.*)', self.__line):
+            # 变量名
+            data_name = get_name(res.group(1).strip())
+
+            # 变量类型
+            data_type = res.group(2).strip()
+            # 变量注释
+            data_remark = get_remark(res.group(3).strip())
+
+            return S7Data(parent=parent, title=data_name, data_type=data_type, comment=data_remark)
+
+    def parse_struct(self, parent):
+        if res := re.search(r'(.*): (Struct.*)', self.__line):
+            # 结构名
+            st_name = get_name(res.group(1))
+            # 结构注释
+            st_remark = get_remark(res.group(2).strip())
+            __struct = S7Struct(parent=parent, title=st_name, comment=st_remark)
+            self.struct_dict[__struct.data_type] = __struct
+        else:
+            return
+
+        while not re.search(r'end_struct', self.__line, re.I):
+            try:
+                self.__line = self.__lines.pop(0)
+            except IndexError:
+                break
+
+            # 结构里的数据
+            if st_data := self.parse_data(parent=__struct):
+                __struct.append(st_data)
+            # 嵌套结构
+            if child_struct := self.parse_struct(parent=__struct):
+                __struct.append(child_struct)
+        return __struct
+
+    # def parse_db(self):
+    #     if res := re.search(r'DATA_BLOCK "(.*)"', self.__line):
+    #         __db = DataBlock(title=res[1])
+    #     else:
+    #         return
+    #
+    #     while not re.search(r'END_DATA_BLOCK', self.__line):
+    #         try:
+    #             self.__line = self.__lines.pop(0)
+    #         except IndexError:
+    #             break
+    #
+    #         if __s7data := self.parse_data(__db):
+    #             __db.append(__s7data)
+    #         if __s7struct := self.parse_struct(__db):
+    #             __db.append(__s7struct)
+    #
+    #     if __db.size > 0:
+    #         print(f'DB名称：\'{__db.title}\' 数据个数：{__db.size}')
+    #         return __db
+    #     else:
+    #         print(f"无法添加，DB名称：{__db.title} 数据个数：0")
+
+    def _release(self):
+        self.__line = None
+        self.__lines = None
+
+
+# 提取注释
+def get_remark(string: str):
+    if res := re.search(r'//(.*)', string):
+        return res.group(1).strip()
+    else:
+        return ''
+
+
+# 提取变量名
+def get_name(string: str):
+    if res := re.search(r'(.*){(.*)}', string):
+        return res.group(1).strip()
+    else:
+        return string.strip()
+
+
 if __name__ == '__main__':
-    db = DataBlock(title='test')
-    db.append('good')
-    db.append('good2')
-    print(db[0])
-    print(db[1])
     pass

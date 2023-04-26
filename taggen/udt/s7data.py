@@ -21,7 +21,7 @@ class S7Data(S7Object):
 
     @property
     def struct_title(self):
-        __parent = self.parent
+        __parent = self._parent
         while __parent is not None:
             if hasattr(__parent, 'title'):
                 self._struct_title = f'{__parent.title}.{self._struct_title}'
