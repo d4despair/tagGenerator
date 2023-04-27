@@ -2,25 +2,24 @@
 # DEVELOP TIME: 23/3/23 15:32
 
 import re
+
 from s7data import S7Data
 from s7struct import S7Struct
 
 
-class DataBlock:
-    _db_number = 0
+class DataBlock(S7Struct):
     parent = None
+    _db_number = 0
+    _struct_dict: dict[S7Struct]
 
     def __init__(self, title=None, version=None):
-        self.title = title
+        super().__init__(title=title)
         self.version = version
         self._setup()
 
     def _setup(self):
         self._data = []
-
-    @property
-    def data(self):
-        return tuple(self._data)
+        self._struct_dict = {}
 
     @property
     def data_block(self):
@@ -34,17 +33,23 @@ class DataBlock:
     def db_number(self, number: int):
         self._db_number = number
 
-    def append(self, __object):
-        if hasattr(__object, 'parent'):
-            __object.parent = self
-        self._data.append(__object)
-
     def __getitem__(self, item):
-        return self._data[item]
+        if isinstance(item, int):
+            return self._data[item]
+        if isinstance(item, str):
+            return self._struct_dict[item]
 
     @property
-    def size(self):
-        return len(self._data)
+    def struct_title(self):
+        return self.title
+
+    @property
+    def struct_dict(self):
+        return self._struct_dict
+
+    def init_offset(self):
+        if not self._is_init_offset:
+            pass
 
     # def init_offset(self):
     #     offset = 0
@@ -55,10 +60,10 @@ class DataBlock:
     #                 offset += s7obj.length
 
 
-class DBList(list):
+class DBList(list[DataBlock]):
     __line = None
     __lines = None
-    _struct_dict = {}
+    _struct_dict: dict[S7Struct] = {}
 
     def __init__(self, filename: str):
         super().__init__()
@@ -101,26 +106,28 @@ class DBList(list):
     def struct_dict(self):
         return self._struct_dict
 
-    def parse_data(self, parent):
-        if res := re.search(r'(.*) : (.*);(.*)', self.__line):
+    def parse_data(self, parent=None, line=None):
+        line = line if line else self.__line
+        if res := re.search(r'(.*) : (.*);(.*)', line):
             # 变量名
-            data_name = get_name(res.group(1).strip())
+            data_name = self._get_name(res.group(1).strip())
 
             # 变量类型
             data_type = res.group(2).strip()
             # 变量注释
-            data_remark = get_remark(res.group(3).strip())
+            data_remark = self._get_remark(res.group(3).strip())
 
             return S7Data(parent=parent, title=data_name, data_type=data_type, comment=data_remark)
 
     def parse_struct(self, parent):
         if res := re.search(r'(.*): (Struct.*)', self.__line):
             # 结构名
-            st_name = get_name(res.group(1))
+            st_name = self._get_name(res.group(1))
             # 结构注释
-            st_remark = get_remark(res.group(2).strip())
+            st_remark = self._get_remark(res.group(2).strip())
             __struct = S7Struct(parent=parent, title=st_name, comment=st_remark)
             self.struct_dict[__struct.data_type] = __struct
+            parent.data_block.struct_dict[__struct.data_type] = __struct
         else:
             return
 
@@ -137,6 +144,23 @@ class DBList(list):
             if child_struct := self.parse_struct(parent=__struct):
                 __struct.append(child_struct)
         return __struct
+
+    @staticmethod
+    def _get_remark(string: str):
+        if res := re.search(r'//(.*)', string):
+            return res.group(1).strip()
+        else:
+            return ''
+
+    @staticmethod
+    def _get_name(string: str):
+        if res := re.search(r'(.*){(.*)}', string):
+            return res.group(1).strip()
+        else:
+            return string.strip()
+
+    def dict(self) -> dict[DataBlock]:
+        return {db.title: db for db in self}
 
     # def parse_db(self):
     #     if res := re.search(r'DATA_BLOCK "(.*)"', self.__line):
@@ -164,22 +188,6 @@ class DBList(list):
     def _release(self):
         self.__line = None
         self.__lines = None
-
-
-# 提取注释
-def get_remark(string: str):
-    if res := re.search(r'//(.*)', string):
-        return res.group(1).strip()
-    else:
-        return ''
-
-
-# 提取变量名
-def get_name(string: str):
-    if res := re.search(r'(.*){(.*)}', string):
-        return res.group(1).strip()
-    else:
-        return string.strip()
 
 
 if __name__ == '__main__':

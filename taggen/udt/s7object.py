@@ -29,6 +29,8 @@ class S7Object:
     _external_writable = True
     _s7_set_point = False
 
+    _is_init_offset = False
+
     def __init__(self,
                  parent,
                  title,
@@ -126,7 +128,7 @@ class S7Object:
 
     def csv_format(self):
         if self.parent:
-            return [self.parent.title, self.title, self.data_type, self.comment, self.db_number, self.offset]
+            return [self.parent.struct_title, self.title, self.data_type, self.comment, self.db_number, self.offset]
 
 
 def is_bool(s):

@@ -31,12 +31,12 @@ class S7Data(S7Object):
                 break
         return self._struct_title
 
-    def csv_format(self):
-        if self.parent:
-            cf = super().csv_format()
-            if is_struct(self.parent):
-                cf[0] = self.struct_title
-            return cf
+    # def csv_format(self):
+    #     if self.parent:
+    #         cf = super().csv_format()
+    #         if is_struct(self.parent):
+    #             cf[0] = self.struct_title
+    #         return cf
 
 
 class S7BoolData(S7Data):
