@@ -1,6 +1,6 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/23 17:13
-
+import math
 
 DATA_BOOL = 'Bool'
 DATA_INT = 'Int'
@@ -21,6 +21,7 @@ class S7Object:
     _length = 0
     _parent = None
     _previous = None
+    _next = None
     _data_type: str
     _data_block = None
 
@@ -29,7 +30,8 @@ class S7Object:
     _external_writable = True
     _s7_set_point = False
 
-    _is_init_offset = False
+    __init_offset = False
+    # __init_length = False
 
     def __init__(self,
                  parent,
@@ -44,6 +46,9 @@ class S7Object:
         self._parent = parent
         self._data_type = data_type
         self.comment = comment
+        if data_type in DATA_LENGTH:
+            self._length = DATA_LENGTH[data_type]
+            # self.__init_length = True
         if parent:
             self._db_number = parent.db_number
             self._data_block = parent.data_block
@@ -79,11 +84,35 @@ class S7Object:
 
     @property
     def offset(self):
+        self._init_offset()
         return self._offset
 
     @offset.setter
     def offset(self, value):
         self._offset = value
+
+    def _init_offset(self):
+        if not self.__init_offset:
+            if self.previous:
+                if self.is_bool(self.previous):
+                    if self.is_bool():
+                        __offset = self.previous.offset + 0.1
+                        if __offset * 10 % 10 > 7:
+                            __offset = math.floor(__offset) + 1
+                    else:
+                        __offset = math.floor(self.previous.offset)
+                        if __offset % 2 == 1:
+                            __offset += 1
+                        else:
+                            __offset += 2
+                    self._offset = float(round(__offset, 1))
+                else:
+                    self._offset = int(self.previous.offset + self.previous.length)
+            self.__init_offset = True
+
+    # def _round_offset(self):
+    #     if self.previous:
+    #         self
 
     @property
     def length(self):
@@ -126,9 +155,23 @@ class S7Object:
         if self._data_block:
             return self._data_block.db_number
 
+    @property
+    def next(self):
+        return self._next
+
+    @next.setter
+    def next(self, s7object):
+        self._next = s7object
+
     def csv_format(self):
         if self.parent:
             return [self.parent.struct_title, self.title, self.data_type, self.comment, self.db_number, self.offset]
+
+    def is_bool(self, __s7obj=None):
+        __data_type = self._data_type
+        if __s7obj:
+            __data_type = __s7obj.data_type
+        return __data_type.lower() == 'bool'
 
 
 def is_bool(s):

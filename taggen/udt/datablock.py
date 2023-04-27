@@ -47,18 +47,6 @@ class DataBlock(S7Struct):
     def struct_dict(self):
         return self._struct_dict
 
-    def init_offset(self):
-        if not self._is_init_offset:
-            pass
-
-    # def init_offset(self):
-    #     offset = 0
-    #     with self._struct.struct as root_struct:
-    #         for s7obj in root_struct:
-    #             if isinstance(s7obj, S7Object):
-    #                 s7obj.offset = offset
-    #                 offset += s7obj.length
-
 
 class DBList(list[DataBlock]):
     __line = None
