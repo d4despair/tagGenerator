@@ -2,11 +2,11 @@
 # DEVELOP TIME: 23/3/23 17:13
 import math
 
-DATA_BOOL = 'Bool'
-DATA_INT = 'Int'
-DATA_DINT = 'Dint'
-DATA_REAL = 'Real'
-DATA_Struct = 'Struct'
+DATA_BOOL = 'bool'
+DATA_INT = 'int'
+DATA_DINT = 'dint'
+DATA_REAL = 'real'
+DATA_Struct = 'struct'
 
 DATA_LENGTH = {
     DATA_BOOL: 0.1,
@@ -31,7 +31,6 @@ class S7Object:
     _s7_set_point = False
 
     __init_offset = False
-    # __init_length = False
 
     def __init__(self,
                  parent,
@@ -46,9 +45,8 @@ class S7Object:
         self._parent = parent
         self._data_type = data_type
         self.comment = comment
-        if data_type in DATA_LENGTH:
-            self._length = DATA_LENGTH[data_type]
-            # self.__init_length = True
+        if data_type.lower() in DATA_LENGTH:
+            self._length = DATA_LENGTH[data_type.lower()]
         if parent:
             self._db_number = parent.db_number
             self._data_block = parent.data_block
@@ -110,10 +108,6 @@ class S7Object:
                     self._offset = int(self.previous.offset + self.previous.length)
             self.__init_offset = True
 
-    # def _round_offset(self):
-    #     if self.previous:
-    #         self
-
     @property
     def length(self):
         return self._length
@@ -171,39 +165,24 @@ class S7Object:
         __data_type = self._data_type
         if __s7obj:
             __data_type = __s7obj.data_type
-        return __data_type.lower() == 'bool'
+        return __data_type.lower() == DATA_BOOL
 
 
-def is_bool(s):
-    if isinstance(s, str):
-        return s.lower() == DATA_BOOL.lower()
-    if isinstance(s, S7Object):
-        return s.data_type.lower() == DATA_BOOL.lower()
+class DBNumberAvailableObject(S7Object):
+    _data_block = None
 
+    def __init__(self, parent, title):
+        super().__init__(parent, title)
 
-def is_int(s):
-    if isinstance(s, str):
-        return s.lower() == DATA_INT.lower()
-    if isinstance(s, S7Object):
-        return s.data_type.lower() == DATA_INT.lower()
+    @property
+    def data_block(self):
+        return self._data_block
 
+    @property
+    def db_number(self):
+        if self._data_block:
+            return self._data_block.db_number
 
-def is_dint(s):
-    if isinstance(s, str):
-        return s.lower() == DATA_DINT.lower()
-    if isinstance(s, S7Object):
-        return s.data_type.lower() == DATA_DINT.lower()
-
-
-def is_real(s):
-    if isinstance(s, str):
-        return s.lower() == DATA_REAL.lower()
-    if isinstance(s, S7Object):
-        return s.data_type.lower() == DATA_REAL.lower()
-
-
-def is_struct(s):
-    if isinstance(s, str):
-        return s == DATA_Struct
-    if isinstance(s, S7Object):
-        return s.data_type.lower() == DATA_Struct.lower()
+    def csv_format(self):
+        if self.parent:
+            return [self.parent.struct_title, self.title, self.data_type, self.comment, self.db_number, self.offset]

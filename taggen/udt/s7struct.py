@@ -1,6 +1,5 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/23 16:07
-import math
 
 from s7object import S7Object
 
@@ -66,10 +65,6 @@ class S7Struct(S7Object):
         if __parent:
             self._struct_title = f'{__parent.struct_title}.{self._title}'
         return self._struct_title
-
-    # def init_offset(self):
-    #     pass
-
 
 
 def test():

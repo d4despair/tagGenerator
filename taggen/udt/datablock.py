@@ -33,12 +33,6 @@ class DataBlock(S7Struct):
     def db_number(self, number: int):
         self._db_number = number
 
-    def __getitem__(self, item):
-        if isinstance(item, int):
-            return self._data[item]
-        if isinstance(item, str):
-            return self._struct_dict[item]
-
     @property
     def struct_title(self):
         return self.title
@@ -149,29 +143,6 @@ class DBList(list[DataBlock]):
 
     def dict(self) -> dict[DataBlock]:
         return {db.title: db for db in self}
-
-    # def parse_db(self):
-    #     if res := re.search(r'DATA_BLOCK "(.*)"', self.__line):
-    #         __db = DataBlock(title=res[1])
-    #     else:
-    #         return
-    #
-    #     while not re.search(r'END_DATA_BLOCK', self.__line):
-    #         try:
-    #             self.__line = self.__lines.pop(0)
-    #         except IndexError:
-    #             break
-    #
-    #         if __s7data := self.parse_data(__db):
-    #             __db.append(__s7data)
-    #         if __s7struct := self.parse_struct(__db):
-    #             __db.append(__s7struct)
-    #
-    #     if __db.size > 0:
-    #         print(f'DB名称：\'{__db.title}\' 数据个数：{__db.size}')
-    #         return __db
-    #     else:
-    #         print(f"无法添加，DB名称：{__db.title} 数据个数：0")
 
     def _release(self):
         self.__line = None

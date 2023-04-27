@@ -1,6 +1,6 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/16 14:34
-from taggen.udt.udt import *
+from taggen.udt._oldudt import *
 from taggen.tag.tagtype import TagType
 from taggen.tag import Tag
 
