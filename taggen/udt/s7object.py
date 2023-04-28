@@ -24,6 +24,7 @@ class S7Object:
     _next = None
     _data_type: str
     _data_block = None
+    generable = True
 
     _external_accessible = True
     _external_visible = True
@@ -95,7 +96,7 @@ class S7Object:
                 if self.is_bool(self.previous):
                     if self.is_bool():
                         __offset = self.previous.offset + 0.1
-                        if __offset * 10 % 10 > 7:
+                        if round(__offset * 10) % 10 > 7:
                             __offset = math.floor(__offset) + 1
                     else:
                         __offset = math.floor(self.previous.offset)
@@ -159,7 +160,13 @@ class S7Object:
 
     def csv_format(self):
         if self.parent:
-            return [self.parent.struct_title, self.title, self.data_type, self.comment, self.db_number, self.offset]
+            return [self.parent.struct_title,
+                    self.title,
+                    self.data_type,
+                    self.comment,
+                    self.db_number,
+                    self.offset,
+                    ]
 
     def is_bool(self, __s7obj=None):
         __data_type = self._data_type

@@ -51,7 +51,7 @@ def print_slots(slots):
 
 
 def print_init(slots):
-    print(f'\tdef __init__(self', end='')
+    print(f'\tdef __init__(cls', end='')
     for slot in slots:
         print(f" ,{slot} = ''", end='')
     print(f'):')
@@ -74,11 +74,11 @@ def get_string_list(obj):
 
 
 class StringListObject:
-    def __str__(self):
+    def __str__(cls):
         return [self.__getattribute__(slot) for slot in self.__slots__].__str__()
 
     @property
-    def csv_format(self):
+    def csv_format(cls):
         return [self.__getattribute__(slot) for slot in self.__slots__]
 
 
