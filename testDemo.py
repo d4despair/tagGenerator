@@ -65,10 +65,10 @@ for dn in list_defn:
     udt_type = dn.udt_type
     # print(ud[udt_type].name)
     # print(udt_type)
-    struct = ud[udt_type].struct
+    struct = ud[udt_type].struct_dict
     tag_count = 0
 
-    for udt_tag in ud[udt_type].struct:
+    for udt_tag in ud[udt_type].struct_dict:
         hmi_tag = HMITag()
         if dn.middle:
             print(dn.middle)

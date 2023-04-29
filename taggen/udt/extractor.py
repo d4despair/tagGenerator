@@ -2,18 +2,21 @@
 # DEVELOP TIME: 23/4/28 17:06
 import os
 import re
+import logging
 
 from datablock import DataBlock
 from s7data import S7Data
 from s7struct import S7Struct
-from taggen.udt.udt import UDT
+from udt import UDT
 
 
-class DBExtractor(list[DataBlock]):
+class DBExtractor:
     __line = None
     __lines = None
     _struct_dict: dict[S7Struct] = {}
+    _udt_dict: dict[UDT] = {}
     _bin: list[DataBlock] = []
+    _db: list[DataBlock] = []
 
     def __init__(self, filename: str, udt_filepath=None):
         super().__init__()
@@ -22,39 +25,62 @@ class DBExtractor(list[DataBlock]):
         self._setup()
 
     def _setup(self):
-        udt_files = []
-        db_files = []
         # 如果是文件夹 优先处理udt
         if os.path.isdir(self.filename):
             for _, _, filenames in os.walk(self.filename):
+                filenames.sort(key=_sort_udt)
                 for _f in filenames:
-                    _file = self.filename + _f
-                    if _file.endswith('.udt'):
-                        udt_files.append(_file)
-                    elif _file.endswith('.db'):
-                        db_files.append(_file)
-            [self.parse(_f) for _f in udt_files]    # 处理udt
-            [self.parse(_f) for _f in db_files]     # 处理db
+                    self._parse(self.filename + _f)
         else:
-            self.parse(self.filename)
-        print(f'处理完成，共 {len(self)} 个DB\n')
-        print(f'无法添加的DB如下：')
-        [print(f'{db.title}: {db.error}') for db in self.bin]
+            self._parse(self.filename)
+        print(f'处理完成，共 {len(self._db)} 个DB\n')
+        logging.info(f'处理完成，共 {len(self._db)} 个DB')
+        [logging.warning(f'无法添加的DB如下{db.title}: {db.error}') for db in self.bin]
 
     @property
-    def struct_dict(self):
+    def db_dict(self) -> dict[DataBlock]:
+        return {db.title: db for db in self._db}
+
+    @property
+    def db(self):
+        return self._db
+
+    @property
+    def udt_dict(self) -> dict[UDT]:
+        return self._udt_dict
+
+    @property
+    def udt(self) -> list[UDT]:
+        return [self._udt_dict[st] for st in self._udt_dict]
+
+    @property
+    def struct_dict(self) -> dict[S7Struct]:
         return self._struct_dict
 
-    def parse(self, filename):
-        print()
+    @property
+    def struct(self) -> list[S7Struct]:
+        return [self._struct_dict[st] for st in self._struct_dict]
+
+    @property
+    def all_struct(self) -> dict[S7Struct]:
+        __all_struct = {}
+        __all_struct.update(self._struct_dict)
+        __all_struct.update(self._udt_dict)
+        return __all_struct
+
+    @property
+    def bin(self):
+        return self._bin
+
+    def _parse(self, filename):
         if filename.endswith('.db'):
             self.parse_file(filename, DataBlock)
         elif filename.endswith('.udt'):
             self.parse_file(filename, UDT)
         else:
-            print(f'无法处理：{filename}')
+            logging.warning(f'无法处理：{filename}')
 
-    def parse_file(self, filename, _class):
+    def parse_file(self, filename, _class=DataBlock):
         __s7objs = None
         __rel_type = _class.rel_type()
 
@@ -81,9 +107,9 @@ class DBExtractor(list[DataBlock]):
                 if __s7objs.generable:
                     print(f'{__rel_type}名称：\'{__s7objs.title}\' 数据个数：{__s7objs.size}')
                     if isinstance(__s7objs, DataBlock):
-                        self.append(__s7objs)
-                    else:
-                        self._struct_dict[__s7objs.title] = __s7objs
+                        self._db.append(__s7objs)
+                    elif isinstance(__s7objs, UDT):
+                        self._udt_dict[__s7objs.title] = __s7objs
                 else:
                     self._bin.append(__s7objs)
                     print(f"无法添加，{__rel_type}名称：{__s7objs.title}")
@@ -154,16 +180,21 @@ class DBExtractor(list[DataBlock]):
         else:
             return string.strip()
 
-    def dict(self) -> dict[DataBlock]:
-        return {db.title: db for db in self}
-
-    @property
-    def bin(self):
-        return self._bin
-
     def _release(self):
         self.__line = None
         self.__lines = None
 
     def get_udt_length(self, _type):
-        return self._struct_dict[_type].length
+        return self._udt_dict[_type].length
+
+
+def _sort_udt(elem: str):
+    """
+    将.udt类型的文件排在列表前端
+    :param elem: 文件名称
+    :return: 排序优先级
+    """
+    if elem.endswith('.udt'):
+        return -1
+    else:
+        return 1

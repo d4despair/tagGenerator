@@ -3,6 +3,7 @@
 from taggen.udt._oldudt import *
 from taggen.tag.tagtype import TagType
 from taggen.tag import Tag
+from taggen.udt.udt import UDT
 
 type_bool = TagType('bool', 0.1)
 type_int = TagType('int', 2)
@@ -65,6 +66,3 @@ def is_dint(s):
         return s.title == type_dint.name
     else:
         return False
-
-
-

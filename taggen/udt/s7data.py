@@ -2,7 +2,7 @@
 # DEVELOP TIME: 23/3/23 16:59
 
 
-from taggen.udt.s7object import S7Object
+from s7object import S7Object
 
 
 class S7Data(S7Object):
@@ -17,16 +17,3 @@ class S7Data(S7Object):
             self._ExternalWritable = parent._external_writable
             self._S7_SetPoint = parent._s7_set_point
             self._parent = parent
-
-    # @property
-    # def struct_title(self):
-    #     __parent = self._parent
-    #     while __parent is not None:
-    #         if hasattr(__parent, 'title'):
-    #             self._struct_title = f'{__parent.title}'
-    #             # self._struct_title = f'{__parent.title}.{self._struct_title}'
-    #         try:
-    #             __parent = __parent.parent
-    #         except TypeError:
-    #             break
-    #     return self._struct_title

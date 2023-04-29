@@ -168,6 +168,22 @@ class S7Object:
                     self.offset,
                     ]
 
+    def udt_format(self):
+        if self.parent:
+            return [self.parent.struct_title,
+                    self.title,
+                    self.data_type,
+                    self.offset,
+                    0,  # 默认值
+                    False,  # 保持
+                    self._external_accessible,
+                    self._external_writable,
+                    self._external_visible,
+                    self._s7_set_point,
+                    '',  # 临时6
+                    self.comment
+                    ]
+
     def is_bool(self, __s7obj=None):
         __data_type = self._data_type
         if __s7obj:
