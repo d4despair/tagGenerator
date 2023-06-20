@@ -2,7 +2,7 @@
 # DEVELOP TIME: 23/3/23 16:59
 
 
-from s7object import S7Object
+from taggen.udt.s7object import S7Object
 
 
 class S7Data(S7Object):

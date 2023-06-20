@@ -1,18 +1,29 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/23 17:13
 import math
+import re
 
 DATA_BOOL = 'bool'
 DATA_INT = 'int'
 DATA_DINT = 'dint'
 DATA_REAL = 'real'
+DATA_WORD = 'word'
 DATA_Struct = 'struct'
+
+DATA_GENERABLE = [
+    DATA_BOOL,
+    DATA_INT,
+    DATA_REAL,
+    DATA_DINT,
+    DATA_WORD,
+]
 
 DATA_LENGTH = {
     DATA_BOOL: 0.1,
     DATA_INT: 2,
     DATA_REAL: 4,
     DATA_DINT: 4,
+    DATA_WORD: 2,
 }
 
 
@@ -48,6 +59,12 @@ class S7Object:
         self.comment = comment
         if data_type.lower() in DATA_LENGTH:
             self._length = DATA_LENGTH[data_type.lower()]
+        elif is_array(data_type):
+            self._length = get_array_length(data_type)
+        else:
+            self._length = 0
+        if data_type.lower() not in DATA_GENERABLE:
+            self.generable = False
         if parent:
             self._db_number = parent.db_number
             self._data_block = parent.data_block
@@ -209,3 +226,39 @@ class DBNumberAvailableObject(S7Object):
     def csv_format(self):
         if self.parent:
             return [self.parent.struct_title, self.title, self.data_type, self.comment, self.db_number, self.offset]
+
+
+def is_array(data_type):
+    return re.search(r"Array", data_type, re.I)
+
+
+def get_array_length(array_string):
+    res = re.search(r'Array\[(\d+)..(\d+)] of (\w+)', array_string, re.I)
+    index_start = int(res.group(1))
+    index_end = int(res.group(2))
+    array_type = res.group(3)
+    data_quantity = index_end - index_start + 1
+    if array_type.lower() == 'bool':
+        return get_bools_length(data_quantity)
+    else:
+        return data_quantity * DATA_LENGTH[array_type.lower()]
+
+
+def get_bools_length(quantity):
+    byte_size = quantity // 8
+    # print(byte_size)
+    if quantity % 8 == 0:
+        if byte_size % 2 == 0:
+            length = byte_size
+        else:
+            length = byte_size + 1
+    else:
+        if byte_size % 2 == 0:
+            length = byte_size + 2
+        else:
+            length = byte_size + 1
+    return length
+
+
+if __name__ == '__main__':
+    print(get_array_length('Array[1..32] of Bool'))

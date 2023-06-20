@@ -41,7 +41,7 @@ def KepServerTagFromHMITag(tag: HMITag, group_enable=False):
     else:
         tag_name = tag.name
     address = tag.item_name
-    data_type = KEP_TAG_TYPE[tag.type]
+    data_type = KEP_TAG_TYPE[tag.type.lower()]
     try:
         client_access = _KEP_CLIENT_ACCESS[tag.read_only]
     except KeyError:

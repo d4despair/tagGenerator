@@ -1,7 +1,8 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/23 16:07
+import math
 
-from s7object import S7Object
+from taggen.udt.s7object import S7Object
 
 
 class S7Struct(S7Object):
@@ -52,7 +53,7 @@ class S7Struct(S7Object):
         if not self.__init_length:
             last_data = self._data[-1]
             if self.is_bool(last_data):
-                __length = round(last_data.offset)
+                __length = math.floor(last_data.offset + 0.1)
                 __length += 1 if __length % 2 == 1 else 2
                 self._length = __length
             else:

@@ -1,7 +1,7 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/4/26 0:48
 
-from s7struct import S7Struct
+from taggen.udt.s7struct import S7Struct
 
 TYPE_BOOL = 'bool'
 

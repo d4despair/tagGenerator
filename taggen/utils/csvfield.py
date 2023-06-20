@@ -60,8 +60,8 @@ def print_class_init(t: tuple):
 
 # test
 if __name__ == '__main__':
-    print('========= csvfield.py 测试内容 =========')
+    print('========= csv-field.py 测试内容 =========')
     raw_string = 'Tag Name,Address,Data Type,Respect Data Type,Client Access'
     print(str_to_list(raw_string, blank='_', lower=True))
     print(str_to_tuple(raw_string, blank='_', lower=True))
-    print('========= csvfield.py 测试内容 =========')
+    print('========= csv-field.py 测试内容 =========')

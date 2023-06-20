@@ -2,7 +2,7 @@
 # DEVELOP TIME: 23/3/23 15:32
 
 
-from s7struct import S7Struct
+from taggen.udt.s7struct import S7Struct
 
 
 class DataBlock(S7Struct):
@@ -11,6 +11,7 @@ class DataBlock(S7Struct):
     _db_number = 0
     _struct_dict: dict[S7Struct]
     _error: list = None
+    _prefix = None
 
     def __init__(self, title=None, version=None):
         super().__init__(title=title)
@@ -50,6 +51,14 @@ class DataBlock(S7Struct):
         if not self._error:
             self._error = []
         return self._error
+
+    @property
+    def prefix(self):
+        return self._prefix
+
+    @prefix.setter
+    def prefix(self, prefix):
+        self._prefix = prefix
 
 
 if __name__ == '__main__':

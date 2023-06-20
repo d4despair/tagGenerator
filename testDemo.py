@@ -65,10 +65,10 @@ for dn in list_defn:
     udt_type = dn.udt_type
     # print(ud[udt_type].name)
     # print(udt_type)
-    struct = ud[udt_type].struct_dict
+    struct = ud[udt_type].struct
     tag_count = 0
 
-    for udt_tag in ud[udt_type].struct_dict:
+    for udt_tag in ud[udt_type].struct:
         hmi_tag = HMITag()
         if dn.middle:
             print(dn.middle)
@@ -88,7 +88,7 @@ for dn in list_defn:
         hmi_tag.item_name = dn.db_addr + ',' + hmi_addr_prefix[hmi_tag.type] + str(dn.offset + udt_tag_offset)
         hmi_tag.read_only = udt_tag.read_only
         hmi_tag.alarm_state = udt_tag.alarm_state
-        #### 报警组
+        # 报警组
         # hmi_tag.group = dn.prefix
         hmi_tag.group = 'DRY'
         tag_count += 1

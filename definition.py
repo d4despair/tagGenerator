@@ -17,17 +17,5 @@ class Definition:
         self.db_addr = db_addr
         self.offset = offset
 
-    def create_from_list(self, l=[]):
-        self.prefix = l[0]
-        self.middle = l[1]
-        self.udt_type = l[2]
-        self.comment = l[3]
-        self.db_addr = l[4]
-        self.offset = l[5]
-        return self
-
     def to_list(self):
-        l = list()
-        for fd in self.__dict__:
-            l.append(self.__dict__[fd])
-        return l
+        return [self.__dict__[fd] for fd in self.__dict__]

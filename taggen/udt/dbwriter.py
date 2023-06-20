@@ -3,10 +3,10 @@
 
 from openpyxl import Workbook
 
-from datablock import DataBlock
-from udt import UDT
-from s7struct import S7Struct
-from extractor import DBExtractor
+from taggen.udt.datablock import DataBlock
+from taggen.udt.udt import UDT
+from taggen.udt.s7struct import S7Struct
+from taggen.udt.extractor import DBExtractor
 
 DB_HEADER = ['前缀', '位号', '类型', '位号描述', '所属DB', '生成偏移量']
 UDT_HEADER = ['UDT', '后缀', '类型', '偏移量', '默认值', '临时1', '临时2', '临时3', '临时4', '临时5', '临时6', '描述', '报警', '只读']
@@ -37,12 +37,18 @@ class DBWriter:
 
     def __init__(self):
         self._wb = Workbook()
+        if 'Sheet' in self._wb.sheetnames:
+            self._wb.remove(self._wb['Sheet'])
 
-    def write_defn_to_excel(self, extractor):
-        if isinstance(extractor, DBExtractor):
-            self.write_list_to_excel(extractor.db, 'data_block')
-            self.write_list_to_excel(extractor.udt, 'udt')
-            self.write_list_to_excel(extractor.struct, 'struct')
+    def write_defn_to_excel(self, _extractor, filename=None):
+        if isinstance(_extractor, DBExtractor):
+            self.write_list_to_excel(_extractor.db, 'data_block')
+            self.write_list_to_excel(_extractor.udt, 'udt')
+            self.write_list_to_excel(_extractor.struct, 'struct')
+            if filename:
+                self.save(filename)
+        else:
+            raise ValueError
 
     def write_list_to_excel(self, list_s7struct: list[DataBlock | UDT | S7Struct], sheet_name: str = None):
         wb = self._wb
@@ -60,6 +66,6 @@ class DBWriter:
 
     def save(self, filename):
         wb = self._wb
-        ws = wb['Sheet']
-        wb.remove(ws)
+        # ws = wb['Sheet']
+        # wb.remove(ws)
         wb.save(filename)

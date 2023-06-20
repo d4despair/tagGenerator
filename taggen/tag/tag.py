@@ -75,7 +75,7 @@ class TagList:
     int_list = []
     real_list = []
 
-    def __init__(self, disc_list: [], int_list: [], real_list: []):
+    def __init__(self, disc_list: [] = [], int_list: [] = [], real_list: []= []):
         self.disc_list = disc_list
         self.int_list = int_list
         self.real_list = real_list

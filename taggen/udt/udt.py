@@ -1,7 +1,7 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/4/27 17:24
 
-from s7struct import S7Struct
+from taggen.udt.s7struct import S7Struct
 
 
 class UDT(S7Struct):
