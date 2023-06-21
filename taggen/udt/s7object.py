@@ -2,29 +2,7 @@
 # DEVELOP TIME: 23/3/23 17:13
 import math
 import re
-
-DATA_BOOL = 'bool'
-DATA_INT = 'int'
-DATA_DINT = 'dint'
-DATA_REAL = 'real'
-DATA_WORD = 'word'
-DATA_Struct = 'struct'
-
-DATA_GENERABLE = [
-    DATA_BOOL,
-    DATA_INT,
-    DATA_REAL,
-    DATA_DINT,
-    DATA_WORD,
-]
-
-DATA_LENGTH = {
-    DATA_BOOL: 0.1,
-    DATA_INT: 2,
-    DATA_REAL: 4,
-    DATA_DINT: 4,
-    DATA_WORD: 2,
-}
+from taggen.udt.util import *
 
 
 class S7Object:
@@ -63,8 +41,6 @@ class S7Object:
             self._length = get_array_length(data_type)
         else:
             self._length = 0
-        if data_type.lower() not in DATA_GENERABLE:
-            self.generable = False
         if parent:
             self._db_number = parent.db_number
             self._data_block = parent.data_block
@@ -177,13 +153,30 @@ class S7Object:
 
     def csv_format(self):
         if self.parent:
-            return [self.parent.struct_title,
-                    self.title,
-                    self.data_type,
-                    self.comment,
-                    self.db_number,
-                    self.offset,
-                    ]
+            return [
+                self.data_block.prefix,
+                self.title,
+                self.data_type,
+                f"{self.data_block.comment} {self.comment}",
+                self.db_number,
+                self.offset,
+                self.parent.struct_title,
+                self.comment,
+                self.data_block.generable,
+                self.s7_set_point,
+            ]
+
+        # if self.parent:
+        #     return [self.parent.struct_title,
+        #             self.title,
+        #             self.data_type,
+        #             self.comment,
+        #             self.db_number,
+        #             self.offset,
+        #             self.data_block.prefix,
+        #             self.data_block.comment,
+        #             self.data_block.generable,
+        #             ]
 
     def udt_format(self):
         if self.parent:

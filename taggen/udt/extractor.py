@@ -28,6 +28,7 @@ def update_extractor(db_defn, extractor):
     for title in db_defn:
         if db := extractor.get_db_by_name(title):
             db.db_number = db_defn[title].db_number
+            db.comment = db_defn[title].comment
             db.generable = db_defn[title].generable
             db.prefix = db_defn[title].new_prefix
 
@@ -59,6 +60,7 @@ class DBExtractor:
         [logging.warning(f'无法添加的DB如下{db.title}: {db.error}') for db in self.bin]
 
     def _parse(self, filename=None):
+        """ 解析文件 工厂方法 """
         filename = filename if filename else self.filename
         if filename.endswith('.db'):
             self.parse_file(filename, DataBlock)
@@ -67,7 +69,8 @@ class DBExtractor:
         else:
             logging.warning(f'无法处理：{filename}')
 
-    def parse_file(self, filename, _Class=DataBlock):
+    def parse_file(self, filename, _Class):
+        """ 解析文件 支持.db和.udt """
         _s7objs = None
         rel_type = _Class.rel_type()
 
@@ -102,6 +105,7 @@ class DBExtractor:
                     print(f"无法添加，{rel_type}名称：{_s7objs.title}")
 
     def parse_data(self, parent=None, line=None):
+        """ 解析数据 """
         line = line if line else self.__line
         if res := re.search(r'(.*) : (.*);(.*)', line):
             # 变量名
