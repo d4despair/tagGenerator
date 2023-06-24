@@ -10,27 +10,7 @@ from taggen.udt.datablock import DataBlock
 from taggen.udt.s7data import S7Data
 from taggen.udt.s7struct import S7Struct
 from taggen.udt.udt import UDT
-
-
-def read_db_defn(filename, sheet_name=None):
-    db_defn = {}
-    if filename.endswith('.xlsx'):
-        wb = openpyxl.load_workbook(filename, read_only=True, data_only=True)
-        ws = wb[sheet_name] if sheet_name else wb.active
-        # 从excel获取定义列表
-        for row_cells in ws[2: ws.max_row]:
-            db_defn[row_cells[0].value] = DBDefn(*[row_cells[i].value for i in range(0, 5)])
-        wb.close()
-    return db_defn
-
-
-def update_extractor(db_defn, extractor):
-    for title in db_defn:
-        if db := extractor.get_db_by_name(title):
-            db.db_number = db_defn[title].db_number
-            db.comment = db_defn[title].comment
-            db.generable = db_defn[title].generable
-            db.prefix = db_defn[title].new_prefix
+from taggen.udt.util import DATA_GENERABLE, true_false
 
 
 class DBExtractor:
@@ -87,12 +67,16 @@ class DBExtractor:
                 self._release()
                 break
 
+            # 解析结构开头
             if res := re.search(f'{rel_type} "(?P<title>.*)"', self.__line):
                 _s7objs = _Class(title=res.groupdict()['title'])
+            # 解析数据
             elif _s7data := self.parse_data(parent=_s7objs):
                 _s7objs.append(_s7data)
+            # 解析结构
             elif _s7struct := self.parse_struct(parent=_s7objs):
                 _s7objs.append(_s7struct)
+            # 解析结构结尾
             elif re.search(f'END_{rel_type}', self.__line):
                 if _s7objs.generable:
                     print(f'{rel_type}名称：\'{_s7objs.title}\' 数据个数：{_s7objs.size}')
@@ -119,9 +103,14 @@ class DBExtractor:
 
             _s7data = S7Data(parent=parent, title=data_name, data_type=data_type, comment=data_remark)
 
+            # 判断类型，然后确定是否可以生成
+            _s7data.generable = _s7data.data_type.lower() in DATA_GENERABLE
+
             try:
+                # 判断是否是UDT，如果是，获取UDT的长度
                 if _res := re.search(r'"(.*)"', data_type):
                     _s7data.length = self.get_udt_length(_res[1])
+                    _s7data.generable = True
             except KeyError as e:
                 _s7data.generable = False
                 if _s7data.data_block:
@@ -157,8 +146,44 @@ class DBExtractor:
                 _struct.append(child_struct)
         return _struct
 
-    def read_udt_from_excel(self, filename):
-        pass
+    def read_udt_from_excel(self, filename, sheet_name=None):
+        if filename.endswith('.xlsx'):
+            wb = openpyxl.load_workbook(filename, read_only=True, data_only=True)
+            ws = wb[sheet_name] if sheet_name else wb.active
+
+            # 获取首行的各项对应的列号
+            udt_index = {cell.value: cell.column - 1 for cell in ws['1']}
+            print(udt_index)
+
+            # 从excel获取定义列表
+            for row_cells in ws[2: ws.max_row]:
+                udt_type = row_cells[udt_index['UDT']].value
+                title = row_cells[udt_index['后缀']].value
+                read_only = row_cells[udt_index['只读']].value
+                alarm_state = row_cells[udt_index['报警']].value
+                alias = row_cells[udt_index['别名']].value
+                comment = row_cells[udt_index['描述']].value
+                generable = row_cells[udt_index['是否创建']].value
+
+                # 如果udt字典中没有该udt
+                if udt_type not in self.udt_dict:
+                    # 待增加
+                    pass
+                else:
+                    if title in self.udt_dict[udt_type].data_dict:
+                        self.udt_dict[udt_type].data_dict[title].read_only = true_false(read_only)
+                        self.udt_dict[udt_type].data_dict[title].alarm_state = alarm_state.strip()
+                        self.udt_dict[udt_type].data_dict[title].alias = alias.strip() if alias else None
+                        self.udt_dict[udt_type].data_dict[title].comment = comment.strip() if comment else None
+                        if generable is not None:
+                            self.udt_dict[udt_type].data_dict[title].generable = true_false(generable)
+                        else:
+                            self.udt_dict[udt_type].data_dict[title].generable = True
+
+                        print(f"{self.udt_dict[udt_type].data_dict[title].read_only} "
+                              f"{self.udt_dict[udt_type].data_dict[title].comment }")
+                    pass
+            wb.close()
 
     def read_db_number(self, filename, sheet_name=None):
         """读取db地址 excel格式:db名称 | db地址 | """
@@ -174,6 +199,25 @@ class DBExtractor:
             if db := self.get_db_by_name(db_title):
                 db.db_number = db_numbers[db_title]
         # print(self._db_numbers)
+
+    def read_db_defn(self, filename, sheet_name=None):
+        db_defn = {}
+        if filename.endswith('.xlsx'):
+            wb = openpyxl.load_workbook(filename, read_only=True, data_only=True)
+            ws = wb[sheet_name] if sheet_name else wb.active
+            # 从excel获取定义列表
+            for row_cells in ws[2: ws.max_row]:
+                db_defn[row_cells[0].value] = DBDefn(*[row_cells[i].value for i in range(0, 5)])
+            wb.close()
+
+        for db_title in db_defn:
+            if db := self.get_db_by_name(db_title):
+                db.db_number = db_defn[db_title].db_number
+                db.comment = db_defn[db_title].comment
+                db.generable = db_defn[db_title].generable
+                db.prefix = db_defn[db_title].new_prefix
+                # print(f'{db.db_number} {db.comment} {db.prefix}')
+                # print('更新成功')
 
     @staticmethod
     def _get_remark(string: str):

@@ -11,6 +11,7 @@ KEP_TAG_TYPE = {
     TagTypes.TYPE_INT.type: 'Short',
     TagTypes.TYPE_DINT.type: 'Long',
     TagTypes.TYPE_REAL.type: 'Float',
+    TagTypes.TYPE_WORD.type: 'Short',
 }
 
 KEP_CLIENT_ACCESS = ('R/W', 'RO')

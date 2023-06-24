@@ -22,9 +22,9 @@ class DataBlock(S7Struct):
         self._data = []
         self._struct_dict = {}
 
-    @classmethod
-    def rel_type(cls):
-        return cls._rel_type
+    @property
+    def rel_type_str(self):
+        return self._rel_type
 
     @property
     def data_block(self):

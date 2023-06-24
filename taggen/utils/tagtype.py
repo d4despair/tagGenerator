@@ -93,6 +93,7 @@ class TagTypes:
     TYPE_INT = TagType(ttype='int', length=2)
     TYPE_DINT = TagType(ttype='dint', length=4)
     TYPE_REAL = TagType(ttype='real', length=4)
+    TYPE_WORD = TagType(ttype='word', length=2)
 
 
 def type_length(ttype) -> int | float:

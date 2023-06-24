@@ -133,7 +133,12 @@ IOInt_INDEX = {
 
 IOReal_INDEX = IOInt_INDEX
 
-ALARM_MAP = ['None', 'On', 'Off']
+ALARM_NONE = 'None'
+ALARM_ON = 'On'
+ALARM_OFF = 'Off'
+ALARM_MAP = [ALARM_NONE, ALARM_ON, ALARM_OFF]
+
+
 # print(form_dict)
 # print(FORM_DICT.keys())
 
@@ -150,6 +155,8 @@ def _csv_write_tag(hmi_tag: HMITag, text: [], index: {}):
     if tagtype.is_bool(hmi_tag.type):
         if isinstance(hmi_tag.alarm_state, str):
             text[index['alarm_state']] = hmi_tag.alarm_state
+        elif hmi_tag.alarm_state is None:
+            text[index['alarm_state']] = ALARM_NONE
         else:
             text[index['alarm_state']] = ALARM_MAP[hmi_tag.alarm_state]
         text[index['alarm_comment']] = '{} {}'.format(hmi_tag.item_name, hmi_tag.comment)

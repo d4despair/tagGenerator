@@ -1,11 +1,11 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/23 17:13
 import math
-import re
 from taggen.udt.util import *
 
 
 class S7Object:
+    _rel_type = 's7obj'
     _offset = 0
     _length = 0
     _parent = None
@@ -14,6 +14,9 @@ class S7Object:
     _data_type: str
     _data_block = None
     generable = True
+    read_only = False
+    alarm_state = None
+    alias = None
 
     _external_accessible = True
     _external_visible = True
@@ -191,7 +194,11 @@ class S7Object:
                     self._external_visible,
                     self._s7_set_point,
                     '',  # 临时6
-                    self.comment
+                    self.comment,
+                    self.alarm_state,
+                    yes_no(self.read_only),
+                    self.alias,
+                    yes_no(self.generable)
                     ]
 
     def is_bool(self, __s7obj=None):
@@ -251,6 +258,10 @@ def get_bools_length(quantity):
         else:
             length = byte_size + 1
     return length
+
+
+def yes_no(b):
+    return 'Yes' if b else 'No'
 
 
 if __name__ == '__main__':

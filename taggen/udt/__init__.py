@@ -2,7 +2,6 @@
 # DEVELOP TIME: 23/3/16 14:34
 from taggen.udt._oldudt import *
 from taggen.tag.tagtype import TagType
-from taggen.tag import Tag
 from taggen.udt.udt import UDT
 
 type_bool = TagType('bool', 0.1)
@@ -18,18 +17,6 @@ tag_types = {
 }
 
 
-def tag_from_list(c, l):
-    if issubclass(c, Tag):
-        t = c()
-        i = 0
-        ln = len(l)
-        for fd in t.__dict__:
-            if i < ln:
-                try:
-                    t[fd] = l[i]
-                finally:
-                    i += 1
-        return t
 
 
 def is_bool(s):

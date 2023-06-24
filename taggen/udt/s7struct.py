@@ -6,9 +6,11 @@ from taggen.udt.s7object import S7Object
 
 
 class S7Struct(S7Object):
+    _rel_type = 'Struct'
     _data: list[S7Object]
     _struct_title = ''
     __init_length = False
+    _data_dict = None
 
     def __init__(self, parent=None, title=None, comment=None):
         super().__init__(parent=parent, title=title)
@@ -18,6 +20,7 @@ class S7Struct(S7Object):
 
     def _setup(self):
         self._data = []
+        self._data_dict = {}
 
     @property
     def data_type(self):
@@ -40,9 +43,19 @@ class S7Struct(S7Object):
             __object.previous.next = __object
         self._data.append(__object)
 
+    @classmethod
+    def rel_type(cls):
+        return cls._rel_type
+
     @property
     def data(self):
         return tuple(self._data)
+
+    @property
+    def data_dict(self):
+        if not self._data_dict:
+            self._data_dict = {d.title: d for d in self._data}
+        return self._data_dict
 
     @property
     def size(self):
@@ -66,6 +79,10 @@ class S7Struct(S7Object):
         if __parent:
             self._struct_title = f'{__parent.struct_title}.{self._title}'
         return self._struct_title
+
+    @property
+    def rel_str(self):
+        return self._rel_type
 
 
 def test():
