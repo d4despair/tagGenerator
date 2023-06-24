@@ -112,7 +112,7 @@ def is_alarm(obj):
         return False
 
 
-def true_false(obj):
+def get_true_false(obj):
     if obj:
         if isinstance(obj, str):
             obj = obj.lower().strip()
@@ -129,4 +129,4 @@ if __name__ == '__main__':
     print(is_array('Array =[0..16] of int'))
     print(is_struct('ROT_C_Motor_DB.M1'))
     print(is_udt('"var_dat"'))
-    print(true_false(None))
+    print(get_true_false(None))

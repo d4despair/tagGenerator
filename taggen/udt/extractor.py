@@ -10,7 +10,7 @@ from taggen.udt.datablock import DataBlock
 from taggen.udt.s7data import S7Data
 from taggen.udt.s7struct import S7Struct
 from taggen.udt.udt import UDT
-from taggen.udt.util import DATA_GENERABLE, true_false
+from taggen.udt.util import DATA_GENERABLE, get_true_false
 
 
 class DBExtractor:
@@ -158,31 +158,30 @@ class DBExtractor:
             # 从excel获取定义列表
             for row_cells in ws[2: ws.max_row]:
                 udt_type = row_cells[udt_index['UDT']].value
+                data_type = row_cells[udt_index['类型']].value
                 title = row_cells[udt_index['后缀']].value
-                read_only = row_cells[udt_index['只读']].value
-                alarm_state = row_cells[udt_index['报警']].value
-                alias = row_cells[udt_index['别名']].value
-                comment = row_cells[udt_index['描述']].value
-                generable = row_cells[udt_index['是否创建']].value
+                data_read = {'title': title,
+                             'read_only': row_cells[udt_index['只读']].value,
+                             'alarm_state': row_cells[udt_index['报警']].value,
+                             'alias': row_cells[udt_index['别名']].value,
+                             'comment': row_cells[udt_index['描述']].value,
+                             'generable': row_cells[udt_index['是否创建']].value,
+                             }
 
                 # 如果udt字典中没有该udt
                 if udt_type not in self.udt_dict:
-                    # 待增加
-                    pass
-                else:
-                    if title in self.udt_dict[udt_type].data_dict:
-                        self.udt_dict[udt_type].data_dict[title].read_only = true_false(read_only)
-                        self.udt_dict[udt_type].data_dict[title].alarm_state = alarm_state.strip()
-                        self.udt_dict[udt_type].data_dict[title].alias = alias.strip() if alias else None
-                        self.udt_dict[udt_type].data_dict[title].comment = comment.strip() if comment else None
-                        if generable is not None:
-                            self.udt_dict[udt_type].data_dict[title].generable = true_false(generable)
-                        else:
-                            self.udt_dict[udt_type].data_dict[title].generable = True
+                    # 创建新的udt
+                    new_udt = UDT(udt_type)
+                    new_data = S7Data(parent=new_udt,
+                                      title=data_read['title'],
+                                      data_type=data_type)
+                    new_udt.append(new_data)
 
-                        print(f"{self.udt_dict[udt_type].data_dict[title].read_only} "
-                              f"{self.udt_dict[udt_type].data_dict[title].comment }")
+                    # 将udt加入到udt字典中
+                    self._udt_dict[udt_type] = new_udt
+                else:
                     pass
+                self.update_udt_data(udt_type, **data_read)
             wb.close()
 
     def read_db_number(self, filename, sheet_name=None):
@@ -218,6 +217,38 @@ class DBExtractor:
                 db.prefix = db_defn[db_title].new_prefix
                 # print(f'{db.db_number} {db.comment} {db.prefix}')
                 # print('更新成功')
+
+    def get_db_by_name(self, name):
+        try:
+            return self.db_dict[name]
+        except KeyError:
+            pass
+
+    def get_udt_by_name(self, name):
+        try:
+            return self.udt_dict[name]
+        except KeyError:
+            pass
+
+    def get_udt_data(self, udt_type, data_title):
+        if udt := self.get_udt_by_name(udt_type):
+            try:
+                return udt.data_dict[data_title]
+            except KeyError:
+                pass
+
+    def update_udt_data(self, udt_type, title,
+                        read_only=False, alarm_state=None, alias=None, comment=None, generable=True):
+        if udt_data := self.get_udt_data(udt_type, title):
+            udt_data.read_only = get_true_false(read_only)
+            udt_data.alarm_state = alarm_state.strip()
+            udt_data.alias = alias.strip() if alias else None
+            udt_data.comment = comment.strip() if comment else None
+            udt_data.generable = get_true_false(generable) if generable else True
+            return True
+        else:
+            print('更新udt数据失败')
+            return False
 
     @staticmethod
     def _get_remark(string: str):
@@ -274,12 +305,6 @@ class DBExtractor:
     @property
     def bin(self):
         return self._bin
-
-    def get_db_by_name(self, name):
-        try:
-            return self.db_dict[name]
-        except KeyError:
-            pass
 
 
 class DBDefn:
