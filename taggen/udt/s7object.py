@@ -85,6 +85,7 @@ class S7Object:
     @offset.setter
     def offset(self, value):
         self._offset = value
+        self.__init_offset = True
 
     def _init_offset(self):
         if not self.__init_offset:

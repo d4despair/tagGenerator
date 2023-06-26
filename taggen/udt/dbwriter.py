@@ -11,6 +11,7 @@ from taggen.udt.extractor import DBExtractor
 DB_HEADER = ['前缀', '位号', '类型', '位号描述', '所属DB', '生成偏移量', 'DB名称', '描述', '可否生成', '设定值']
 UDT_HEADER = ['UDT', '后缀', '类型', '偏移量', '默认值', '临时1', '临时2', '临时3', '临时4', '临时5', '临时6', '描述', '报警', '只读', '别名', '是否创建']
 STRUCT_HEADER = ['所属结构', '后缀', '类型', '偏移量', '默认值', '临时1', '临时2', '临时3', '临时4', '临时5', '临时6', '描述', '报警', '只读']
+UDT_CATALOG_HEADER = ['UDT', '长度', '描述', '别名', '版本号']
 
 HEADER = {
     DataBlock.__name__: DB_HEADER,
@@ -66,8 +67,28 @@ class DBWriter:
                 for data in data_list.data:
                     ws.append(data.udt_format())
 
+    @staticmethod
+    def write_udt_to_excel(_extractor, filename):
+        wb = Workbook()
+        ws_catalog = wb.create_sheet('udt_catalog', 0)
+        ws_content = wb.create_sheet('udt_content', 1)
+        if isinstance(_extractor, DBExtractor):
+            if _extractor.udt:
+                ws_catalog.append(UDT_CATALOG_HEADER)
+                ws_content.append(UDT_HEADER)
+                for udt in _extractor.udt:
+                    ws_catalog.append(udt.csv_format())
+                    for data in udt.data:
+                        ws_content.append(data.udt_format())
+                if filename:
+                    wb.save(filename)
+                    wb.close()
+            else:
+                raise ValueError
+
     def save(self, filename):
         wb = self._wb
         # ws = wb['Sheet']
         # wb.remove(ws)
         wb.save(filename)
+        wb.close()

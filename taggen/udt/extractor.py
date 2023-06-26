@@ -153,7 +153,7 @@ class DBExtractor:
 
             # 获取首行的各项对应的列号
             udt_index = {cell.value: cell.column - 1 for cell in ws['1']}
-            print(udt_index)
+            # print(udt_index)
 
             # 从excel获取定义列表
             for row_cells in ws[2: ws.max_row]:
@@ -161,6 +161,7 @@ class DBExtractor:
                 data_type = row_cells[udt_index['类型']].value
                 title = row_cells[udt_index['后缀']].value
                 data_read = {'title': title,
+                             'offset': row_cells[udt_index['偏移量']].value,
                              'read_only': row_cells[udt_index['只读']].value,
                              'alarm_state': row_cells[udt_index['报警']].value,
                              'alias': row_cells[udt_index['别名']].value,
@@ -168,19 +169,16 @@ class DBExtractor:
                              'generable': row_cells[udt_index['是否创建']].value,
                              }
 
-                # 如果udt字典中没有该udt
+                # 如果udt字典中没有该udt则创建udt
                 if udt_type not in self.udt_dict:
                     # 创建新的udt
-                    new_udt = UDT(udt_type)
-                    new_data = S7Data(parent=new_udt,
-                                      title=data_read['title'],
-                                      data_type=data_type)
-                    new_udt.append(new_data)
+                    self._udt_dict[udt_type] = UDT(udt_type)
 
-                    # 将udt加入到udt字典中
-                    self._udt_dict[udt_type] = new_udt
-                else:
-                    pass
+                new_udt = self.get_udt_by_name(udt_type)
+                new_data = S7Data(parent=new_udt,
+                                  title=title,
+                                  data_type=data_type)
+                new_udt.append(new_data)
                 self.update_udt_data(udt_type, **data_read)
             wb.close()
 
@@ -237,9 +235,11 @@ class DBExtractor:
             except KeyError:
                 pass
 
-    def update_udt_data(self, udt_type, title,
+    def update_udt_data(self, udt_type, title, offset=None,
                         read_only=False, alarm_state=None, alias=None, comment=None, generable=True):
         if udt_data := self.get_udt_data(udt_type, title):
+            if offset:
+                udt_data.offset = float(offset)
             udt_data.read_only = get_true_false(read_only)
             udt_data.alarm_state = alarm_state.strip()
             udt_data.alias = alias.strip() if alias else None
@@ -247,7 +247,7 @@ class DBExtractor:
             udt_data.generable = get_true_false(generable) if generable else True
             return True
         else:
-            print('更新udt数据失败')
+            print(f'更新udt数据失败 {udt_type} {title}')
             return False
 
     @staticmethod

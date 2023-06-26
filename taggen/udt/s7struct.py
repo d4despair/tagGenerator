@@ -53,7 +53,7 @@ class S7Struct(S7Object):
 
     @property
     def data_dict(self):
-        if not self._data_dict:
+        if (not self._data_dict) or (len(self._data_dict) != len(self._data)):
             self._data_dict = {d.title: d for d in self._data}
         return self._data_dict
 

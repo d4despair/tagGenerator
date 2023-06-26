@@ -9,7 +9,20 @@ class UDT(S7Struct):
 
     def __init__(self, title, version=None):
         super().__init__(title=title)
+        self._version = version
 
     @property
     def struct_title(self):
         return self.title
+
+    @property
+    def version(self):
+        return self._version
+
+    def csv_format(self):
+        return [
+            self.title,
+            self.length,
+            self.comment,
+            self.alias,
+            self.version]
