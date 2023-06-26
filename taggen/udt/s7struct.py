@@ -71,7 +71,13 @@ class S7Struct(S7Object):
                 self._length = __length
             else:
                 self._length = last_data.offset + last_data.length
+            self.__init_length = True
         return self._length
+
+    @length.setter
+    def length(self, value):
+        self._length = value
+        self.__init_length = True
 
     @property
     def struct_title(self):

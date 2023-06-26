@@ -10,7 +10,7 @@ from taggen.udt.datablock import DataBlock
 from taggen.udt.s7data import S7Data
 from taggen.udt.s7struct import S7Struct
 from taggen.udt.udt import UDT
-from taggen.udt.util import DATA_GENERABLE, get_true_false
+from taggen.udt.util import DATA_GENERABLE, get_true_false, SHEET_UDT_CATALOG, SHEET_UDT_CONTENT
 
 
 class DBExtractor:
@@ -160,7 +160,7 @@ class DBExtractor:
                 udt_type = row_cells[udt_index['UDT']].value
                 data_type = row_cells[udt_index['类型']].value
                 title = row_cells[udt_index['后缀']].value
-                data_read = {'title': title,
+                data_read = {
                              'offset': row_cells[udt_index['偏移量']].value,
                              'read_only': row_cells[udt_index['只读']].value,
                              'alarm_state': row_cells[udt_index['报警']].value,
@@ -174,12 +174,32 @@ class DBExtractor:
                     # 创建新的udt
                     self._udt_dict[udt_type] = UDT(udt_type)
 
-                new_udt = self.get_udt_by_name(udt_type)
-                new_data = S7Data(parent=new_udt,
+                udt = self.get_udt_by_name(udt_type)
+
+                if title not in udt.data_dict:
+                    data = S7Data(parent=udt,
                                   title=title,
                                   data_type=data_type)
-                new_udt.append(new_data)
-                self.update_udt_data(udt_type, **data_read)
+                    udt.append(data)
+                else:
+                    data = udt.data_dict[title]
+
+                self.update_udt_data(data, **data_read)
+            wb.close()
+
+    def read_udt_length(self, filename, sheet_name=None):
+        sheet_name = sheet_name if sheet_name else SHEET_UDT_CATALOG
+        if filename.endswith('.xlsx'):
+            wb = openpyxl.load_workbook(filename, read_only=True, data_only=True)
+            ws = wb[sheet_name]
+
+            # 获取首行的各项对应的列号
+            udt_index = {cell.value: cell.column - 1 for cell in ws['1']}
+            for row_cells in ws[2: ws.max_row]:
+                udt_type = row_cells[udt_index['UDT']].value
+                length = row_cells[udt_index['长度']].value
+                if udt := self.get_udt_by_name(udt_type):
+                    udt.length = length
             wb.close()
 
     def read_db_number(self, filename, sheet_name=None):
@@ -235,20 +255,16 @@ class DBExtractor:
             except KeyError:
                 pass
 
-    def update_udt_data(self, udt_type, title, offset=None,
+    def update_udt_data(self, udt_data, offset=None,
                         read_only=False, alarm_state=None, alias=None, comment=None, generable=True):
-        if udt_data := self.get_udt_data(udt_type, title):
-            if offset:
-                udt_data.offset = float(offset)
-            udt_data.read_only = get_true_false(read_only)
-            udt_data.alarm_state = alarm_state.strip()
-            udt_data.alias = alias.strip() if alias else None
-            udt_data.comment = comment.strip() if comment else None
-            udt_data.generable = get_true_false(generable) if generable else True
-            return True
-        else:
-            print(f'更新udt数据失败 {udt_type} {title}')
-            return False
+        if offset:
+            udt_data.offset = float(offset)
+        udt_data.read_only = get_true_false(read_only)
+        udt_data.alarm_state = alarm_state.strip()
+        udt_data.alias = alias.strip() if alias else None
+        udt_data.comment = comment.strip() if comment else None
+        udt_data.generable = get_true_false(generable) if generable else True
+
 
     @staticmethod
     def _get_remark(string: str):

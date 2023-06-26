@@ -46,6 +46,9 @@ DATA_FALSE = {
     '0',
 }
 
+SHEET_UDT_CATALOG = 'udt_catalog'
+SHEET_UDT_CONTENT = 'udt_content'
+
 
 def is_bool(obj):
     if isinstance(obj, str):

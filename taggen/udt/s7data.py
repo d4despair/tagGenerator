@@ -8,6 +8,7 @@ from taggen.udt.s7object import S7Object
 class S7Data(S7Object):
     _rel_type = 's7data'
     _struct_title = ''
+    generable = False
 
     def __init__(self, parent=None, title=None, data_type=None, comment=''):
         super().__init__(parent, title, data_type, comment)

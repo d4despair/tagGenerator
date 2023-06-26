@@ -7,11 +7,13 @@ from taggen.udt.datablock import DataBlock
 from taggen.udt.udt import UDT
 from taggen.udt.s7struct import S7Struct
 from taggen.udt.extractor import DBExtractor
+from taggen.udt.util import SHEET_UDT_CATALOG, SHEET_UDT_CONTENT
 
 DB_HEADER = ['前缀', '位号', '类型', '位号描述', '所属DB', '生成偏移量', 'DB名称', '描述', '可否生成', '设定值']
 UDT_HEADER = ['UDT', '后缀', '类型', '偏移量', '默认值', '临时1', '临时2', '临时3', '临时4', '临时5', '临时6', '描述', '报警', '只读', '别名', '是否创建']
 STRUCT_HEADER = ['所属结构', '后缀', '类型', '偏移量', '默认值', '临时1', '临时2', '临时3', '临时4', '临时5', '临时6', '描述', '报警', '只读']
 UDT_CATALOG_HEADER = ['UDT', '长度', '描述', '别名', '版本号']
+
 
 HEADER = {
     DataBlock.__name__: DB_HEADER,
@@ -70,8 +72,9 @@ class DBWriter:
     @staticmethod
     def write_udt_to_excel(_extractor, filename):
         wb = Workbook()
-        ws_catalog = wb.create_sheet('udt_catalog', 0)
-        ws_content = wb.create_sheet('udt_content', 1)
+        wb.remove(wb['Sheet'])
+        ws_catalog = wb.create_sheet(SHEET_UDT_CATALOG, 0)
+        ws_content = wb.create_sheet(SHEET_UDT_CONTENT, 1)
         if isinstance(_extractor, DBExtractor):
             if _extractor.udt:
                 ws_catalog.append(UDT_CATALOG_HEADER)
