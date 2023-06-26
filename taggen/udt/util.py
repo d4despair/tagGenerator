@@ -48,6 +48,7 @@ DATA_FALSE = {
 
 SHEET_UDT_CATALOG = 'udt_catalog'
 SHEET_UDT_CONTENT = 'udt_content'
+SHEET_DB_DEFN = 'db_defn'
 
 
 def is_bool(obj):

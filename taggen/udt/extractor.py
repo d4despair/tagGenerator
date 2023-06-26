@@ -10,7 +10,7 @@ from taggen.udt.datablock import DataBlock
 from taggen.udt.s7data import S7Data
 from taggen.udt.s7struct import S7Struct
 from taggen.udt.udt import UDT
-from taggen.udt.util import DATA_GENERABLE, get_true_false, SHEET_UDT_CATALOG, SHEET_UDT_CONTENT
+from taggen.udt.util import DATA_GENERABLE, get_true_false, SHEET_UDT_CATALOG, SHEET_UDT_CONTENT, SHEET_DB_DEFN
 
 
 class DBExtractor:
@@ -21,9 +21,11 @@ class DBExtractor:
     _bin: list[DataBlock] = []
     _db: list[DataBlock] = []
 
-    def __init__(self, filename: str = None, udt_filepath=None):
+    def __init__(self, filename: str = None, defn_filepath=None):
         self.filename = filename
-        self._udt_filepath = udt_filepath
+        # self._defn_filepath = defn_filepath
+        if defn_filepath:
+            self.read_excel(defn_filepath)
         self._setup()
 
     def _setup(self):
@@ -69,7 +71,11 @@ class DBExtractor:
 
             # 解析结构开头
             if res := re.search(f'{rel_type} "(?P<title>.*)"', self.__line):
-                _s7objs = _Class(title=res.groupdict()['title'])
+                title = res.groupdict()['title']
+                if title in self.db_dict:
+                    _s7objs = self.get_db_by_name(title)
+                else:
+                    _s7objs = _Class(title=title)
             # 解析数据
             elif _s7data := self.parse_data(parent=_s7objs):
                 _s7objs.append(_s7data)
@@ -80,7 +86,7 @@ class DBExtractor:
             elif re.search(f'END_{rel_type}', self.__line):
                 if _s7objs.generable:
                     print(f'{rel_type}名称：\'{_s7objs.title}\' 数据个数：{_s7objs.size}')
-                    if isinstance(_s7objs, DataBlock):
+                    if isinstance(_s7objs, DataBlock) and _s7objs.title not in self.db_dict:
                         self._db.append(_s7objs)
                     elif isinstance(_s7objs, UDT):
                         self._udt_dict[_s7objs.title] = _s7objs
@@ -161,13 +167,13 @@ class DBExtractor:
                 data_type = row_cells[udt_index['类型']].value
                 title = row_cells[udt_index['后缀']].value
                 data_read = {
-                             'offset': row_cells[udt_index['偏移量']].value,
-                             'read_only': row_cells[udt_index['只读']].value,
-                             'alarm_state': row_cells[udt_index['报警']].value,
-                             'alias': row_cells[udt_index['别名']].value,
-                             'comment': row_cells[udt_index['描述']].value,
-                             'generable': row_cells[udt_index['是否创建']].value,
-                             }
+                    'offset': row_cells[udt_index['偏移量']].value,
+                    'read_only': row_cells[udt_index['只读']].value,
+                    'alarm_state': row_cells[udt_index['报警']].value,
+                    'alias': row_cells[udt_index['别名']].value,
+                    'comment': row_cells[udt_index['描述']].value,
+                    'generable': row_cells[udt_index['是否创建']].value,
+                }
 
                 # 如果udt字典中没有该udt则创建udt
                 if udt_type not in self.udt_dict:
@@ -188,10 +194,9 @@ class DBExtractor:
             wb.close()
 
     def read_udt_length(self, filename, sheet_name=None):
-        sheet_name = sheet_name if sheet_name else SHEET_UDT_CATALOG
         if filename.endswith('.xlsx'):
             wb = openpyxl.load_workbook(filename, read_only=True, data_only=True)
-            ws = wb[sheet_name]
+            ws = wb[sheet_name] if sheet_name else wb.active
 
             # 获取首行的各项对应的列号
             udt_index = {cell.value: cell.column - 1 for cell in ws['1']}
@@ -228,13 +233,20 @@ class DBExtractor:
             wb.close()
 
         for db_title in db_defn:
-            if db := self.get_db_by_name(db_title):
-                db.db_number = db_defn[db_title].db_number
-                db.comment = db_defn[db_title].comment
-                db.generable = db_defn[db_title].generable
-                db.prefix = db_defn[db_title].new_prefix
-                # print(f'{db.db_number} {db.comment} {db.prefix}')
-                # print('更新成功')
+            if db_title in self.db_dict:
+                db = self.get_db_by_name(db_title)
+            else:
+                db = DataBlock(db_title)
+                self.db.append(db)
+            db.db_number = db_defn[db_title].db_number
+            db.comment = db_defn[db_title].comment
+            db.generable = db_defn[db_title].generable
+            db.prefix = db_defn[db_title].new_prefix
+
+    def read_excel(self, filename):
+        self.read_udt_from_excel(filename, SHEET_UDT_CONTENT)
+        self.read_udt_length(filename, SHEET_UDT_CATALOG)
+        self.read_db_defn(filename, SHEET_DB_DEFN)
 
     def get_db_by_name(self, name):
         try:
@@ -255,16 +267,16 @@ class DBExtractor:
             except KeyError:
                 pass
 
-    def update_udt_data(self, udt_data, offset=None,
+    @staticmethod
+    def update_udt_data(udt_data, offset=None,
                         read_only=False, alarm_state=None, alias=None, comment=None, generable=True):
         if offset:
             udt_data.offset = float(offset)
         udt_data.read_only = get_true_false(read_only)
-        udt_data.alarm_state = alarm_state.strip()
+        udt_data.alarm_state = alarm_state.strip() if alarm_state else None
         udt_data.alias = alias.strip() if alias else None
         udt_data.comment = comment.strip() if comment else None
         udt_data.generable = get_true_false(generable) if generable else True
-
 
     @staticmethod
     def _get_remark(string: str):
@@ -332,7 +344,7 @@ class DBDefn:
         if isinstance(generable, bool):
             self.generable = generable
         else:
-            self.generable = True if generable == '是' else False
+            self.generable = True if get_true_false(generable) else False
 
 
 def _sort_udt(elem: str):

@@ -54,7 +54,10 @@ class DataBlock(S7Struct):
 
     @property
     def prefix(self):
-        return self._prefix
+        if self._prefix:
+            return self._prefix
+        else:
+            return self.title
 
     @prefix.setter
     def prefix(self, prefix):
