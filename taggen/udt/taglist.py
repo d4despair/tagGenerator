@@ -1,10 +1,11 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/6/20 15:29
 
+import re
 
-from util import *
-from extractor import DBExtractor
+from taggen.udt.extractor import DBExtractor
 from taggen.tag.tag import HMITag
+from taggen.udt.util import is_datablock, is_udt, is_struct, is_array, is_int, is_bool, is_real
 
 
 hmi_addr_prefix = {
@@ -25,6 +26,8 @@ class TagList:
         self.real_list = hmi_real if hmi_real else []
 
     def traverse(self, data_struct, udt_dict, st_dict, init_offset=None, init_prefix=None, init_comment=None):
+        if not data_struct.generable:
+            return
         if is_datablock(data_struct):
             parent_offset = data_struct.offset
             parent_prefix = data_struct.prefix

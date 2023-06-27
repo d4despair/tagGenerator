@@ -1,8 +1,9 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/17 15:44
 import csv
-from taggen.utils import tagtype
+from taggen.tag import tagtype
 from taggen.tag import TagList, HMITag
+from taggen.udt.util import is_bool
 
 # mode_text = ':mode=REPLACE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,\r\n'
 FORM = [[':IOAccess', 'Application', 'Topic', 'AdviseActive', 'DDEProtocol', 'SecApplication', 'SecTopic',
@@ -152,7 +153,7 @@ def _csv_write_tag(hmi_tag: HMITag, text: [], index: {}):
                 pass
         # else:
         #     print('{}字段不存在'.format(fd))
-    if tagtype.is_bool(hmi_tag.type):
+    if is_bool(hmi_tag.type):
         if isinstance(hmi_tag.alarm_state, str):
             text[index['alarm_state']] = hmi_tag.alarm_state
         elif hmi_tag.alarm_state is None:

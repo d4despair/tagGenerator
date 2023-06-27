@@ -4,7 +4,7 @@ import csv
 
 from taggen.tag import HMITag, TagList
 from taggen.utils.tagtype import TagTypes
-from taggen.kepserver.kepservertag import KepServerTag, KEP_HEADER
+from .kepservertag import KepServerTag, KEP_HEADER
 
 KEP_TAG_TYPE = {
     TagTypes.TYPE_BOOL.type: 'Boolean',

@@ -137,8 +137,8 @@ def test():
     filepath = 'D:\\工作资料\\11-PYTHON测试\\'
     filename = 'S_HP'
     db_list, st_list = read_db_from_txt(f'{filepath}{filename}.db')
-    from taggen.udt.writer.datablock import write_db_to_excel
-    from taggen.udt.reader.offset import add_offset
+    from taggen import write_db_to_excel
+    from taggen import add_offset
     [add_offset(st) for st in st_list]
     write_db_to_excel(f'{filepath}{filename}.xlsx', db_list, st_list)
 

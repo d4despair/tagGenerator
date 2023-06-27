@@ -1,7 +1,7 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/4/12 13:36
 
-from taggen.intouch.util import StringListObject
+from taggen import StringListObject
 
 ALARM_GROUP_HEADER = [':AlarmGroup', 'Group', 'Comment', 'EventLogged', 'EventLoggingPriority', 'LoLoAlarmDisable',
                       'LoAlarmDisable', 'HiAlarmDisable', 'HiHiAlarmDisable', 'MinDevAlarmDisable',

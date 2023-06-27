@@ -1,7 +1,8 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/23 17:13
+import re
 import math
-from taggen.udt.util import *
+from taggen.udt.util import DATA_LENGTH, DATA_BOOL
 
 
 class S7Object:

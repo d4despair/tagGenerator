@@ -1,7 +1,7 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/4/11 14:12
 
-from taggen.tag import Tag
+from taggen import Tag
 
 
 class IntouchTag(Tag):

@@ -91,7 +91,7 @@ def test():
 
     header_list = []
     # 生成标题列表
-    from taggen.intouch.intouch import FORM
+    from taggen import FORM
     for header in FORM:
         python_style = camel_list_to_python(header)
         class_name = header[0].replace(':', '')

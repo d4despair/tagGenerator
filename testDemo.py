@@ -4,7 +4,7 @@ import openpyxl
 import os
 import re
 from taggen import udt, intouch, kepserver
-from taggen.tag import HMITag, TagList
+from taggen import HMITag, TagList
 from definition import Definition
 
 project_path = r'D:\工作资料\10-宝尔康资料'

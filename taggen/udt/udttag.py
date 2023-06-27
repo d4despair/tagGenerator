@@ -1,7 +1,7 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/3/23 15:39
 
-from taggen.tag import Tag
+from taggen import Tag
 
 
 class UDTTag(Tag):

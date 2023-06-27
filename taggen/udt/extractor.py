@@ -238,6 +238,7 @@ class DBExtractor:
             else:
                 db = DataBlock(db_title)
                 self.db.append(db)
+
             db.db_number = db_defn[db_title].db_number
             db.comment = db_defn[db_title].comment
             db.generable = db_defn[db_title].generable

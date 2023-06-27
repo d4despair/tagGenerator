@@ -4,8 +4,8 @@ import math
 import os
 import openpyxl
 
-from taggen.utils import tagtype
-from taggen.tag import UDTTag
+from taggen import tagtype
+from taggen import UDTTag
 
 UDT_FIELD_CHINESE = (
     'UDT',
