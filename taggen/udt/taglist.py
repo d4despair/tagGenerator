@@ -5,8 +5,7 @@ import re
 
 from taggen.udt.extractor import DBExtractor
 from taggen.tag.tag import HMITag
-from taggen.udt.util import is_datablock, is_udt, is_struct, is_array, is_int, is_bool, is_real
-
+from taggen.udt.util import is_datablock, is_udt, is_struct, is_array, is_int, is_bool, is_real, DATA_GENERABLE
 
 hmi_addr_prefix = {
     'bool': 'X',
@@ -53,7 +52,7 @@ class TagList:
             # 偏移量
             offset = parent_offset + data.offset
             # 注释
-            comment = parent_comment + ' ' + str(data.comment).strip()
+            comment = str(parent_comment).strip() + ' ' + str(data.comment).strip()
 
             # 先判断数据类型
             if is_udt(data):

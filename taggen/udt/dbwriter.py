@@ -52,6 +52,7 @@ class DBWriter:
                 self.write_list_to_excel(_extractor.struct, 'struct')
             if filename:
                 self.save(filename)
+                print(f'保存至：{filename}')
         else:
             raise ValueError
 
@@ -88,6 +89,37 @@ class DBWriter:
                     wb.close()
             else:
                 raise ValueError
+
+    @staticmethod
+    def write_xlsm_to_excel(_extractor, filename):
+        wb = Workbook()
+        wb.remove(wb['Sheet'])
+        ws = wb.create_sheet('给变量生成起用', 0)
+        if isinstance(_extractor, DBExtractor):
+            ws.append([
+                '前缀',
+                '位号',
+                '类型',
+                '位号描述',
+                '所属DB',
+                '生成偏移量',
+                'DB别名',
+                '结构名称',
+            ])
+            if _extractor.db:
+                for db in _extractor.db:
+                    for data in db.data:
+                        ws.append(data.xlsm_format())
+
+            if _extractor.struct:
+                for st in _extractor.struct:
+                    for data in st.data:
+                        ws.append(data.xlsm_format())
+            if filename:
+                wb.save(filename)
+                wb.close()
+        else:
+            raise  ValueError
 
     def save(self, filename):
         wb = self._wb

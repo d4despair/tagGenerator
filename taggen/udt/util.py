@@ -9,6 +9,7 @@ DATA_DINT = 'dint'
 DATA_REAL = 'real'
 DATA_WORD = 'word'
 DATA_Struct = 'struct'
+DATA_S5TIME = 's5time'
 
 DATA_GENERABLE = [
     DATA_BOOL,
@@ -21,6 +22,7 @@ DATA_GENERABLE = [
 DATA_INT_TYPE = [
     DATA_INT,
     DATA_WORD,
+    DATA_S5TIME,
 ]
 
 DATA_LENGTH = {
@@ -29,6 +31,7 @@ DATA_LENGTH = {
     DATA_REAL: 4,
     DATA_DINT: 4,
     DATA_WORD: 2,
+    DATA_S5TIME: 2,
 }
 
 DATA_TRUE = {

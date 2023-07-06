@@ -108,6 +108,23 @@ class S7Object:
             self.__init_offset = True
 
     @property
+    def absolute_offset(self):
+        if self.parent:
+            return self.parent.absolute_offset + self.offset
+        else:
+            return self.offset
+
+    @property
+    def full_comment(self):
+        if self.parent:
+            if self.parent is self.data_block:
+                return self.data_block.comment + ' ' + self.comment
+            else:
+                return self.parent.full_comment + ' ' + self.comment
+        else:
+            return self.comment
+
+    @property
     def length(self):
         return self._length
 
@@ -169,6 +186,19 @@ class S7Object:
                 self.comment,
                 self.data_block.generable,
                 self.s7_set_point,
+            ]
+
+    def xlsm_format(self):
+        if self.parent:
+            return [
+                self.parent.struct_title,
+                self.title,
+                self.data_type,
+                self.full_comment,
+                self.db_number,
+                self.absolute_offset,
+                self.data_block.prefix,
+                self.parent.title
             ]
 
         # if self.parent:

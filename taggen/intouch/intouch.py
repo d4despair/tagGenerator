@@ -169,11 +169,11 @@ def output_csv(tag_list: TagList, output_path, mode='ask', item_use_tag_name=Fal
     if item_use_tag_name:
         IODisc_TEXT[IODisc_INDEX['item_use_tag_name']] = 'Yes'
         IOInt_TEXT[IOInt_INDEX['item_use_tag_name']] = 'Yes'
-        IOInt_TEXT[IOInt_INDEX['item_use_tag_name']] = 'Yes'
+        IOReal_TEXT[IOReal_INDEX['item_use_tag_name']] = 'Yes'
     else:
         IODisc_TEXT[IODisc_INDEX['item_use_tag_name']] = 'No'
         IOInt_TEXT[IOInt_INDEX['item_use_tag_name']] = 'No'
-        IOInt_TEXT[IOInt_INDEX['item_use_tag_name']] = 'No'
+        IOReal_TEXT[IOReal_INDEX['item_use_tag_name']] = 'No'
 
     with open(output_path, 'w', newline='', encoding='ANSI') as f:
         writer = csv.writer(f)

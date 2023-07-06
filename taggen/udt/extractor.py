@@ -74,6 +74,8 @@ class DBExtractor:
                 title = res.groupdict()['title']
                 if title in self.db_dict:
                     _s7objs = self.get_db_by_name(title)
+                    if _s7objs.size > 0:
+                        break
                 else:
                     _s7objs = _Class(title=title)
             # 解析数据
