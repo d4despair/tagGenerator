@@ -2,7 +2,7 @@
 # DEVELOP TIME: 23/3/23 17:13
 import re
 import math
-from taggen.udt.util import DATA_LENGTH, DATA_BOOL
+from taggen.udt.util import DATA_LENGTH, DATA_BOOL, is_udt
 
 
 class S7Object:
@@ -191,27 +191,16 @@ class S7Object:
     def xlsm_format(self):
         if self.parent:
             return [
-                self.parent.struct_title,
-                self.title,
+                self.data_block.prefix,  # self.parent.struct_title,
+                self._get_struct_title(),  # self.title,
                 self.data_type,
                 self.full_comment,
                 self.db_number,
                 self.absolute_offset,
-                self.data_block.prefix,
-                self.parent.title
+                is_udt(self.data_type),
+                self.parent.struct_title,
+                self.title,
             ]
-
-        # if self.parent:
-        #     return [self.parent.struct_title,
-        #             self.title,
-        #             self.data_type,
-        #             self.comment,
-        #             self.db_number,
-        #             self.offset,
-        #             self.data_block.prefix,
-        #             self.data_block.comment,
-        #             self.data_block.generable,
-        #             ]
 
     def udt_format(self):
         if self.parent:
@@ -238,6 +227,13 @@ class S7Object:
         if __s7obj:
             __data_type = __s7obj.data_type
         return __data_type.lower() == DATA_BOOL
+
+    def _get_struct_title(self):
+        if self.parent:
+            st_title = str(self.parent.struct_title).replace(self.data_block.title, '') + '.' + self.title
+            st_title = st_title.removeprefix('.')
+            st_title = st_title.replace('.', '_')
+            return st_title
 
 
 class DBNumberAvailableObject(S7Object):

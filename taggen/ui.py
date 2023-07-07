@@ -4,14 +4,21 @@ from tkinter import *
 from taggen.udt.extractor import DBExtractor
 from taggen.udt.dbwriter import DBWriter
 
-version = '20230706-beta-0933'
-root = Tk()
-root.title('D的自制小程序1号' + ' ' * 10 + version)
-root.geometry('600x300')
-root.resizable(False, False)
+version = '20230707-beta-0902'
+info_update = '''
+更新内容：20230707-beta-0902
+1、更新完全适配变量生成器自动版.xlsm的格式
+2、增加'是否UDT'栏位，用于筛选需要
+'''
+
+app = Tk()
+app.title('D的自制小程序1号' + ' ' * 10 + version)
+app.geometry('600x300')
+# app.iconbitmap('20230707093606_38145_128.ico')
+app.resizable(False, False)
 
 # 标签
-label_udt_path = Label(root, text='源文件地址：', compound='left')
+label_udt_path = Label(app, text='源文件地址：', compound='left')
 label_udt_path.grid(row=0, padx=10)
 
 # label_tia_file = Label(root, text='博图到处的DB文件地址：', justify='left')
@@ -20,7 +27,7 @@ label_udt_path.grid(row=0, padx=10)
 # label_defn_path.grid(row=2, padx=10)
 
 # UDT地址输入框
-entry_udt_path = Entry(root, width=55)
+entry_udt_path = Entry(app, width=55)
 entry_udt_path.grid(row=0, column=1)
 entry_udt_path.delete(0, 'end')
 entry_udt_path.insert(0, r'D:\工作资料\11-PYTHON测试\DB地址定义.xlsx')
@@ -67,12 +74,12 @@ def generate():
         # root.quit()
 
 
-button_udt_path = Button(root, text='打开', command=askdir)
+button_udt_path = Button(app, text='打开', command=askdir)
 button_udt_path.grid(row=0, column=3, padx=10)
-button_generate = Button(root, text='生成', command=generate)
+button_generate = Button(app, text='生成', command=generate)
 button_generate.grid(row=1, column=3, padx=10)
 
-button = Button(root, text='关闭', command=root.quit)
+button = Button(app, text='关闭', command=app.quit)
 button.grid(row=3, column=3, padx=10)
 
 text_help = '''
@@ -81,8 +88,9 @@ text_help = '''
 2、点击生成并输入保存的文件名
 '''
 
-label_help = Label(root, width=60, height=10, text=text_help, justify='left')
-
+label_help = Label(app, width=60, height=5, text=text_help, justify='left', anchor='w')
 label_help.grid(row=4, column=1)
+label_update = Label(app, width=60, height=5, text=info_update, justify='left', anchor='w')
+label_update.grid(row=5, column=1)
 
-root.mainloop()
+app.mainloop()

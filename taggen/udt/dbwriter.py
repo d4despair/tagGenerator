@@ -14,7 +14,6 @@ UDT_HEADER = ['UDT', '后缀', '类型', '偏移量', '默认值', '临时1', '�
 STRUCT_HEADER = ['所属结构', '后缀', '类型', '偏移量', '默认值', '临时1', '临时2', '临时3', '临时4', '临时5', '临时6', '描述', '报警', '只读']
 UDT_CATALOG_HEADER = ['UDT', '长度', '描述', '别名', '版本号']
 
-
 HEADER = {
     DataBlock.__name__: DB_HEADER,
     UDT.__name__: UDT_HEADER,
@@ -103,8 +102,9 @@ class DBWriter:
                 '位号描述',
                 '所属DB',
                 '生成偏移量',
-                'DB别名',
-                '结构名称',
+                '是否UDT',
+                '所属结构',
+                '原始名称',
             ])
             if _extractor.db:
                 for db in _extractor.db:
@@ -119,7 +119,7 @@ class DBWriter:
                 wb.save(filename)
                 wb.close()
         else:
-            raise  ValueError
+            raise ValueError
 
     def save(self, filename):
         wb = self._wb
