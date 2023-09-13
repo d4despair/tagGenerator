@@ -75,11 +75,11 @@ def get_string_list(obj):
 
 class StringListObject:
     def __str__(cls):
-        return [self.__getattribute__(slot) for slot in self.__slots__].__str__()
+        return [cls.__getattribute__(slot) for slot in cls.__slots__].__str__()
 
     @property
     def csv_format(cls):
-        return [self.__getattribute__(slot) for slot in self.__slots__]
+        return [cls.__getattribute__(slot) for slot in cls.__slots__]
 
 
 def test():
@@ -91,7 +91,7 @@ def test():
 
     header_list = []
     # 生成标题列表
-    from taggen import FORM
+    from intouch import FORM
     for header in FORM:
         python_style = camel_list_to_python(header)
         class_name = header[0].replace(':', '')

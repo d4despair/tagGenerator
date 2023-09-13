@@ -54,7 +54,7 @@ class HMITag(Tag):
 
     __slots__ = (
         'name',
-        'tag_type',
+        'data_type',
         'comment',
         'item_name',
         'read_only',
@@ -62,20 +62,40 @@ class HMITag(Tag):
         'group',
     )
 
-    def __init__(self, name='', tag_type='', comment='', item_name='', read_only=0, alarm_state=0, group=''):
-        Tag.__init__(self, name, tag_type, comment)
+    def __init__(self, name='', data_type='', comment='', item_name='', read_only=0, alarm_state=0, group=''):
+        # Tag.__init__(self, name, tag_type, comment)
+        self.name = name
+        self.data_type = data_type
+        self.comment = comment
         self.item_name = item_name
         self.read_only = read_only
         self.alarm_state = alarm_state
         self.group = group
 
+    def __str__(self):
+        info = [f'{key}: {self.__getattribute__(key)}' for key in self.__slots__]
+        return '\t'.join(info)
+
 
 class TagList:
-    disc_list = []
-    int_list = []
-    real_list = []
 
-    def __init__(self, disc_list: [] = [], int_list: [] = [], real_list: [] = []):
-        self.disc_list = disc_list
-        self.int_list = int_list
-        self.real_list = real_list
+    def __init__(self, disc_list: [] = None, int_list: [] = None, real_list: [] = None):
+        self.disc_list = disc_list if disc_list else []
+        self.int_list = int_list if real_list else []
+        self.real_list = real_list if real_list else []
+
+    def append(self, hmitag):
+        if hasattr(hmitag, 'data_type'):
+            if hmitag.data_type == 'bool':
+                self.disc_list.append(hmitag)
+            elif hmitag.data_type == 'int':
+                self.int_list.append(hmitag)
+            elif hmitag.data_type == 'real':
+                self.real_list.append(hmitag)
+            else:
+                raise ValueError(f'无法添加{hmitag.data_type}类型的变量')
+        else:
+            raise ValueError(f'{hmitag}不存在data_type属性')
+
+    def __len__(self):
+        return len(self.disc_list) + len(self.real_list) + len(self.int_list)

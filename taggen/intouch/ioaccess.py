@@ -1,6 +1,6 @@
 # @AUTHOR: DIOCAI
 # DEVELOP TIME: 23/4/11 14:39
-from taggen import IO_ACCESS_HEADER
+from header import IO_ACCESS_HEADER
 from util import StringListObject
 
 

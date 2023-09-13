@@ -33,7 +33,7 @@ def output_csv(tag_list: TagList, output_path, group_enable=False):
                 kep_tag = KepServerTagFromHMITag(hmi_tag, group_enable)
                 writer.writerow(kep_tag.to_list())
         f.close()
-    print('生成KepServer导入csv文件: ' + output_path)
+    print(f'数据量{len(tag_list)}， 生成KepServer导入csv文件: {output_path}')
 
 
 def KepServerTagFromHMITag(tag: HMITag, group_enable=False):
@@ -42,7 +42,7 @@ def KepServerTagFromHMITag(tag: HMITag, group_enable=False):
     else:
         tag_name = tag.name
     address = tag.item_name
-    data_type = KEP_TAG_TYPE[tag.type.lower()]
+    data_type = KEP_TAG_TYPE[tag.data_type.lower()]
     try:
         client_access = _KEP_CLIENT_ACCESS[tag.read_only]
     except KeyError:

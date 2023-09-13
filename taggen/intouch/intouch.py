@@ -153,7 +153,7 @@ def _csv_write_tag(hmi_tag: HMITag, text: [], index: {}):
                 pass
         # else:
         #     print('{}字段不存在'.format(fd))
-    if is_bool(hmi_tag.type):
+    if is_bool(hmi_tag.data_type):
         if isinstance(hmi_tag.alarm_state, str):
             text[index['alarm_state']] = hmi_tag.alarm_state
         elif hmi_tag.alarm_state is None:
@@ -207,4 +207,4 @@ def output_csv(tag_list: TagList, output_path, mode='ask', item_use_tag_name=Fal
                     _csv_write_tag(hmi_tag, IOReal_TEXT, IOReal_INDEX)
                     writer.writerow(IOReal_TEXT)
 
-    print('生成Intouch导入csv文件: ' + output_path)
+    print(f'数据量{len(tag_list)}， 生成Intouch导入csv文件: {output_path}')
